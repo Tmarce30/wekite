@@ -3,6 +3,8 @@ class Spot < ApplicationRecord
   has_many :favorites
   has_many :reviews
   has_many :photos
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   validates :description, presence: true
   validates :address, presence: true
