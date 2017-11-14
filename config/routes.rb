@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'spots/index'
+
+  get 'spots/new'
+
+  get 'spots/create'
+
+  get 'spots/show'
+
+  get 'spots/update'
+
+  get 'spots/edit'
+
   get 'favorites/index'
 
   get 'favorites/create'
