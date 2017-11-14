@@ -39,16 +39,6 @@ ActiveRecord::Schema.define(version: 20171114204019) do
     t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "spot_id"
-    t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["spot_id"], name: "index_photos_on_spot_id", using: :btree
-    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.text     "comment"
     t.integer  "rating"
@@ -88,7 +78,6 @@ ActiveRecord::Schema.define(version: 20171114204019) do
     t.integer  "age"
     t.string   "address"
     t.text     "description"
-    t.string   "photo"
     t.string   "provider"
     t.string   "uid"
     t.string   "facebook_picture_url"
@@ -100,8 +89,6 @@ ActiveRecord::Schema.define(version: 20171114204019) do
 
   add_foreign_key "favorites", "spots"
   add_foreign_key "favorites", "users"
-  add_foreign_key "photos", "spots"
-  add_foreign_key "photos", "users"
   add_foreign_key "reviews", "spots"
   add_foreign_key "reviews", "users"
   add_foreign_key "spots", "users"
