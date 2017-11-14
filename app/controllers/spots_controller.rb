@@ -1,7 +1,11 @@
 class SpotsController < ApplicationController
+  before_action :set_puppy, only: [:show, :edit, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+  end
+
+  def show
   end
 
   def new
@@ -18,9 +22,6 @@ class SpotsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def update
   end
 
@@ -29,12 +30,11 @@ class SpotsController < ApplicationController
 
   private
 
-  def set_puppy
+  def set_spot
     @spot = Spot.find(params[:id])
   end
 
-  def puppy_params
-    params.require(:spot).permit(:name, :breed, :photo, :address, :description)
+  def spot_params
+    params.require(:spot).permit(:name, :photo, :address, :description)
   end
-
 end
