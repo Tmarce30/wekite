@@ -1,2 +1,30 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="user-profile">
+  <div class="user-info">
+        <ul class="user-identity list-unstyled">
+       <strong><li><%= current_user.first_name %> <%= current_user.last_name %></li></strong>
+<!--       <li><%= current_user.age %></li> -->
+    </ul>
+    <div class="user-photo">
+      <% if current_user.facebook_picture_url? %>
+        <%= image_tag current_user.facebook_picture_url, class: "img-circle avatar" %>
+        <% elsif current_user.photo? %>
+        <%= cl_image_tag current_user.photo.path, class: "img-circle avatar" %>
+        <% else %>
+        <%= image_tag "http://placehold.it/30x30", class: "img-circle avatar" %>
+      <% end %>
+    </div>
+  </div>
+    <h2><%= @user.first_name %>' photos</h2>
+  <ul class="user-photos">
+    <div class="photos">
+        <% @user.photos.each do |photo| %>
+        <%= link_to photo_path(photo) do %>
+        <% cl_image_tag photo.path %>
+        <% end %>
+        <% end %>
+      <p><%= link_to "Add a photo", photos_path %></p>
+    </div>
+  </ul>
+</div>
+
+
