@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'reviews/create'
+
+  get 'reviews/update'
+
+  get 'reviews/destroy'
+
   get 'spots/index'
 
   get 'spots/new'
