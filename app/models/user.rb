@@ -12,9 +12,9 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :age, presence: true
+  # validates :age, presence: true
   validates :email, uniqueness: true, presence: true
-  validates :photo, presence: true
+  # validates :photo, presence: true
 
   has_attachment :photo
 
@@ -39,4 +39,4 @@ class User < ApplicationRecord
     return user
   end
 end
-end
+
