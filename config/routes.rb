@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :spots, except: [:destroy] do
     resources :reviews, only: [:create, :update, :destroy]
   end
+
+  mount Attachinary::Engine => "/attachinary"
 end

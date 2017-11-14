@@ -14,4 +14,6 @@ class User < ApplicationRecord
   validates :age, presence: true
   validates :email, uniqueness: true, presence: true
   validates :photo, presence: true
+
+  has_attachment :photo
 end

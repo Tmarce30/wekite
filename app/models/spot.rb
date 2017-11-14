@@ -7,4 +7,6 @@ class Spot < ApplicationRecord
   validates :description, presence: true
   validates :address, presence: true
   validates :name, presence: true
+
+  has_attachments :photos
 end
