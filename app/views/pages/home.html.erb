@@ -1,2 +1,5 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= form_tag(spots_path, method: :get) do %>
+<%= text_field_tag :address, nil, :placeholder => 'Where are you going ?', class: "search-field", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
+<%= submit_tag 'Spot it' %>
+<% end %>
+

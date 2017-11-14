@@ -2,8 +2,8 @@ require 'open-uri'
 require 'json'
 
 spot = Spot.new(
-  name: "Faker::Pokemon.name",
-  address: '6906 Boul St-Laurent Montréal, QC H2S 3E1',
+  name: 'hhh',
+  address: 'Rua do Ibama s/n, Jericoacoara',
   description: "Faker::Lorem.paragraph")
 spot.save!
 
