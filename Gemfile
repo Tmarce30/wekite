@@ -19,6 +19,7 @@ gem 'uglifier'
 gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'coffee-rails'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'pry-byebug'
