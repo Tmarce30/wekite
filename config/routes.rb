@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'favorites/index'
+
+  get 'favorites/create'
+
+  get 'favorites/destroy'
+
   get 'photos/index'
 
   get 'photos/create'
