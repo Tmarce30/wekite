@@ -1,3 +1,8 @@
+<%= form_tag(spots_path, method: :get) do %>
+<%= text_field_tag :address, nil, :placeholder => 'Where are you going ?', class: "search-field", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
+<%= submit_tag 'Spot it' %>
+<% end %>
+
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
@@ -44,19 +49,4 @@
     <% end %>
   </div>
 </div>
-
-<div class="banner index">
-  <div class="banner_content">
-    <h1 class="text-center">WeKite</h1>
-    <div class="text-center padded">
-      <div>
-        <%= form_tag(spots_path, method: :get) do %>
-          <%= text_field_tag :query %>
-          <%= submit_tag 'Search' %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
 

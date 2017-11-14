@@ -1,8 +1,23 @@
+require 'open-uri'
+require 'json'
+require 'uri'
+
 class SpotsController < ApplicationController
   before_action :set_puppy, only: [:show, :edit, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
 
   def index
+    # @spots = Spot.where.not(latitude: nil, longitude: nil)
+    json = open("https://maps.googleapis.com/maps/api/geocode/json?address=#{URI.encode(params[:address])}").read
+    response = JSON.parse(json)
+    coords = response["results"][0]["geometry"]["location"]
+    @spots = Spot.near([coords["lat"], coords["lng"]], 2000)
+
+    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
+      marker.lat spot.latitude
+      marker.lng spot.longitude
+    end
+
   end
 
   def show
