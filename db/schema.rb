@@ -10,10 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113231402) do
+ActiveRecord::Schema.define(version: 20171114153923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "spot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_favorites_on_spot_id", using: :btree
+    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "spot_id"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_photos_on_spot_id", using: :btree
+    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "comment"
+    t.integer  "rating"
+    t.integer  "spot_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_reviews_on_spot_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
+
+  create_table "spots", force: :cascade do |t|
+    t.text     "description"
+    t.string   "address"
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_spots_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,8 +68,21 @@ ActiveRecord::Schema.define(version: 20171113231402) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "age"
+    t.string   "address"
+    t.text     "description"
+    t.string   "photo"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "favorites", "spots"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "photos", "spots"
+  add_foreign_key "photos", "users"
+  add_foreign_key "reviews", "spots"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "spots", "users"
 end
