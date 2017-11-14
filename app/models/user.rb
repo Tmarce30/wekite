@@ -6,14 +6,12 @@ class User < ApplicationRecord
 
   has_many :favorites
   has_many :reviews
-  has_many :photos
   has_many :spots
 
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :age, presence: true
   validates :email, uniqueness: true, presence: true
-  validates :photo, presence: true
 
-  has_attachment :photo
+  has_attachments :photos
 end
