@@ -4,6 +4,13 @@
     <%= image_tag "logo.png" %>
   <% end %>
 
+    <div>
+    <%= form_tag(photos_path, method: :get) do %>
+      <%= text_field_tag :query %>
+      <%= submit_tag 'Search' %>
+    <% end %>
+  </div>
+
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
