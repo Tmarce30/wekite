@@ -1,36 +1,4 @@
 Rails.application.routes.draw do
-  get 'reviews/create'
-
-  get 'reviews/update'
-
-  get 'reviews/destroy'
-
-  get 'spots/index'
-
-  get 'spots/new'
-
-  get 'spots/create'
-
-  get 'spots/show'
-
-  get 'spots/update'
-
-  get 'spots/edit'
-
-  get 'favorites/index'
-
-  get 'favorites/create'
-
-  get 'favorites/destroy'
-
-  get 'photos/index'
-
-  get 'photos/create'
-
-  get 'photos/destroy'
-
-  get 'users/show'
-
   devise_for :users
   root to: 'pages#home'
 
