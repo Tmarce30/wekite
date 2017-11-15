@@ -8,13 +8,15 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :reviews
   has_many :spots
+  has_many :pictures
 
   validates :first_name, presence: true
   validates :last_name, presence: true
   # validates :age, presence: true
   validates :email, uniqueness: true, presence: true
+  validates :avatar, presence: true
 
-  has_attachments :photos
+  has_attachment  :avatar, accept: [:jpg, :png, :gif]
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
