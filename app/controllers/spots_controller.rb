@@ -21,11 +21,8 @@ class SpotsController < ApplicationController
 
   def show
     json = open("https://maps.googleapis.com/maps/api/geocode/json?address=#{URI.encode(@spot.address)}").read
-    response = JSON.parse(json)
-    coords = response["results"][0]["geometry"]["location"]
-    @spots = Spot.near([coords["lat"], coords["lng"]], 2000)
 
-    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
+    @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
     end
