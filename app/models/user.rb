@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   # validates :age, presence: true
   validates :email, uniqueness: true, presence: true
+  validates :avatar, presence: true
 
   has_attachment  :avatar, accept: [:jpg, :png, :gif]
 
