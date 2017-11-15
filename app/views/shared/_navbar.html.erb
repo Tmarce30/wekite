@@ -5,10 +5,10 @@
   <% end %>
 
     <div>
-      <%= form_tag(spots_path, method: :get) do %>
-      <%= text_field_tag :address, nil, :placeholder => 'Where are you going ?', class: "search-field", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
-      <%= submit_tag 'Spot it' %>
-      <% end %>
+<%= form_tag(spots_path, method: :get) do %>
+<%= text_field_tag :address, nil, :placeholder => 'Where are you going ?', class: "search-field", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
+<%= submit_tag 'Spot it' %>
+<% end %>
   </div>
 
   <!-- Right Navigation -->
