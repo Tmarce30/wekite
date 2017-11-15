@@ -2,7 +2,7 @@
   <div class="user-info">
         <ul class="user-identity list-unstyled">
        <strong><li><%= current_user.first_name %> <%= current_user.last_name %></li></strong>
-<!--       <li><%= current_user.age %></li> -->
+      <li><%= current_user.age %></li>
     </ul>
     <div class="user-photo">
       <% if current_user.facebook_picture_url? %>
