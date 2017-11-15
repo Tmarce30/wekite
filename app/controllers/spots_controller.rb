@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :set_puppy, only: [:show, :edit, :destroy]
+  before_action :set_spot, only: [:show, :edit, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
 
   def index
