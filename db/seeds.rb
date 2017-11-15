@@ -49,31 +49,30 @@ spot = Spot.new(
   description: "This island is a picture perfect kiteboarding spot blessed with strong consistent winds funneled between the islands around Taveuni. The nearby reef creates an expanse of shallow flat water; travel outside the reef for a more difficult ride and explore the surrounding uninhabited islands.")
 spot.save!
 
-spot = Spot.new(
-  name: 'Cumbuco',
-  address: 'Rua das Cavalas 6, Cumbuco, Caucaia, State of Ceara, Brazil',
-  description: "The fact that the beaches in Cumbuco are a popular training spot for kiteboarding pros is just the first sign that this Brazilian fishing village offers prime kiteboarding conditions. The beach here is 6 Kilometers long, giving everyone plenty of space to enjoy the strong and consistent winds, the shallow, flat lagoon, and the small breaking waves just off the shore.")
-spot.save!
 
 # Adding photos to spots
-#spots = Spot.all
+spots = Spot.all
 
-#spots.each do |spot|
+spots.each do |spot|
   #build url
-  #url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{spot.latitude},#{spot.longitude}&radius=200&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
+  url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{spot.latitude},#{spot.longitude}&radius=200&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
   #make json request
-  #json = open(url).read
-  #json = JSON.parse(json)
+  json = open(url).read
+  json = JSON.parse(json)
   #get first result
-  #results = json["results"].reject {|result| result["photos"].nil? }
-  #result = results.first
+  results = json["results"].reject {|result| result["photos"].nil? }
+  result = results.first
   #get first photo
-  #first_photo = result["photos"].first
-  #get photo reference
-  #photo_reference = first_photo["photo_reference"]
+  unless result.nil?
+    first_photo = result["photos"].first
+    #get photo reference
+    photo_reference = first_photo["photo_reference"]
 
-  #get photo url
-  #photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{photo_reference}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
-  #spot.photo_urls = [ photo_url ]
-  #spot.save!
-#end
+    #get photo url
+    photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{photo_reference}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
+    picture = Picture.new(photo_urls: [photo_url])
+    picture.spot = spot
+    picture.save!
+    spot.save!
+  end
+end
