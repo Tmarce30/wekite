@@ -7,8 +7,8 @@
     <div class="user-photo">
       <% if current_user.facebook_picture_url? %>
         <%= image_tag current_user.facebook_picture_url, class: "img-circle avatar" %>
-        <% elsif current_user.photo? %>
-        <%= cl_image_tag current_user.photo.path, class: "img-circle avatar" %>
+        <% elsif current_user.avatar %>
+        <%= cl_image_tag current_user.avatar.path, class: "img-circle avatar" %>
         <% else %>
         <%= image_tag "http://placehold.it/30x30", class: "img-circle avatar" %>
       <% end %>
@@ -22,7 +22,7 @@
         <% cl_image_tag photo.path %>
         <% end %>
         <% end %>
-      <p><%= link_to "Add a photo", photos_path %></p>
+      <p><%= link_to "Add a photo", pictures_path %></p>
     </div>
   </ul>
 </div>
