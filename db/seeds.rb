@@ -44,11 +44,16 @@ spot = Spot.new(
 spot.save!
 
 spot = Spot.new(
-  name: 'Taveuni',
-  address: 'South Vuna Road | Waiyeko, Taveuni Island, Fiji',
-  description: "This island is a picture perfect kiteboarding spot blessed with strong consistent winds funneled between the islands around Taveuni. The nearby reef creates an expanse of shallow flat water; travel outside the reef for a more difficult ride and explore the surrounding uninhabited islands.")
+  name: 'Cabarete',
+  address: 'Apartado Postal 337, Cabarete, Dominican Republic',
+  description: "If you have a kiteboarding bucket list, a trip to Cabarete should definitely be on it. The beaches in the area are protected by a reef, which means silky smooth water inside the reef and breaking waves just outside. Cabarete Beach is perfect for beginning or advanced riders and La Policia Beach serves up beautiful breaking waves for a more difficult ride.")
 spot.save!
 
+spot = Spot.new(
+  name: 'La Ventana',
+  address: 'Calle Salome Lucero S/N, 23232 La Ventana, B.C.S., Mexico',
+  description: "Baja California Sur's beautiful town of La Ventana is consistently rated as one of the best places for kiteboarding. Visitors can enjoy warm water and great wind from fall through spring, making it a great stop for winter breakers and spring breakers alike looking to learn how to kiteboard as well as experts looking to practice or show off.")
+spot.save!
 
 # Adding photos to spots
 spots = Spot.all

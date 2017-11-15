@@ -10,6 +10,7 @@ class SpotsController < ApplicationController
     # @spots = Spot.where.not(latitude: nil, longitude: nil)
     json = open("https://maps.googleapis.com/maps/api/geocode/json?address=#{URI.encode(params[:address])}").read
     response = JSON.parse(json)
+
     coords = response["results"][0]["geometry"]["location"]
     @spots = Spot.near([coords["lat"], coords["lng"]], 2000)
 
