@@ -2,12 +2,34 @@ require 'open-uri'
 require 'json'
 
 spot = Spot.new(
-  name: 'hhh',
-  address: 'Rua do Ibama s/n, Jericoacoara',
-  description: "Faker::Lorem.paragraph")
+  name: 'Nabq Bay',
+  address: 'Nabq Bay, Sharm El Sheikh, South Sinai Egypt, 46627, Egypt',
+  description: "This beautiful beach town offers a riding area guarded by reefs, which create relatively shallow and flat waters, and the wind blows at least 20 knots on most days. The reef also means that the riding area is minimally affected by tides, giving you hours of uninterrupted play time.")
 spot.save!
 
+spot = Spot.new(
+  name: 'Grand Cayman',
+  address: '389 West Bay Road Seven Mile Beach, P.O. Box 30371  Grand Cayman  KY1 -1202  Cayman Islands',
+  description: "Grand Cayman has some of the best kiteboarding conditions in the world. The wind tends to be steady and warm, and the protected bays situated all over the island offer lots of room for experienced riders to cruise around and for beginners to build their skills.")
+spot.save!
 
+spot = Spot.new(
+  name: 'Maui',
+  address: '3550 Wailea Alanui Dr, Wailea, Maui, HI 96753-9518',
+  description: "Maui is arguably the best known kiteboarding destination in the world, and Kite Beach is probably the best place to experience all that Maui has to offer. The beautiful tropical beach has clean, warm water, steady trade winds, long stretches of calm water, and gentle waves for more experienced riders.")
+spot.save!
+
+spot = Spot.new(
+  name: 'Calamianes Island',
+  address: 'Sandiwa, Tiniguiba, Puerto Princesa City, Puerto Princesa City, 5300 Palawan, Philippines',
+  description: "The unspoiled tranquility of the Calamines Islands may be a plane and a boat ride away, but the perfect and uncrowded kitesurfing conditions make the extra effort worth it. The secluded area has conditions for every skill level: open water chop or silky smooth water all surrounded by unspoiled beauty.")
+spot.save!
+
+spot = Spot.new(
+  name: 'Jupiter',
+  address: '18903 SE Federal Hwy, Jupiter, FL 33469-1715',
+  description: "This beach town sits on the southeast coast of Florida, and the water here offers everything from glossy flat water to big swells for the advanced riders. Head down to the part of Juno Beach appropriately named Kite Beach and get ready to launch.")
+spot.save!
 # Adding photos to spots
 spots = Spot.all
 
