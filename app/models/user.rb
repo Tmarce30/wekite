@@ -34,6 +34,7 @@ class User < ApplicationRecord
       user.update(user_params)
     else
       user = User.new(user_params)
+      user.avatar_url = auth.info.image
       user.age = (Date.today - Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y')).to_i/365
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.save!
