@@ -5,7 +5,7 @@
   <%= f.input :address, label: false, placeholder: "Tarifa, Spain", input_html: {class: "input-address" }%>
   <%= f.label :description, class: "label-description" %>
   <%= f.input :description, label: false, placeholder: "This spot has ...", input_html: {class: "input-description"} %>
-  <% f.label :photo, class: "label-photo" %>
-  <%= f.input :avatar, as: :attachinary %>
+  <%= f.label :photo, class: "label-photo" %>
+  <%= f.input :avatar, label: false, as: :attachinary %>
   <%= f.button :submit, "Add your spot", class: "btn btn-danger btn-add" %>
 <% end %>
