@@ -9,6 +9,7 @@ class Spot < ApplicationRecord
   validates :description, presence: true
   validates :address, presence: true
   validates :name, presence: true
+  # validates :avatar, presence: true
 
   has_attachment  :avatar, accept: [:jpg, :png, :gif]
 end
