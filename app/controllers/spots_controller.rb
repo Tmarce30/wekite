@@ -17,7 +17,6 @@ class SpotsController < ApplicationController
       marker.lat spot.latitude
       marker.lng spot.longitude
     end
-
   end
 
   def show

@@ -1,3 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= render "avatar", spot: @spot %>
+    </div>
+  </div>
+
+    <p class="spot-description"><%= @spot.description %></p>
+
+</div>
+
+
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     const coord = <%= raw @flat_coordinates.to_json %>;
