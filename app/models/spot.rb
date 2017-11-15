@@ -7,5 +7,5 @@ class Spot < ApplicationRecord
   validates :address, presence: true
   validates :name, presence: true
 
-  has_attachments :photos
+  has_attachment  :avatar, accept: [:jpg, :png, :gif]
 end
