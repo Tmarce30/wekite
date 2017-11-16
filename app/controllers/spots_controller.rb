@@ -19,10 +19,17 @@ class SpotsController < ApplicationController
       marker.lng spot.longitude
       marker.infowindow render_to_string(partial: "/layouts/partials/infowindow", locals: {spot: spot})
     end
-
   end
 
   def show
+    @review = Review.new
+
+    json = open("https://maps.googleapis.com/maps/api/geocode/json?address=#{URI.encode(@spot.address)}").read
+
+    @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
+      marker.lat spot.latitude
+      marker.lng spot.longitude
+    end
   end
 
   def new
