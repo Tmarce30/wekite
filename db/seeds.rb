@@ -8,6 +8,12 @@ spot = Spot.new(
 spot.save!
 
 spot = Spot.new(
+  name: 'Nabq',
+  address: 'Peace Road, Nabq Bay, Sharm El Sheikh, Egypt',
+  description: "This beautiful beach town offers a riding area guarded by reefs, which create relatively shallow and flat waters, and the wind blows at least 20 knots on most days. The reef also means that the riding area is minimally affected by tides, giving you hours of uninterrupted play time.")
+spot.save!
+
+spot = Spot.new(
   name: 'Grand Cayman',
   address: '389 West Bay Road Seven Mile Beach, P.O. Box 30371  Grand Cayman  KY1 -1202  Cayman Islands',
   description: "Grand Cayman has some of the best kiteboarding conditions in the world. The wind tends to be steady and warm, and the protected bays situated all over the island offer lots of room for experienced riders to cruise around and for beginners to build their skills.")
@@ -44,11 +50,16 @@ spot = Spot.new(
 spot.save!
 
 spot = Spot.new(
-  name: 'Taveuni',
-  address: 'South Vuna Road | Waiyeko, Taveuni Island, Fiji',
-  description: "This island is a picture perfect kiteboarding spot blessed with strong consistent winds funneled between the islands around Taveuni. The nearby reef creates an expanse of shallow flat water; travel outside the reef for a more difficult ride and explore the surrounding uninhabited islands.")
+  name: 'Cabarete',
+  address: 'Apartado Postal 337, Cabarete, Dominican Republic',
+  description: "If you have a kiteboarding bucket list, a trip to Cabarete should definitely be on it. The beaches in the area are protected by a reef, which means silky smooth water inside the reef and breaking waves just outside. Cabarete Beach is perfect for beginning or advanced riders and La Policia Beach serves up beautiful breaking waves for a more difficult ride.")
 spot.save!
 
+spot = Spot.new(
+  name: 'La Ventana',
+  address: 'Calle Salome Lucero S/N, 23232 La Ventana, B.C.S., Mexico',
+  description: "Baja California Sur's beautiful town of La Ventana is consistently rated as one of the best places for kiteboarding. Visitors can enjoy warm water and great wind from fall through spring, making it a great stop for winter breakers and spring breakers alike looking to learn how to kiteboard as well as experts looking to practice or show off.")
+spot.save!
 
 # Adding photos to spots
 spots = Spot.all
