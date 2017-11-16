@@ -18,6 +18,7 @@ class SpotsController < ApplicationController
       marker.lat spot.latitude
       marker.lng spot.longitude
       marker.infowindow render_to_string(partial: "/layouts/partials/infowindow", locals: {spot: spot})
+      marker.title(spot.id.to_s)
     end
   end
 
