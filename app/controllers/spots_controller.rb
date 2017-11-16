@@ -20,6 +20,8 @@ class SpotsController < ApplicationController
   end
 
   def show
+    @review = Review.new
+
     json = open("https://maps.googleapis.com/maps/api/geocode/json?address=#{URI.encode(@spot.address)}").read
 
     @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
