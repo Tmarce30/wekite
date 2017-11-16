@@ -1,3 +1,7 @@
-  <%= cl_image_tag spot.pictures.first.photos.first.path %>
-  <%= spot.description %>
+<% if spot.avatar? %>
+  <%= cl_image_tag spot.avatar.path %>
+<% else %>
+  <%= image_tag "http://lorempixel.com/400/200/" %>
+<% end %>
 
+<%= spot.description %>

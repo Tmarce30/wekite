@@ -4,13 +4,20 @@
     <% @spots.each do |spot| %>
       <div class="col-xs-12 col-sm-6 col-md-4 cards-dimension" data-id="<%= spot.id %>">
         <div class="card">
-          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path spot.pictures.first.photos.first.path %>')">
-            <span class="card-name"><%= spot.name %></span>
-          </div>
+          <% if  spot.avatar? %>
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path spot.avatar.path %>')">
+              <span class="card-name"><%= spot.name %></span>
             </div>
-          </div>
+          <% else %>
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= image_path 'http://lorempixel.com/400/200/' %>')">
+              <span class="card-name"><%= spot.name %></span>
+            </div>
+
+          <% end %>
         </div>
+      </div>
     <% end %>
+  </div>
 </div>
 
 
