@@ -1,6 +1,3 @@
-require 'open-uri'
-require 'json'
-
 spot = Spot.new(
   name: 'Nabq Bay',
   address: 'Nabq Bay, Sharm El Sheikh, South Sinai Egypt, 46627, Egypt',
@@ -60,30 +57,3 @@ spot = Spot.new(
   address: 'Calle Salome Lucero S/N, 23232 La Ventana, B.C.S., Mexico',
   description: "Baja California Sur's beautiful town of La Ventana is consistently rated as one of the best places for kiteboarding. Visitors can enjoy warm water and great wind from fall through spring, making it a great stop for winter breakers and spring breakers alike looking to learn how to kiteboard as well as experts looking to practice or show off.")
 spot.save!
-
-# Adding photos to spots
-spots = Spot.all
-
-spots.each do |spot|
-  #build url
-  url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{spot.latitude},#{spot.longitude}&radius=200&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
-  #make json request
-  json = open(url).read
-  json = JSON.parse(json)
-  #get first result
-  results = json["results"].reject {|result| result["photos"].nil? }
-  result = results.first
-  #get first photo
-  unless result.nil?
-    first_photo = result["photos"].first
-    #get photo reference
-    photo_reference = first_photo["photo_reference"]
-
-    #get photo url
-    photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{photo_reference}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
-    picture = Picture.new(photo_urls: [photo_url])
-    picture.spot = spot
-    picture.save!
-    spot.save!
-  end
-end
