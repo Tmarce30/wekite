@@ -1,3 +1,4 @@
+<% @title = "#{@user.first_name} profile" %>
 <div class="user-profile">
   <div class="user-info">
         <ul class="user-identity list-unstyled">
@@ -13,8 +14,16 @@
         <%= image_tag "http://placehold.it/30x30", class: "img-circle avatar" %>
       <% end %>
     </div>
+    <div class="edit-profile">
+      <%= link_to edit_user_registration_path do %>
+        <%= t(".edit_profile", default: "Edit my account") %>
+      <% end %>
+    </div>
+    <div>
+      <strong>Description: </strong><%= current_user.description %>
+    </div>
   </div>
-    <h2><%= @user.first_name %>' photos</h2>
+<!--     <h2><%= @user.first_name %>' photos</h2>
   <ul class="user-photos">
     <div class="photos">
         <% @user.photos.each do |photo| %>
@@ -24,7 +33,7 @@
         <% end %>
       <p><%= link_to "Add a photo", pictures_path %></p>
     </div>
-  </ul>
+  </ul> -->
 </div>
 
 
