@@ -8,6 +8,15 @@
   <p class="spot-description"><%= @spot.description %></p>
   <p class="spot-address"><%= @spot.address %></p>
 
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <div class="spot favorites">
+        <%= simple_form_for [@spot, @favorites] do |f| %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <div class="spot-reviews">
         <%= simple_form_for [@spot, @review] do |f| %>
         <%= f.label :comment %>

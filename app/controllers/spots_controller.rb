@@ -22,6 +22,7 @@ class SpotsController < ApplicationController
   end
 
   def show
+    @favorite = Favorite.new
     @review = Review.new
 
     json = open("https://maps.googleapis.com/maps/api/geocode/json?address=#{URI.encode(@spot.address)}").read

@@ -4,8 +4,9 @@
     <% @spots.each do |spot| %>
       <div class="col-xs-12 col-sm-6 col-md-4 cards-dimension" data-id="<%= spot.id %>">
         <div class="card">
-          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path spot.pictures.first.photos.first.path %>')">
+          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path spot.avatar.path %>')">
             <span class="card-name"><%= spot.name %></span>
+            <a class="card-link" href="<%= spot_path(spot) %>"></a>
           </div>
             </div>
           </div>
