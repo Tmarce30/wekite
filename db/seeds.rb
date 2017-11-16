@@ -8,6 +8,12 @@ spot = Spot.new(
 spot.save!
 
 spot = Spot.new(
+  name: 'Nabq',
+  address: 'Peace Road, Nabq Bay, Sharm El Sheikh, Egypt',
+  description: "This beautiful beach town offers a riding area guarded by reefs, which create relatively shallow and flat waters, and the wind blows at least 20 knots on most days. The reef also means that the riding area is minimally affected by tides, giving you hours of uninterrupted play time.")
+spot.save!
+
+spot = Spot.new(
   name: 'Grand Cayman',
   address: '389 West Bay Road Seven Mile Beach, P.O. Box 30371  Grand Cayman  KY1 -1202  Cayman Islands',
   description: "Grand Cayman has some of the best kiteboarding conditions in the world. The wind tends to be steady and warm, and the protected bays situated all over the island offer lots of room for experienced riders to cruise around and for beginners to build their skills.")

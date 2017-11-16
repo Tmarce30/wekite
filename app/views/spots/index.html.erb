@@ -1,7 +1,7 @@
 <div class="main-container">
   <div class="cards-container">
     <% @spots.each do |spot| %>
-      <div class="col-xs-12 col-sm-6 col-md-4 cards-dimension">
+      <div class="col-xs-12 col-sm-6 col-md-4 cards-dimension" data-id="<%= spot.id %>">
         <div class="card">
           <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path spot.pictures.first.photos.first.path %>')">
             <span class="card-name"><%= spot.name %></span>
@@ -16,7 +16,7 @@
 <div id="map" style="width: 100%; height: 600px;"></div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
+  <script>
     var styles = [
     {
         "featureType": "administrative",
@@ -103,6 +103,11 @@
        },
       internal: { id: 'map' } }, function() {
       markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      _.each(markers, function(marker, j) {
+        return google.maps.event.addListener(marker.serviceObject, 'click', function(object) {
+          console.log(marker.serviceObject);
+        });
+      });
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
       if (markers.length == 0) {
@@ -111,5 +116,5 @@
         handler.getMap().setZoom(14);
       }
     });
-  <% end %>
+  </script>
 <% end %>
