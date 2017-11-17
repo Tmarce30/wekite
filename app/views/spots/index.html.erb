@@ -4,10 +4,18 @@
     <% @spots.each do |spot| %>
       <div class="col-xs-12 col-sm-6 col-md-4 cards-dimension" data-id="<%= spot.id %>">
         <div class="card">
-          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path spot.photos.path %>')">
-            <span class="card-name"><%= spot.name %></span>
-            <a class="card-link" href="<%= spot_path(spot) %>"></a>
-          </div>
+
+          <%= link_to spot_path(spot) do %>
+          <% if  spot.avatar? %>
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path spot.avatar.path %>')">
+              <span class="card-name"><%= spot.name %></span>
+            </div>
+          <% else %>
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= image_path 'http://lorempixel.com/400/200/' %>')">
+              <span class="card-name"><%= spot.name %></span>
+            </div>
+          <% end %>
+          <% end %>
         </div>
       </div>
     <% end %>
@@ -98,6 +106,10 @@
             }
         ]
     }];
+
+    var markers;
+    Gmaps.store = {};
+
     var handler = Gmaps.build('Google');
     handler.buildMap({
       provider: {
@@ -105,11 +117,6 @@
        },
       internal: { id: 'map' } }, function() {
       markers = handler.addMarkers(<%= raw @hash.to_json %>);
-      _.each(markers, function(marker, j) {
-        return google.maps.event.addListener(marker.serviceObject, 'click', function(object) {
-          console.log(marker.serviceObject);
-        });
-      });
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
       if (markers.length == 0) {
@@ -118,5 +125,36 @@
         handler.getMap().setZoom(14);
       }
     });
+
+    document.querySelectorAll(".cards-dimension").forEach((spot) => {
+      spot.addEventListener("mouseover", (event) => {
+        const id = event.currentTarget.dataset.id
+        markers.forEach((marker) => {
+           if (marker.serviceObject.title == id) {
+            google.maps.event.trigger(marker.getServiceObject(), "click");
+           };
+        });
+      });
+    });
   </script>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

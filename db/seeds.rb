@@ -1,6 +1,3 @@
-require 'open-uri'
-require 'json'
-
 spot = Spot.new(
   name: 'Nabq Bay',
   address: 'Nabq Bay, Sharm El Sheikh, South Sinai Egypt, 46627, Egypt',
@@ -75,15 +72,19 @@ spots.each do |spot|
   result = results.first
   #get first photo
   unless result.nil?
-    first_photo = result["photos"].first
-    #get photo reference
-    photo_reference = first_photo["photo_reference"]
 
-    #get photo url
-    photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{photo_reference}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
-    picture = Picture.new(photo_urls: [photo_url])
-    picture.spot = spot
-    picture.save!
+    result["photos"].each_with_index do |photo, i|
+      photo_reference = photo["photo_reference"]
+      photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{photo_reference}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
+      if i == 0 && spot.avatar.nil?
+        spot.avatar_url = photo_url
+      else
+        picture = Picture.new(photo_urls: [photo_url])
+        picture.spot = spot
+        picture.save!
+      end
+    end
+
     spot.save!
   end
 end

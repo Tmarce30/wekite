@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
 mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
 devise_for :users,
       controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
+
   root to: 'pages#home'
 
   resources :pictures, only: [:create, :destroy]
@@ -17,6 +19,9 @@ devise_for :users,
     resources :reviews, only: [:create, :update, :destroy]
   resources :favorites, only: [:create]
   resources :pictures, only: [:create]
+    
+    get 'weather', to: 'spots#weather'
+
   end
 
   mount Attachinary::Engine => "/attachinary"
