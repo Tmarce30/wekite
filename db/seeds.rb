@@ -57,3 +57,34 @@ spot = Spot.new(
   address: 'Calle Salome Lucero S/N, 23232 La Ventana, B.C.S., Mexico',
   description: "Baja California Sur's beautiful town of La Ventana is consistently rated as one of the best places for kiteboarding. Visitors can enjoy warm water and great wind from fall through spring, making it a great stop for winter breakers and spring breakers alike looking to learn how to kiteboard as well as experts looking to practice or show off.")
 spot.save!
+
+# Adding photos to spots
+spots = Spot.all
+
+spots.each do |spot|
+  #build url
+  url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{spot.latitude},#{spot.longitude}&radius=200&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
+  #make json request
+  json = open(url).read
+  json = JSON.parse(json)
+  #get first result
+  results = json["results"].reject {|result| result["photos"].nil? }
+  result = results.first
+  #get first photo
+  unless result.nil?
+
+    result["photos"].each_with_index do |photo, i|
+      photo_reference = photo["photo_reference"]
+      photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{photo_reference}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
+      if i == 0 && spot.avatar.nil?
+        spot.avatar_url = photo_url
+      else
+        picture = Picture.new(photo_urls: [photo_url])
+        picture.spot = spot
+        picture.save!
+      end
+    end
+
+    spot.save!
+  end
+end

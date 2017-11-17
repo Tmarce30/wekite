@@ -21,7 +21,14 @@
         <p><%= review.comment %></p>
         <% end %>
       </div>
+</div>
 
+<div class="spot-pictures">
+  <% @spot.pictures.each do |picture| %>
+    <% picture.photos.each do |photo| %>
+      <img src="<%= cl_image_path photo.path %>" alt="">
+    <% end %>
+  <% end %>
 </div>
 
 <div id="map" style="width: 100%; height: 400px;"></div>
