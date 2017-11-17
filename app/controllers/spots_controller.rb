@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :set_spot, only: [:show, :edit, :destroy]
+  before_action :set_spot, only: [:show, :edit, :destroy, :update]
   skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
 
   def index
@@ -58,6 +58,12 @@ class SpotsController < ApplicationController
   end
 
   def update
+    @spot.update(spot_params)
+    if @spot.save
+      redirect_to spot_path(@spot)
+    else
+      render :edit
+    end
   end
 
   def edit
