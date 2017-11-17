@@ -1,2 +1,20 @@
-<h1>Favorites#index</h1>
-<p>Find me in app/views/favorites/index.html.erb</p>
+<div class="container">
+  <div class="tabs">
+      <%= link_to "Profile", user_path(current_user), class: "btn-medium" %>
+      <h2>Your favorites spots</h2>
+  </div>
+  <div class="favorites text-center">
+    <% @favorites.each do |favorite| %>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 cards-dimension">
+        <a class="card-link" href="<%= spot_path(favorite.spot) %>">
+        <div class="card">
+          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path favorite.spot.avatar.path %>')">
+            <span class="card-name"><%= favorite.spot.name %></span>
+            <%= link_to "Delete", favorite_path(favorite, :redirect_url => user_favorites_path(current_user)), class: "btn btn-danger", method: :delete %>
+          </div>
+        </div>
+        </a>
+      </div>
+  <% end %>
+</div>
