@@ -17,6 +17,7 @@ devise_for :users,
 
   resources :spots, except: [:destroy] do
     resources :reviews, only: [:create, :update, :destroy]
+    get 'weather', to: 'spots#weather'
   end
 
   mount Attachinary::Engine => "/attachinary"
