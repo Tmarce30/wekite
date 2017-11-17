@@ -8,14 +8,14 @@
   <p class="spot-description"><%= @spot.description %></p>
   <p class="spot-address"><%= @spot.address %></p>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <div class="spot favorites">
-        <%= simple_form_for [@spot, @favorites] do |f| %>
-          <%= f.button :submit %>
-        <% end %>
-      </div>
-    </div>
+  <div class="favorites">
+    <% if @favorite.id.nil? %>
+      <%= simple_form_for [@spot, @favorite] do |f| %>
+        <%= f.button :submit, class: "btn fa-heart" %>
+      <% end %>
+    <% else %>
+      <%= link_to "Delete", favorite_path(@favorite, :redirect_url => spot_path(@spot)), class: "btn btn-danger", method: :delete %>
+      <% end %>
   </div>
   <div class="spot-reviews">
         <%= simple_form_for [@spot, @review] do |f| %>
@@ -30,7 +30,16 @@
         <p><%= review.comment %></p>
         <% end %>
       </div>
-
+        <%= simple_form_for @picture do |f| %>
+        <%= f.input :photos, as: :attachinary %>
+        <%= f.input :spot_id, as: :hidden, input_html: {value: @spot.id} %>
+        <%= f.button :submit %>
+        <% end %>
+        <% @spot.pictures.each do |picture| %>
+          <% picture.photos.each do |photo| %>
+              <p><%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %></p>
+          <% end %>
+        <% end %>
 </div>
 
 <div id="map" style="width: 100%; height: 400px;"></div>

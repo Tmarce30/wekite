@@ -22,7 +22,12 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @favorite = Favorite.new
+    @favorite = current_user.favorites.where(spot_id: params[:id]).first
+    if @favorite.nil?
+      @favorite = Favorite.new
+    end
+
+    @picture = Picture.new
     @review = Review.new
 
     json = open("https://maps.googleapis.com/maps/api/geocode/json?address=#{URI.encode(@spot.address)}").read

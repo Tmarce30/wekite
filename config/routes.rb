@@ -6,7 +6,7 @@ devise_for :users,
   root to: 'pages#home'
 
   resources :pictures, only: [:create, :destroy]
-  resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:destroy]
 
   resources :users, only: [:show] do
     resources :pictures, only: [:index]
@@ -15,6 +15,8 @@ devise_for :users,
 
   resources :spots, except: [:destroy] do
     resources :reviews, only: [:create, :update, :destroy]
+  resources :favorites, only: [:create]
+  resources :pictures, only: [:create]
   end
 
   mount Attachinary::Engine => "/attachinary"

@@ -6,12 +6,12 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @favorite = Favorite.new(favorite_params)
+    @favorite = Favorite.new
     @favorite.spot = @spot
     @favorite.user = current_user
     if @favorite.save
       flash[:notice] = "#{@spot.name} added to your favorites!"
-      redirect_to user_favorites_path(current_user)
+      redirect_to spot_path(@favorite.spot)
     else
       render plain: "ERROR"
     end
@@ -19,8 +19,14 @@ class FavoritesController < ApplicationController
 
   def destroy
     @favorite = Favorite.find(params[:id])
-    @favorite.destroy
+    if @favorite.destroy
+      flash[:notice] = "Deleted from your favorites!"
+      redirect_to params[:redirect_url]
+    else
+      render plain: "ERROR"
+    end
   end
+
   private
 
   def favorite_params
@@ -28,6 +34,6 @@ class FavoritesController < ApplicationController
   end
 
   def set_spot
-    @spot = Spot.find(params[:puppy_id])
+    @spot = Spot.find(params[:spot_id])
   end
 end
