@@ -1,1 +1,25 @@
-// Specific CSS for your home-page
+body {
+  background-color: white;
+}
+
+.banner.index{
+  height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(25,25,25,0.2), rgba(25,25,25,0.1)), url(https://images.unsplash.com/photo-1500744732176-7946c1bc68ac?auto=format&fit=crop&w=1489&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);
+  background-position: center;
+  background-size: cover;
+  h1 {
+
+    font-size: 60px;
+    padding: 0px;
+    color: white;
+    margin-bottom: 15px;
+  }
+  h2 {
+    color: white;
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+}// Specific CSS for your home-page
