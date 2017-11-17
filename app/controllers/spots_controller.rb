@@ -69,6 +69,10 @@ class SpotsController < ApplicationController
   def edit
   end
 
+  def weather
+    puts "weather"
+  end
+
   private
 
   def set_spot
