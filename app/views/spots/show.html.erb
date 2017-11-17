@@ -7,16 +7,21 @@
 
   <p class="spot-description"><%= @spot.description %></p>
   <p class="spot-address"><%= @spot.address %></p>
-
-  <div class="favorites">
-    <% if @favorite.id.nil? %>
+  <% if user_signed_in? %>
+    <div class="favorites">
+      <% if @favorite.id.nil? %>
+        <%= simple_form_for [@spot, @favorite] do |f| %>
+          <%= f.button :submit, class: "btn fa-heart" %>
+        <% end %>
+      <% else %>
+        <%= link_to "Delete", favorite_path(@favorite, :redirect_url => spot_path(@spot)), class: "btn btn-danger", method: :delete %>
+        <% end %>
+    </div>
+  <% else %>
       <%= simple_form_for [@spot, @favorite] do |f| %>
         <%= f.button :submit, class: "btn fa-heart" %>
       <% end %>
-    <% else %>
-      <%= link_to "Delete", favorite_path(@favorite, :redirect_url => spot_path(@spot)), class: "btn btn-danger", method: :delete %>
-      <% end %>
-  </div>
+  <% end %>
   <div class="spot-reviews">
         <%= simple_form_for [@spot, @review] do |f| %>
         <%= f.label :comment %>

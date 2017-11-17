@@ -1,6 +1,7 @@
 class SpotsController < ApplicationController
   before_action :set_spot, only: [:show, :edit, :destroy, :update]
   skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @spots = Spot.near(params["address"], 2000)
@@ -14,8 +15,11 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.where(spot_id: params[:id]).first
-    if @favorite.nil?
+
+    if current_user
+      @favorite = current_user.favorites.where(spot_id: params[:id]).first
+      @favorite = Favorite.new if @favorite.nil?
+    else
       @favorite = Favorite.new
     end
 
