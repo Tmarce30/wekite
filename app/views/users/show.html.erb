@@ -23,17 +23,19 @@
       <strong>Description: </strong><%= current_user.description %>
     </div>
   </div>
-<!--     <h2><%= @user.first_name %>' photos</h2>
+<h2><%= @user.first_name %>' photos</h2>
   <ul class="user-photos">
     <div class="photos">
-        <% @user.photos.each do |photo| %>
-        <%= link_to photo_path(photo) do %>
-        <% cl_image_tag photo.path %>
+        <% @user.pictures.each do |picture| %>
+          <%= Spot.find(picture.spot_id).name %>
+        <%# link_to photo_path(photo) do %>
+          <% picture.photos.each do |photo|%>
+            <%= cl_image_tag photo.path %>
+          <% end %>
         <% end %>
-        <% end %>
-      <p><%= link_to "Add a photo", pictures_path %></p>
+      <p><%# link_to "Add a photo", pictures_path %></p>
     </div>
-  </ul> -->
+  </ul>
 </div>
 
 

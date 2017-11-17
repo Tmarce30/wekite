@@ -14,6 +14,12 @@ class SpotsController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.where(spot_id: params[:id]).first
+    if @favorite.nil?
+      @favorite = Favorite.new
+    end
+
+    @picture = Picture.new
     @review = Review.new
     @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
       marker.lat spot.latitude
