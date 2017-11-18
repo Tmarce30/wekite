@@ -1,6 +1,7 @@
 class SpotsController < ApplicationController
-  before_action :set_spot, only: [:show, :edit, :destroy]
+  before_action :set_spot, only: [:show, :edit, :destroy, :update]
   skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @spots = Spot.near(params["address"], 2000)
@@ -14,6 +15,15 @@ class SpotsController < ApplicationController
   end
 
   def show
+
+    if current_user
+      @favorite = current_user.favorites.where(spot_id: params[:id]).first
+      @favorite = Favorite.new if @favorite.nil?
+    else
+      @favorite = Favorite.new
+    end
+
+    @picture = Picture.new
     @review = Review.new
     @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
       marker.lat spot.latitude
@@ -29,16 +39,26 @@ class SpotsController < ApplicationController
     @spot = Spot.new(spot_params)
     @spot.user = current_user
     if @spot.save
-      redirect_to root_path
+      redirect_to spot_path(@spot)
     else
       render :new
     end
   end
 
   def update
+    @spot.update(spot_params)
+    if @spot.save
+      redirect_to spot_path(@spot)
+    else
+      render :edit
+    end
   end
 
   def edit
+  end
+
+  def weather
+    puts "weather"
   end
 
   private

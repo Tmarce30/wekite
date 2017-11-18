@@ -15,7 +15,7 @@
       <%= link_to "My favorites", user_favorites_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
-<div class="navbar-wagon-item">
+      <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if current_user.facebook_picture_url? %>
           <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
@@ -45,8 +45,40 @@
   </div>
 </div>
 
-<%= form_tag(spots_path, method: :get) do %>
-<%= text_field_tag :address, nil, :placeholder => 'Where are you going ?', class: "search-field", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
-<%= submit_tag 'Spot it' %>
-<% end %>
+<div class="banner index">
+    <div class="banner_content">
+      <h1>WeKite</h1>
+      <div class="text-center padded">
+        <div class="search-bar">
+          <%= form_tag(spots_path, method: :get) do %>
+          <%= text_field_tag :address, nil, :placeholder => 'Where are you going ?', class: "search-field", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
+
+
+          <%= submit_tag 'Spot it' %>
+          <% end %>
+
+        </div>
+      </div>
+  </div>
+</div>
+
+  <input type="text" data-provide='datepicker' >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
