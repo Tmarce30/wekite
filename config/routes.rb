@@ -19,9 +19,6 @@ devise_for :users,
     resources :reviews, only: [:create, :update, :destroy]
   resources :favorites, only: [:create]
   resources :pictures, only: [:create]
-    
-    get 'weather', to: 'spots#weather'
-
   end
 
   mount Attachinary::Engine => "/attachinary"
