@@ -17,8 +17,9 @@ devise_for :users,
 
   resources :spots, except: [:destroy] do
     resources :reviews, only: [:create, :update, :destroy]
-  resources :favorites, only: [:create]
-  resources :pictures, only: [:create]
+    resources :favorites, only: [:create]
+    resources :pictures, only: [:create]
+    resources :weathers, only: [:create]
   end
 
   mount Attachinary::Engine => "/attachinary"
