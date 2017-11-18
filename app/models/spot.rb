@@ -6,6 +6,7 @@ class Spot < ApplicationRecord
   has_many :favorites
   has_many :reviews
   has_many :pictures, dependent: :destroy
+  has_many :weathers
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
