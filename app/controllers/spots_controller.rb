@@ -61,7 +61,7 @@ class SpotsController < ApplicationController
       end
     end
     if @spot.save
-      redirect_to root_path
+      redirect_to spot_path(@spot)
     else
       render :new
     end
