@@ -1,11 +1,12 @@
 
-puts weather = GetWeatherInfo.get_weather("23.722111", "-15.934738")
+puts weather = GetWeatherInfo.get_weather("23.722111", "-15.934738", "2017-11-20")
 
 # spot = Spot.new(
 #   name: 'Nabq Bay',
 #   address: 'Nabq Bay, Sharm El Sheikh, South Sinai Egypt, 46627, Egypt',
 #   description: "This beautiful beach town offers a riding area guarded by reefs, which create relatively shallow and flat waters, and the wind blows at least 20 knots on most days. The reef also means that the riding area is minimally affected by tides, giving you hours of uninterrupted play time.")
-# spot.save!
+# spot.save!                "query": "Lat 23.72 and Lon -15.93"
+
 
 # spot = Spot.new(
 #   name: 'Nabq',
