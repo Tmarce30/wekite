@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :set_spot, only: [:show, :edit, :destroy, :update]
+  before_action :set_spot, only: [:show, :edit, :destroy, :update, :weather]
   skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
   before_action :authenticate_user!, only: [:new, :create]
 
@@ -62,10 +62,6 @@ class SpotsController < ApplicationController
   end
 
   def edit
-  end
-
-  def weather
-    puts "weather"
   end
 
   private
