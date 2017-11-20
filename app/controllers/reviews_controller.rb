@@ -5,8 +5,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.spot = @spot
 
-    ## have rate params
-    ## params
+
 
 
     if @review.save
@@ -32,10 +31,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:ratings, :comment)
+    params.require(:review).permit(:level_rating, :comment)
   end
 end
-
-<# review.rates.each do |rate| %>
-          <#= rating_for @spot, rate.rater_id, rate.dimension  %>
-        <# end %>

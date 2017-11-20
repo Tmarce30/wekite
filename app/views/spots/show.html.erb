@@ -26,14 +26,18 @@
         <%= simple_form_for [@spot, @review] do |f| %>
         <%= f.label :comment %>
         <%= f.input :comment, label:false, input_html: {class: "form-control comment"}%>
-        <%= f.label :level %>
-        <%= f.input :level_rating, label: false, input_html: {class: "form-control rating"} %>
+        <%= f.label :level_rating %>
+        <%= f.collection_radio_buttons :level_rating, [[1],[2],[3],[4],[5]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+            <%= b.radio_button + b.label {''} %>
+        <% end %>
+
+
         <%= f.button :submit, class: "btn btn-danger" %>
         <% end %>
 
         <% @spot.reviews.each do |review| %>
-
-        <p><%= review.comment %></p>
+          <p><%= review.level_rating %></p>
+          <p><%= review.comment %></p>
         <% end %>
 
       </div>

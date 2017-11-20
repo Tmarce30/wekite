@@ -17,4 +17,8 @@ class Spot < ApplicationRecord
 
   has_attachment  :avatar, accept: [:jpg, :png, :gif]
 
+  def average_ratings
+    # create array
+    self.reviews.level_ratings
   end
+end
