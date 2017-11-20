@@ -7,5 +7,7 @@
 //= require underscore
 //= require gmaps/google
 //= require bootstrap-datepicker
+//= require jquery.raty
+//= require ratyrate
 //= require_tree .
 

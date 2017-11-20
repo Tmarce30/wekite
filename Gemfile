@@ -22,6 +22,7 @@ gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'geocoder'
 gem 'bootstrap-datepicker-rails'
+gem 'ratyrate'
 
 gem "coffee-rails"
 gem "gmaps4rails"

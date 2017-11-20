@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :spots
   has_many :pictures
 
+  ratyrate_rater
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, uniqueness: true, presence: true

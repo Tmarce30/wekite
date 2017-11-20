@@ -4,10 +4,11 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.spot = @spot
+
     if @review.save
       redirect_to spot_path(@spot)
     else
-      render spot_path(@spot)
+      redirect_to spot_path(@spot)
     end
   end
 
