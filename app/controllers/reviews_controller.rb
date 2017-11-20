@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.spot = @spot
+    @review.average = @review.average_calc
     if @review.save
       flash[:notice] = "Review saved!"
       redirect_to spot_path(@spot)
@@ -11,15 +12,6 @@ class ReviewsController < ApplicationController
       flash[:alert] = @review.errors.full_messages.to_sentence
       redirect_to spot_path(@spot)
     end
-  end
-
-  def update
-
-  end
-
-  def destroy
-    @review.destroy
-    redirect_to spot_path(@spot)
   end
 
   private
