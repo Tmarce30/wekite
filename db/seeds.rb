@@ -1,5 +1,5 @@
 
-puts weather = GetWeatherInfo.get_weather("23.722111", "-15.934738", 0)
+puts weather = GetWeatherInfo.get_weather(1)
 
 # spot = Spot.new(
 #   name: 'Nabq Bay',

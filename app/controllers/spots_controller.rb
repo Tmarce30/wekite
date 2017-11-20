@@ -56,12 +56,6 @@ class SpotsController < ApplicationController
   def edit
   end
 
-  def weather
-    date = DateTime.now.strftime('%Y-%m-%e')
-    latitude =
-    GetweatherInfo.get_weather(latitude, longitude, date)
-  end
-
   private
 
   def set_spot
