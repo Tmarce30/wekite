@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :set_spot, only: [:show, :edit, :destroy, :update]
+  before_action :set_spot, only: [:show, :edit, :destroy, :update, :weather]
   skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
   before_action :authenticate_user!, only: [:new, :create]
 
@@ -15,7 +15,6 @@ class SpotsController < ApplicationController
   end
 
   def show
-
     if current_user
       @favorite = current_user.favorites.where(spot_id: params[:id]).first
       @favorite = Favorite.new if @favorite.nil?
@@ -58,7 +57,9 @@ class SpotsController < ApplicationController
   end
 
   def weather
-    puts "weather"
+    date = DateTime.now.strftime('%Y-%m-%e')
+    latitude =
+    GetweatherInfo.get_weather(latitude, longitude, date)
   end
 
   private
