@@ -16,3 +16,21 @@
 @import "components/index";
 @import "pages/index";
 
+.carousel-nav {
+    display: block;
+    background-color: black;
+    color: white;
+    height: 30px;
+    width: 30px;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
+}
+
+.main-container.side-flow {
+    display: flex;
+    flex-direction: row;
+}
