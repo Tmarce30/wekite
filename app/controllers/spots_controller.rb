@@ -22,12 +22,20 @@ class SpotsController < ApplicationController
       @favorite = Favorite.new
     end
 
+    if current_user
+      @checkin = current_user.checkins.where(spot_id: params[:id]).first
+      @checkin = Checkin.new if @checkin.nil?
+    else
+      @checkin = Checkin.new
+    end
+
     @picture = Picture.new
     @review = Review.new
     @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
     end
+    @possible_dates = build_possible_dates
   end
 
   def new
@@ -64,5 +72,13 @@ class SpotsController < ApplicationController
 
   def spot_params
     params.require(:spot).permit(:name, :address, :description, :avatar)
+  end
+
+  def build_possible_dates
+    possible_dates = []
+    for offset in 0..6
+      possible_dates << (Date.today + offset).strftime("%A, %b %d")
+    end
+    return possible_dates
   end
 end

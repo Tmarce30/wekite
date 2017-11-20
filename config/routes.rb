@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
 mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
 devise_for :users,
@@ -9,6 +10,7 @@ devise_for :users,
 
   resources :pictures, only: [:create, :destroy]
   resources :favorites, only: [:destroy]
+  resources :checkins, only: [:destroy]
 
   resources :users, only: [:show] do
     resources :pictures, only: [:index]
@@ -17,6 +19,7 @@ devise_for :users,
 
   resources :spots, except: [:destroy] do
     resources :reviews, only: [:create, :update, :destroy]
+    resources :checkins, only: [:create]
     resources :favorites, only: [:create]
     resources :pictures, only: [:create]
     resources :weathers, only: [:create]
