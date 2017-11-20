@@ -10,8 +10,6 @@ class Spot < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  ratyrate_rateable "level", "environment", "ambience", "access"
-
   validates :description, presence: true
   validates :address, presence: true
   validates :name, presence: true
