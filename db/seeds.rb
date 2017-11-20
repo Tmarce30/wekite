@@ -1,42 +1,40 @@
 
-puts weather = GetWeatherInfo.get_weather("23.722111", "-15.934738", "2017-11-20")
-
-# spot = Spot.new(
-#   name: 'Nabq Bay',
-#   address: 'Nabq Bay, Sharm El Sheikh, South Sinai Egypt, 46627, Egypt',
-#   description: "This beautiful beach town offers a riding area guarded by reefs, which create relatively shallow and flat waters, and the wind blows at least 20 knots on most days. The reef also means that the riding area is minimally affected by tides, giving you hours of uninterrupted play time.")
-# spot.save!                "query": "Lat 23.72 and Lon -15.93"
+spot = Spot.new(
+  name: 'Nabq Bay',
+  address: 'Nabq Bay, Sharm El Sheikh, South Sinai Egypt, 46627, Egypt',
+  description: "This beautiful beach town offers a riding area guarded by reefs, which create relatively shallow and flat waters, and the wind blows at least 20 knots on most days. The reef also means that the riding area is minimally affected by tides, giving you hours of uninterrupted play time.")
+spot.save!                "query": "Lat 23.72 and Lon -15.93"
 
 
-# spot = Spot.new(
-#   name: 'Nabq',
-#   address: 'Peace Road, Nabq Bay, Sharm El Sheikh, Egypt',
-#   description: "This beautiful beach town offers a riding area guarded by reefs, which create relatively shallow and flat waters, and the wind blows at least 20 knots on most days. The reef also means that the riding area is minimally affected by tides, giving you hours of uninterrupted play time.")
-# spot.save!
+spot = Spot.new(
+  name: 'Nabq',
+  address: 'Peace Road, Nabq Bay, Sharm El Sheikh, Egypt',
+  description: "This beautiful beach town offers a riding area guarded by reefs, which create relatively shallow and flat waters, and the wind blows at least 20 knots on most days. The reef also means that the riding area is minimally affected by tides, giving you hours of uninterrupted play time.")
+spot.save!
 
-# spot = Spot.new(
-#   name: 'Grand Cayman',
-#   address: '389 West Bay Road Seven Mile Beach, P.O. Box 30371  Grand Cayman  KY1 -1202  Cayman Islands',
-#   description: "Grand Cayman has some of the best kiteboarding conditions in the world. The wind tends to be steady and warm, and the protected bays situated all over the island offer lots of room for experienced riders to cruise around and for beginners to build their skills.")
-# spot.save!
+spot = Spot.new(
+  name: 'Grand Cayman',
+  address: '389 West Bay Road Seven Mile Beach, P.O. Box 30371  Grand Cayman  KY1 -1202  Cayman Islands',
+  description: "Grand Cayman has some of the best kiteboarding conditions in the world. The wind tends to be steady and warm, and the protected bays situated all over the island offer lots of room for experienced riders to cruise around and for beginners to build their skills.")
+spot.save!
 
-# spot = Spot.new(
-#   name: 'Maui',
-#   address: '3550 Wailea Alanui Dr, Wailea, Maui, HI 96753-9518',
-#   description: "Maui is arguably the best known kiteboarding destination in the world, and Kite Beach is probably the best place to experience all that Maui has to offer. The beautiful tropical beach has clean, warm water, steady trade winds, long stretches of calm water, and gentle waves for more experienced riders.")
-# spot.save!
+spot = Spot.new(
+  name: 'Maui',
+  address: '3550 Wailea Alanui Dr, Wailea, Maui, HI 96753-9518',
+  description: "Maui is arguably the best known kiteboarding destination in the world, and Kite Beach is probably the best place to experience all that Maui has to offer. The beautiful tropical beach has clean, warm water, steady trade winds, long stretches of calm water, and gentle waves for more experienced riders.")
+spot.save!
 
-# spot = Spot.new(
-#   name: 'Calamianes Island',
-#   address: 'Sandiwa, Tiniguiba, Puerto Princesa City, Puerto Princesa City, 5300 Palawan, Philippines',
-#   description: "The unspoiled tranquility of the Calamines Islands may be a plane and a boat ride away, but the perfect and uncrowded kitesurfing conditions make the extra effort worth it. The secluded area has conditions for every skill level: open water chop or silky smooth water all surrounded by unspoiled beauty.")
-# spot.save!
+spot = Spot.new(
+  name: 'Calamianes Island',
+  address: 'Sandiwa, Tiniguiba, Puerto Princesa City, Puerto Princesa City, 5300 Palawan, Philippines',
+  description: "The unspoiled tranquility of the Calamines Islands may be a plane and a boat ride away, but the perfect and uncrowded kitesurfing conditions make the extra effort worth it. The secluded area has conditions for every skill level: open water chop or silky smooth water all surrounded by unspoiled beauty.")
+spot.save!
 
-# spot = Spot.new(
-#   name: 'Jupiter',
-#   address: '18903 SE Federal Hwy, Jupiter, FL 33469-1715',
-#   description: "This beach town sits on the southeast coast of Florida, and the water here offers everything from glossy flat water to big swells for the advanced riders. Head down to the part of Juno Beach appropriately named Kite Beach and get ready to launch.")
-# spot.save!
+spot = Spot.new(
+  name: 'Jupiter',
+  address: '18903 SE Federal Hwy, Jupiter, FL 33469-1715',
+  description: "This beach town sits on the southeast coast of Florida, and the water here offers everything from glossy flat water to big swells for the advanced riders. Head down to the part of Juno Beach appropriately named Kite Beach and get ready to launch.")
+spot.save!
 
 # spot = Spot.new(
 #   name: 'Tarifa',
@@ -62,33 +60,35 @@ puts weather = GetWeatherInfo.get_weather("23.722111", "-15.934738", "2017-11-20
 #   description: "Baja California Sur's beautiful town of La Ventana is consistently rated as one of the best places for kiteboarding. Visitors can enjoy warm water and great wind from fall through spring, making it a great stop for winter breakers and spring breakers alike looking to learn how to kiteboard as well as experts looking to practice or show off.")
 # spot.save!
 
-# # Adding photos to spots
-# spots = Spot.all
+# Adding photos to spots
+spots = Spot.all
 
-# spots.each do |spot|
-#   #build url
-#   url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{spot.latitude},#{spot.longitude}&radius=200&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
-#   #make json request
-#   json = open(url).read
-#   json = JSON.parse(json)
-#   #get first result
-#   results = json["results"].reject {|result| result["photos"].nil? }
-#   result = results.first
-#   #get first photo
-#   unless result.nil?
+spots.each do |spot|
+  #build url
+  url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{spot.latitude},#{spot.longitude}&radius=200&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
 
-#     result["photos"].each_with_index do |photo, i|
-#       photo_reference = photo["photo_reference"]
-#       photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{photo_reference}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
-#       if i == 0 && spot.avatar.nil?
-#         spot.avatar_url = photo_url
-#       else
-#         picture = Picture.new(photo_urls: [photo_url])
-#         picture.spot = spot
-#         picture.save!
-#       end
-#     end
+  #make json request
+  json = open(url).read
+  json = JSON.parse(json)
+  #get first result
+  results = json["results"].reject {|result| result["photos"].nil? }
+  result = results.first
+  #get first photo
+  unless result.nil?
 
-#     spot.save!
-#   end
-# end
+    result["photos"].each_with_index do |photo, i|
+      photo_reference = photo["photo_reference"]
+
+      photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{photo_reference}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
+      if i == 0 && spot.avatar.nil?
+        spot.avatar_url = photo_url
+      else
+        picture = Picture.new(photo_urls: [photo_url])
+        picture.spot = spot
+        picture.save!
+      end
+    end
+
+    spot.save!
+  end
+end
