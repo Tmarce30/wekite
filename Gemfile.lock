@@ -228,6 +228,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.2.1)
+    ratyrate (1.2.2.alpha)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -314,6 +315,7 @@ DEPENDENCIES
   rails (= 5.0.6)
   rails-assets-underscore!
   rails_admin (>= 1.0.0.rc)
+  ratyrate
   redis
   remotipart!
   sass-rails
