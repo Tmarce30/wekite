@@ -26,14 +26,22 @@
         <%= simple_form_for [@spot, @review] do |f| %>
         <%= f.label :comment %>
         <%= f.input :comment, label:false, input_html: {class: "form-control comment"}%>
-        <%= f.label :rating %>
-        <%= f.input :rating, label:false, input_html: {class: "form-control rating"} %>
-        <%= f.button :submit, class: "btn btn-danger" %>
+        <%= f.input :level_rating, input_html: {class: "feature-rating ", 'data-show-clear': "false"}, require: true %>
+        <%= f.input :environment_rating, input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
+        <%= f.input :ambience_rating, input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
+        <%= f.input :access_rating,  input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
+
+          <%= f.button :submit, class: "btn btn-danger" %>
         <% end %>
+
         <% @spot.reviews.each do |review| %>
-        <p><%= review.rating %></p>
-        <p><%= review.comment %></p>
+          <p><%= review.level_rating %></p>
+          <p><%= review.environment_rating %></p>
+          <p><%= review.ambience_rating %></p>
+          <p><%= review.access_rating %></p>
+          <p><%= review.comment %></p>
         <% end %>
+
       </div>
         <%= simple_form_for @picture do |f| %>
         <%= f.input :photos, as: :attachinary %>
@@ -51,6 +59,14 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
+     $(document).on('ready', function(){
+      $('.feature-rating').rating({
+          size:'xs',
+          step: 1,
+          clearCaption: '',
+          starCaptions: {1: 'Terrible', 2: 'bad', 3: 'Ok', 4: 'Good', 5: 'Very Good'},
+          starCaptionClasses: {1: 'text-danger', 2: 'text-warning', 3: 'text-info', 4: 'text-primary', 5: 'text-success'}
+      });
     var styles = [
     {
         "featureType": "administrative",
@@ -144,6 +160,8 @@
       } else if (markers.length == 1) {
         handler.getMap().setZoom(14);
       }
+    });
+
     });
   <% end %>
 <% end %>

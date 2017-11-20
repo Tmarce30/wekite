@@ -10,7 +10,6 @@ class Spot < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-
   validates :description, presence: true
   validates :address, presence: true
   validates :name, presence: true
@@ -18,4 +17,9 @@ class Spot < ApplicationRecord
 
   has_attachment  :avatar, accept: [:jpg, :png, :gif]
 
+  def average_ratings
+    # create array
+    #self.reviews do
   end
+
+end
