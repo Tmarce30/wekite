@@ -11,11 +11,11 @@ module GetWeatherInfo
     weather = JSON.parse(weather_serialized)
     # getting weather data for today at noon
 
-
-    weather_forcast = []
-
+    weather_forcasts = []
 
     weather['data']['weather'].each do |forcast|
+      # weather date
+      weather_date = forcast['date']
       # weather description
       weather_desc = forcast['hourly'][4]['weatherDesc'][0]['value']
       # air temperature
@@ -26,16 +26,8 @@ module GetWeatherInfo
       wind_dir = forcast['hourly'][4]['winddir16Point']
       # water temperature
       water_temp = forcast['hourly'][4]['waterTemp_C']
-      weather_forcast << {weather_desc: weather_desc, air_temp: air_temp, wind_speed: wind_speed, wind_dir: wind_dir, water_temp: water_temp}
+      # create weather with forcast's datas
+      Weather.create(spot_id: spot_id, weather_desc: weather_desc, air_temp: air_temp, wind_speed: wind_speed, wind_dir: wind_dir, water_temp: water_temp, date: weather_date)
     end
-    binding.pry
   end
 end
-
-
-# Si j'ai un weather
-        # alors j'update mon weather
-      # Sinon
-        # je crée mon weather
-          # J'appelle la fonction weather qui me ramene le hash
-          # Je creer l'objet weather
