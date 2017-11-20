@@ -4,13 +4,11 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.spot = @spot
-
-
-
-
     if @review.save
+      flash[:notice] = "Review saved!"
       redirect_to spot_path(@spot)
     else
+      flash[:alert] = @review.errors.full_messages.to_sentence
       redirect_to spot_path(@spot)
     end
   end
@@ -31,6 +29,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:level_rating, :comment)
+    params.require(:review).permit(:comment, :level_rating, :environment_rating, :ambience_rating, :access_rating )
   end
 end

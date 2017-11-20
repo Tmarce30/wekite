@@ -19,6 +19,7 @@ class Spot < ApplicationRecord
 
   def average_ratings
     # create array
-    self.reviews.level_ratings
+    #self.reviews do
   end
+
 end

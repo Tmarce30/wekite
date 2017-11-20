@@ -53,8 +53,11 @@ ActiveRecord::Schema.define(version: 20171118230907) do
     t.integer  "spot_id"
     t.integer  "user_id"
     t.integer  "level_rating"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "environment_rating"
+    t.integer  "ambience_rating"
+    t.integer  "access_rating"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.index ["spot_id"], name: "index_reviews_on_spot_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end

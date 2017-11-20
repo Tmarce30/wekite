@@ -7,7 +7,11 @@
 //= require underscore
 //= require gmaps/google
 //= require bootstrap-datepicker
-//= require jquery.raty
-//= require ratyrate
+//= require vendor/star-rating.min
 //= require_tree .
 
+$(document).ready(function() {
+  setTimeout(function() {
+    $('.alert').slideUp()
+  }, 5000)
+})
