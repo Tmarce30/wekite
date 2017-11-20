@@ -1,7 +1,7 @@
 
 <div class="main-container side-flow">
   <div class="cards-container">
-    <a href="#" id="carousel-back" class="carousel-nav fa fa-left"></a>
+    <a href="#" id="carousel-back" class="carousel-nav fa fa-angle-left"></a>
     <% @spots.each do |spot| %>
       <div class="cards-dimension main-card" data-id="<%= spot.id %>">
         <div class="card">
@@ -22,7 +22,7 @@
         </div>
       </div>
     <% end %>
-    <a href="#" id="carousel-next" class="carousel-nav fa fa-right"></a>
+    <a href="#" id="carousel-next" class="carousel-nav fa fa-angle-right"></a>
   </div>
 
 
