@@ -65,6 +65,7 @@ spots = Spot.all
 spots.each do |spot|
   #build url
   url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{spot.latitude},#{spot.longitude}&radius=200&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
+
   #make json request
   json = open(url).read
   json = JSON.parse(json)
@@ -76,6 +77,7 @@ spots.each do |spot|
 
     result["photos"].each_with_index do |photo, i|
       photo_reference = photo["photo_reference"]
+
       photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{photo_reference}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
       if i == 0 && spot.avatar.nil?
         spot.avatar_url = photo_url

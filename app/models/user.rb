@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :spots
   has_many :pictures
+  has_many :checkins
+
 
   validates :first_name, presence: true
   validates :last_name, presence: true
