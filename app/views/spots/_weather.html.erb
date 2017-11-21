@@ -35,22 +35,38 @@
   <%= "#{@weather.wind_speed} km/h" %>
 
   <%case @weather.wind_dir %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
-  <% when %>
+  <% when 'N' %>
+  <%= image_tag 'n.png' %>
+  <% when 'NNE' %>
+  <%= image_tag 'nne.png' %>
+  <% when 'NE' %>
+  <%= image_tag 'ne.png' %>
+  <% when 'ENE' %>
+  <%= image_tag 'ene.png' %>
+  <% when 'E' %>
+  <%= image_tag 'e.png' %>
+  <% when 'ESE' %>
+  <%= image_tag 'ese.png' %>
+  <% when 'SE' %>
+  <%= image_tag 'se.png' %>
+  <% when 'SSE' %>
+  <%= image_tag 'sse.png' %>
+  <% when 'S' %>
+  <%= image_tag 's.png' %>
+  <% when 'SSW' %>
+  <%= image_tag 'ssw.png' %>
+  <% when 'SW' %>
+  <%= image_tag 'sw.png' %>
+  <% when 'WSW' %>
+  <%= image_tag 'wsw.png' %>
+  <% when 'W' %>
+  <%= image_tag 'w.png' %>
+  <% when 'WNW' %>
+  <%= image_tag 'wnw.png' %>
+  <% when 'NW' %>
+  <%= image_tag 'nw.png' %>
+  <% when 'NNW' %>
+  <%= image_tag 'nnw.png' %>
   <% end %>
 
   <%= "#{@weather.water_temp}°C" %>
