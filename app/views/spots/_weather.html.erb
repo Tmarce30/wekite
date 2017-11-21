@@ -1,9 +1,57 @@
 <div class="weather">
 
+  <!-- Weather icons -->
+
+  <% case @weather.weather_code %>
+  <% when '113' %>
+    <%= image_tag 'sunny-day.png' %>
+  <% when '116' %>
+    <%= image_tag 'partialy-cloudy.png' %>
+  <% when '119' %>
+    <%= image_tag 'cloudy-day.png' %>
+  <% when '122' %>
+    <%= image_tag 'cloud-black-shape.png' %>
+  <% when '143' %>
+    <%= image_tag 'mist.png' %>
+  <% when '260' || '248' %>
+    <%= image_tag 'foggy.png' %>
+  <% when '353' || '263' || '176' || '296' || '293' || '266' %>
+    <%= image_tag 'drizzle.png' %>
+  <% when '356' || '305' || '299' || '359' || '308' || '302' %>
+    <%= image_tag 'rainy-day.png' %>
+  <% when '368' || '326' || '323' || '320' || '227' %>
+    <%= image_tag 'hail.png' %>
+  <% when '395' || '371' || '335' || '338' || '332' || '329' || '230' %>
+    <%= image_tag 'hail-storm.png' %>
+  <% when '374' || '365' || '362' || '179' || '377' || '350' || '317' || '314' || '311' || '284' || '281' || '185' || '182' %>
+    <%= image_tag 'sleet.png' %>
+  <% when '392' || '389' || '386' || '200' %>
+    <%= image_tag 'storm.png' %>
+  <% end %>
+
   <%= @weather.weather_desc %>
 
   <%= "#{@weather.air_temp}°C" %>
   <%= "#{@weather.wind_speed} km/h" %>
-  <%= @weather.wind_dir %>
+
+  <%case @weather.wind_dir %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% when %>
+  <% end %>
+
   <%= "#{@weather.water_temp}°C" %>
 </div>
