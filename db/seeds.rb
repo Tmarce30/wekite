@@ -1,3 +1,5 @@
+Spot.destroy_all
+
 spot = Spot.new(
   name: 'Nabq Bay',
   address: 'Nabq Bay, Sharm El Sheikh, South Sinai Egypt, 46627, Egypt',

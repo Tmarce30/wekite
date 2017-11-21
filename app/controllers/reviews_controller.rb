@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.spot = @spot
-    @review.average = @review.average_calc
+    @review.user = current_user
     if @review.save
       flash[:notice] = "Review saved!"
       redirect_to spot_path(@spot)

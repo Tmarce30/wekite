@@ -16,3 +16,28 @@
 @import "components/index";
 @import "pages/index";
 
+
+.carousel {
+  background-color: #E2E2E2;
+  width: 310px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.fa-angle-right:before {
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.fa-angle-left:before {
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+  text-decoration: none;
+}

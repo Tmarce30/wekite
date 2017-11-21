@@ -1,0 +1,21 @@
+.weather {
+  display: flex;
+  justify-content: space-evenly;
+  .fa-sun-o:before {
+    font-size: 20px;
+    color: black;
+  }
+  .fa-flag:before {
+    font-size: 20px;
+    color: black;
+  }
+  p {
+    font-size: 10px;
+    color: black;
+  }
+}
+
+
+.weather-card {
+
+}
