@@ -7,13 +7,15 @@
       <% end %>
       <h3>Date</h3>
       </div>
-  <div class="cards-container">
+    <div class="cards-container">
+      <a href="#" id="carousel-back" class="carousel-nav fa fa-angle-left"></a>
     <% @spots.each do |spot| %>
       <div class="cards-dimension main-card" data-id="<%= spot.id %>">
         <div class="card">
           <%= link_to spot_path(spot) do %>
           <% if  spot.avatar? %>
-              <span class="card-name"><%= spot.name %></span>
+            <div class="card-body" >
+              <span class="card-name text-center"><%= spot.name %></span>
             </div>
           <% else %>
             <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= image_path 'http://lorempixel.com/400/200/' %>')">
@@ -23,11 +25,20 @@
             </div>
           <% end %>
           <% end %>
+          <div class="review">
+            <div class="fa fa-star" ></div>
+            <div class="fa fa-star" ></div>
+            <div class="fa fa-star" ></div>
+            <div class="fa fa-star-half-o" ></div>
+          </div>
+        <div class="weather">
+          <div class="fa fa-sun-o"></div>
+          <div class="fa fa-flag"></div>
+          <p>25°</p>
+        </div>
         </div>
       </div>
     <% end %>
-    <a href="#" id="carousel-back" class="carousel-nav fa fa-angle-left"></a>
-
     <a href="#" id="carousel-next" class="carousel-nav fa fa-angle-right"></a>
   </div>
 </div>

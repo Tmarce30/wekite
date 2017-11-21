@@ -1,0 +1,13 @@
+.review {
+  position: absolute;
+  bottom: 215px;
+  right: 182px;
+  .fa-star:before {
+    font-size: 25px;
+    color: gold;
+  }
+  .fa-star-half-o:before {
+    font-size: 25px;
+    color: gold;
+  }
+}
