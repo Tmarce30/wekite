@@ -1,12 +1,24 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <%= render "spot-avatar", spot: @spot %>
-    </div>
+<!-- Spot Banner -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <%= render "spot-avatar", spot: @spot %>
+  </div>
 </div>
+
+<div class="container">
+
+  <!-- Spot Infos -->
 
   <p class="spot-description"><%= @spot.description %></p>
   <p class="spot-address"><%= @spot.address %></p>
+
+  <!-- Spot weather -->
+
+  <%= render "weather" %>
+
+  <!-- Adding spot to favorites -->
+
   <% if user_signed_in? %>
     <div class="favorites">
       <% if @favorite.id.nil? %>
@@ -15,15 +27,18 @@
         <% end %>
       <% else %>
         <%= link_to "Delete", favorite_path(@favorite, :redirect_url => spot_path(@spot)), class: "btn btn-danger", method: :delete %>
-        <% end %>
+      <% end %>
     </div>
   <% else %>
       <%= simple_form_for [@spot, @favorite] do |f| %>
         <%= f.button :submit, class: "btn fa-heart" %>
       <% end %>
   <% end %>
-    <% if user_signed_in? %>
-      <div class="checkins">
+
+  <!-- Cheking in -->
+
+  <% if user_signed_in? %>
+    <div class="checkins">
       <% if @checkin.id.nil? %>
         <%= simple_form_for [@spot, @checkin] do |f| %>
           <%# f.input :date %>
@@ -32,13 +47,15 @@
         <% end %>
       <% else %>
         <%= link_to "Checkout", checkin_path(@checkin), class: "btn btn-danger", method: :delete %>
-        <% end %>
+      <% end %>
     </div>
   <% else %>
-      <%= simple_form_for [@spot, @checkin] do |f| %>
-        <%= f.button :submit, class: "btn fa-heart" %>
-      <% end %>
+    <%= simple_form_for [@spot, @checkin] do |f| %>
+      <%= f.button :submit, class: "btn fa-heart" %>
+    <% end %>
   <% end %>
+
+  <!-- Review form -->
 
   <div class="spot-reviews">
     <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
@@ -50,47 +67,62 @@
           </div>
           <div class="modal-body">
             <%= simple_form_for [@spot, @review] do |f| %>
-                <%= f.input :level_rating, input_html: {class: "feature-rating ", 'data-show-clear': "false"}, require: true %>
-                <%= f.input :environment_rating, input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
-                <%= f.input :ambience_rating, input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
-                <%= f.input :access_rating,  input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
-                <%= f.label :comment %>
-                <%= f.input :comment, label:false, input_html: {class: "form-control comment"}%>
-                <%= f.button :submit, class: "btn btn-danger" %>
-                <% end %>
+              <%= f.label :level %>
+              <%= f.input :level_rating, label:false, input_html: {class: "feature-rating ", 'data-show-clear': "false"}, require: true %>
+              <%= f.label :environment %>
+              <%= f.input :environment_rating, label:false, input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
+              <%= f.label :ambiance %>
+              <%= f.input :ambience_rating, label:false, input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
+              <%= f.label :access %>
+              <%= f.input :access_rating, label:false, input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
+              <%= f.label :comment %>
+              <%= f.input :comment, label:false, input_html: {class: "form-control comment"}%>
+              <%= f.button :submit, class: "btn btn-danger" %>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-    <button data-target="#myModal" data-toggle="modal" class="btn btn-danger">
-    Create review
-    </button>
+  <!-- Reviews display -->
 
-        <% @spot.reviews.each do |review| %>
-          <p><%= review.level_rating %></p>
-          <p><%= review.environment_rating %></p>
-          <p><%= review.ambience_rating %></p>
-          <p><%= review.access_rating %></p>
-          <p><%= review.comment %></p>
-        <% end %>
+  <div>
+    <% @spot.reviews.each do |review| %>
+      <p><%= review.level_rating %></p>
+      <p><%= review.environment_rating %></p>
+      <p><%= review.ambience_rating %></p>
+      <p><%= review.access_rating %></p>
+      <p><%= review.comment %></p>
+    <% end %>
+  </div>
 
-      </div>
-        <%= simple_form_for @picture do |f| %>
-        <%= f.input :photos, as: :attachinary %>
-        <%= f.input :spot_id, as: :hidden, input_html: {value: @spot.id} %>
-        <%= f.button :submit %>
-        <% end %>
-        <% @spot.pictures.each do |picture| %>
-          <% picture.photos.each do |photo| %>
-              <p><%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %></p>
-          <% end %>
-        <% end %>
+  <!-- Add a review button -->
+
+  <button data-target="#myModal" data-toggle="modal" class="btn btn-danger">
+  Create review
+  </button>
+
+  <!-- Spot pictures -->
+
+  <div class="spot-pictures">
+    <%= simple_form_for @picture do |f| %>
+    <%= f.input :photos, as: :attachinary %>
+    <%= f.input :spot_id, as: :hidden, input_html: {value: @spot.id} %>
+    <%= f.button :submit %>
+    <% end %>
+    <% @spot.pictures.each do |picture| %>
+      <% picture.photos.each do |photo| %>
+          <p><%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <!-- Google map -->
+
+  <div id="map" style="width: 100%; height: 400px;"></div>
 </div>
 
-
-<div id="map" style="width: 100%; height: 400px;"></div>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

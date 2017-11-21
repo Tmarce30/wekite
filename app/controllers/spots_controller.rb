@@ -15,6 +15,9 @@ class SpotsController < ApplicationController
   end
 
   def show
+
+    # Favorites
+
     if current_user
       @favorite = current_user.favorites.where(spot_id: params[:id]).first
       @favorite = Favorite.new if @favorite.nil?
@@ -22,12 +25,18 @@ class SpotsController < ApplicationController
       @favorite = Favorite.new
     end
 
+    # Checkin
+
     if current_user
       @checkin = current_user.checkins.where(spot_id: params[:id]).first
       @checkin = Checkin.new if @checkin.nil?
     else
       @checkin = Checkin.new
     end
+
+    # Weather
+
+    @weather = Weather.where(spot_id: @spot.id, date: "2017-11-21").last
 
     @picture = Picture.new
     @review = Review.new
@@ -79,6 +88,7 @@ class SpotsController < ApplicationController
     for offset in 0..6
       possible_dates << (Date.today + offset).strftime("%A, %b %d")
     end
-    puts possible_dates.strftime#("%Y-%m-%e")
+    return possible_dates
+    #("%Y-%m-%e")
   end
 end
