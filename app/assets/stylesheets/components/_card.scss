@@ -1,9 +1,9 @@
 .card-body {
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 200px;
-  margin: 1em;
-  width: 300px;
+  height: 241px;
+  width: 310px;
+  background-size: cover !important;
+  background-position: center;
+  position: relative;
 }
 
 .card-body:hover {
@@ -21,18 +21,21 @@
   display: flex;
   flex-direction: row;
   background-color: rgba(0, 0, 0, 0.4);
-  width: 31vw;
+  width: 309px;
   background-color: white;
-  height: 290px;
+  height: 241px;
 }
 
 .card-name {
-  color: black;
+  color: white;
   font-weight: bold;
   font-size: 30px;
   padding: 15px;
   margin: 10px;
   text-decoration: none !important;
+      position: absolute;
+    top: -21px;
+    left: -15px;
 }
 
 

@@ -19,34 +19,24 @@
 
 .carousel {
   background-color: #E2E2E2;
+  width: 310px;
 }
 
-.main-container.side-flow {
+.main-container {
   display: flex;
   flex-direction: row;
 }
 
-#carousel-next {
-  position: absolute;
-  bottom: 7px;
-  right: 140px;
-}
-
-#carousel-back {
-  position: relative;
-  top: 292px;
-  right: -133px;
-}
 
 .fa-angle-right:before {
-  color: white;
+  color: black;
   font-size: 40px;
   font-weight: bold;
   text-decoration: none;
 }
 
 .fa-angle-left:before {
-  color: white;
+  color: black;
   font-size: 40px;
   font-weight: bold;
   text-decoration: none;

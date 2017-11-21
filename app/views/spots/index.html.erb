@@ -1,4 +1,4 @@
-<div class="main-container side-flow">
+<div class="main-container">
   <div class="carousel">
     <div class="filters">
       <%= form_tag(spots_path, method: :get) do %>
@@ -8,10 +8,18 @@
       <h3>Date</h3>
       </div>
     <div class="cards-container">
-      <a href="#" id="carousel-back" class="carousel-nav fa fa-angle-left"></a>
     <% @spots.each do |spot| %>
       <div class="cards-dimension main-card" data-id="<%= spot.id %>">
+
         <div class="card">
+
+        <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path spot.avatar.path %>')">
+          <div class="review">
+            <div class="fa fa-star" ></div>
+            <div class="fa fa-star" ></div>
+            <div class="fa fa-star" ></div>
+            <div class="fa fa-star-half-o" ></div>
+            </div>
           <%= link_to spot_path(spot) do %>
           <% if  spot.avatar? %>
             <div class="card-body" >
@@ -25,22 +33,20 @@
             </div>
           <% end %>
           <% end %>
-          <div class="review">
-            <div class="fa fa-star" ></div>
-            <div class="fa fa-star" ></div>
-            <div class="fa fa-star" ></div>
-            <div class="fa fa-star-half-o" ></div>
-          </div>
-        <div class="weather">
-          <div class="fa fa-sun-o"></div>
-          <div class="fa fa-flag"></div>
-          <p>25°</p>
-        </div>
+
         </div>
       </div>
+      </div>
     <% end %>
+  </div>
+    <div class="arrow">
+    <a href="#" id="carousel-back" class="carousel-nav fa fa-angle-left"></a>
     <a href="#" id="carousel-next" class="carousel-nav fa fa-angle-right"></a>
   </div>
+    <div class="weather-card">
+      <div class="fa fa-sun-o"></div>
+      <p>25°</p>
+    </div>
 </div>
 
 <div id="map" style="width: 100%; height: 600px;"></div>
