@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20171120201120) do
     t.string   "water_temp"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "date"
     t.index ["spot_id"], name: "index_weathers_on_spot_id", using: :btree
   end
 
