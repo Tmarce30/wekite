@@ -1,7 +1,7 @@
 .filters {
   display: flex;
   justify-content: space-around;
-  margin: 100px;
+  height: 154px;
 }
 
 .filter-search {
@@ -13,9 +13,6 @@
 }
 
 input.filter-btn {
-  position: absolute;
-  top: 103px;
-  right: 90px;
   color: white;
   font-weight: lighter;
   border-radius: 10px;
@@ -24,8 +21,5 @@ input.filter-btn {
 }
 
 h3 {
-  position: relative;
-  bottom: -38px;
-  left: -130px;
   font-size: 20px;
 }
