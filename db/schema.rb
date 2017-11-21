@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 20171121165107) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "date"
-    t.string   "code"
+    t.string   "weather_code"
     t.index ["spot_id"], name: "index_weathers_on_spot_id", using: :btree
   end
 
