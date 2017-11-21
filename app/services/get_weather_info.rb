@@ -26,8 +26,10 @@ module GetWeatherInfo
       wind_dir = forcast['hourly'][4]['winddir16Point']
       # water temperature
       water_temp = forcast['hourly'][4]['waterTemp_C']
+      # weather code for icons
+      weather_code = forcast['hourly'][4]['weatherCode']
       # create weather with forcast's datas
-      Weather.create(spot_id: spot_id, weather_desc: weather_desc, air_temp: air_temp, wind_speed: wind_speed, wind_dir: wind_dir, water_temp: water_temp, date: weather_date)
+      Weather.create(spot_id: spot_id, weather_desc: weather_desc, air_temp: air_temp, wind_speed: wind_speed, wind_dir: wind_dir, water_temp: water_temp, date: weather_date, weather_code: weather_code)
     end
   end
 end

@@ -80,7 +80,7 @@ spots.each do |spot|
     result["photos"].each_with_index do |photo, i|
       photo_reference = photo["photo_reference"]
 
-      photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{photo_reference}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
+      photo_url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=950&photoreference=#{photo_reference}&key=#{ENV['GOOGLE_API_SERVER_KEY']}"
       if i == 0 && spot.avatar.nil?
         spot.avatar_url = photo_url
       else
