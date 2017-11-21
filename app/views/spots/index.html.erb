@@ -12,10 +12,12 @@
       <div class="cards-dimension main-card" data-id="<%= spot.id %>">
         <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path spot.avatar.path %>')">
           <div class="review">
-            <div class="fa fa-star" ></div>
-            <div class="fa fa-star" ></div>
-            <div class="fa fa-star" ></div>
-            <div class="fa fa-star-half-o" ></div>
+            <% spot.average_calc.to_i.times do %>
+              <div class="fa fa-star" ></div>
+            <% end %>
+            <% if spot.average_calc - spot.average_calc.to_i > 0.25 %>
+              <div class="fa fa-star-half-o" ></div>
+            <% end %>
             </div>
           <%= link_to spot_path(spot) do %>
           <% if  spot.avatar? %>

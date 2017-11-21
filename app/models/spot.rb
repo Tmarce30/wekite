@@ -18,9 +18,19 @@ class Spot < ApplicationRecord
 
   has_attachment  :avatar, accept: [:jpg, :png, :gif]
 
-  def average_ratings
-    # create array
-    #self.reviews do
+
+  def average_calc
+    reviews = self.reviews
+    if reviews.count > 0
+      total_rating = 0
+      reviews.each do |review|
+        total_rating += (review.level_rating + review.environment_rating + review.ambience_rating + review.access_rating).to_f / 4
+      end
+      avg = total_rating / reviews.count
+    else
+      avg = 0
+    end
+    avg
   end
 
 end
