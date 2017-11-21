@@ -16,21 +16,48 @@
 @import "components/index";
 @import "pages/index";
 
-
+.carousel {
+  background-color: #E2E2E2;
+}
 
 .main-container.side-flow {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 #carousel-next {
-    position: absolute;
-    top: 171px;
-    left: 318px;
+  position: absolute;
+  bottom: 7px;
+  right: 140px;
 }
 
 #carousel-back {
-    position: relative;
-    top: 101px;
-    right: -48px;
+  position: relative;
+  top: 292px;
+  right: -133px;
 }
+
+.fa-angle-right:before {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.fa-angle-left:before {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
