@@ -1,35 +1,86 @@
-
-<div class="main-container">
-  <div class="cards-container">
+<div class="main-container side-flow">
+  <div class="carousel">
+    <div class="filters">
+      <%= form_tag(spots_path, method: :get) do %>
+      <%= text_field_tag :address, nil, :placeholder => 'Where to?', class: "filter-search", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
+      <%= submit_tag 'Go', class: "filter-btn" %>
+      <% end %>
+      <h3>Date</h3>
+      </div>
+    <div class="cards-container">
+      <a href="#" id="carousel-back" class="carousel-nav fa fa-angle-left"></a>
     <% @spots.each do |spot| %>
-      <div class="col-xs-12 col-sm-6 col-md-4 cards-dimension" data-id="<%= spot.id %>">
+      <div class="cards-dimension main-card" data-id="<%= spot.id %>">
         <div class="card">
-
           <%= link_to spot_path(spot) do %>
           <% if  spot.avatar? %>
-            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path spot.avatar.path %>')">
-              <span class="card-name"><%= spot.name %></span>
+            <div class="card-body" >
+              <span class="card-name text-center"><%= spot.name %></span>
             </div>
           <% else %>
             <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= image_path 'http://lorempixel.com/400/200/' %>')">
               <span class="card-name">
                 <%= spot.name %>
-
               </span>
             </div>
           <% end %>
           <% end %>
+          <div class="review">
+            <div class="fa fa-star" ></div>
+            <div class="fa fa-star" ></div>
+            <div class="fa fa-star" ></div>
+            <div class="fa fa-star-half-o" ></div>
+          </div>
+        <div class="weather">
+          <div class="fa fa-sun-o"></div>
+          <div class="fa fa-flag"></div>
+          <p>25°</p>
+        </div>
         </div>
       </div>
     <% end %>
+    <a href="#" id="carousel-next" class="carousel-nav fa fa-angle-right"></a>
   </div>
 </div>
 
-
 <div id="map" style="width: 100%; height: 600px;"></div>
+
+</div>
 
 <% content_for(:after_js) do %>
   <script>
+
+    $( document ).ready( function() {
+      $(".main-card").hide();
+      $(".main-card").first().show();
+      let current_card = $(".main-card").first();
+
+      $("#carousel-back").click( function() {
+        console.log("hi");
+        current_card.hide();
+        current_card = current_card.prev(".main-card");
+        if(current_card.html() == null) {
+          current_card = $(".main-card").last();
+        }
+
+        current_card.show();
+      });
+
+      $("#carousel-next").click( function() {
+        console.log("hey");
+        current_card.hide();
+        current_card = current_card.next(".main-card");
+        if(current_card.html() == null) {
+          current_card = $(".main-card").first();
+        }
+        current_card.show();
+      });
+    });
+
+
+
+
+
     var styles = [
     {
         "featureType": "administrative",
@@ -37,6 +88,15 @@
         "stylers": [
             {
                 "color": "#444444"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.country",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "on"
             }
         ]
     },
@@ -102,13 +162,14 @@
         "elementType": "all",
         "stylers": [
             {
-                "color": "#002C6A"
+                "color": "#4694ec"
             },
             {
                 "visibility": "on"
             }
         ]
-    }];
+    }
+]
 
     var markers;
     Gmaps.store = {};

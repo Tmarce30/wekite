@@ -1,0 +1,19 @@
+.weather {
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  bottom: 36px;
+  right: -17px;
+  .fa-sun-o:before {
+    font-size: 50px;
+    color: black;
+  }
+  .fa-flag:before {
+    font-size: 50px;
+    color: black;
+  }
+  p {
+    font-size: 30px;
+    color: black;
+  }
+}

@@ -1,6 +1,38 @@
 .card-body {
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 11em;
-    margin: 1em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 200px;
+  margin: 1em;
+  width: 300px;
 }
+
+.card-body:hover {
+  text-decoration: none;
+  filter: saturate(50%);
+  .card-name {
+    opacity: 1;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 31vw;
+  background-color: white;
+  height: 290px;
+}
+
+.card-name {
+  color: black;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 15px;
+  margin: 10px;
+  text-decoration: none !important;
+}
+
+
