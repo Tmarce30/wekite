@@ -39,17 +39,34 @@
         <%= f.button :submit, class: "btn fa-heart" %>
       <% end %>
   <% end %>
-  <div class="spot-reviews">
-        <%= simple_form_for [@spot, @review] do |f| %>
-        <%= f.label :comment %>
-        <%= f.input :comment, label:false, input_html: {class: "form-control comment"}%>
-        <%= f.input :level_rating, input_html: {class: "feature-rating ", 'data-show-clear': "false"}, require: true %>
-        <%= f.input :environment_rating, input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
-        <%= f.input :ambience_rating, input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
-        <%= f.input :access_rating,  input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
 
-          <%= f.button :submit, class: "btn btn-danger" %>
-        <% end %>
+  <div class="spot-reviews">
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+            <h4 id="myModalLabel" class="modal-title text-center">Add a review</h4>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for [@spot, @review] do |f| %>
+                <%= f.input :level_rating, input_html: {class: "feature-rating ", 'data-show-clear': "false"}, require: true %>
+                <%= f.input :environment_rating, input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
+                <%= f.input :ambience_rating, input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
+                <%= f.input :access_rating,  input_html: {class: "feature-rating", 'data-show-clear': "false"}, require: true  %>
+                <%= f.label :comment %>
+                <%= f.input :comment, label:false, input_html: {class: "form-control comment"}%>
+                <%= f.button :submit, class: "btn btn-danger" %>
+                <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <button data-target="#myModal" data-toggle="modal" class="btn btn-danger">
+    Create review
+    </button>
 
         <% @spot.reviews.each do |review| %>
           <p><%= review.level_rating %></p>
@@ -71,6 +88,7 @@
           <% end %>
         <% end %>
 </div>
+
 
 <div id="map" style="width: 100%; height: 400px;"></div>
 

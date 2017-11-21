@@ -79,6 +79,6 @@ class SpotsController < ApplicationController
     for offset in 0..6
       possible_dates << (Date.today + offset).strftime("%A, %b %d")
     end
-    return possible_dates
+    puts possible_dates.strftime#("%Y-%m-%e")
   end
 end
