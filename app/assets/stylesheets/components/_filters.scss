@@ -2,18 +2,11 @@
   display: flex;
   justify-content: space-around;
   height: 154px;
+  margin-bottom: 20px;
 }
 
-// .filter-search {
-//   border: 1.5px solid black;
-//   color: white;
-//   border-radius: 1px;
-//   padding: 5px;
-//   background: rgba(255, 255, 255, .7);
-// }
-
 .date {
-    width: 15%;
+    width: 70%;
     border: 0;
     outline: 0;
     background: transparent;
@@ -32,6 +25,19 @@
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     }
 
+label {
+  clear:left;
+  text-align:right;
+  padding-right:10px;
+  color: white;
+  font-weight: lighter;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-left: 18px;
+  font-size: 18px;
+}
+
+
 .btn-wekite {
   color: #999999;
   border: 1px solid #999999;
@@ -45,7 +51,7 @@
   color: #999999;
 }
 .filter-search {
-    width: 15%;
+    width: 55%;
     border: 0;
     outline: 0;
     background: transparent;
