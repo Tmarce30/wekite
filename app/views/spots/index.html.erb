@@ -4,16 +4,17 @@
     </div>
     <div class="filters">
       <%= form_tag(spots_path, method: :get) do %>
-        <label>Where</label><%= text_field_tag :address, nil, class: "filter-search", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
-        <label>When</label>
-          <%= select_tag(:date, options_for_select(@possible_dates), {:class => 'date'}) %><br>
+        <label id="label">Where</label><%= text_field_tag :address, nil, class: "filter-search", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
+        <label id="label">When</label>
+          <%= select_tag(:date, options_for_select(@possible_dates), class: 'date') %><br>
         <%= submit_tag("Go", class: "btn btn-wekite" )%>
       <% end %>
       </div>
     <div class="cards-container">
     <% @spots.each do |spot| %>
       <div class="cards-dimension main-card" data-id="<%= spot.id %>">
-        <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path spot.avatar.path %>')">
+        <div class="card-body" style="background-image: linear-gradient(rgba(0, 0, 20, 0.75),
+        rgba(0, 5, 20, 0.1)), url('<%= cl_image_path spot.avatar.path %>')">
           <div class="review">
             <% spot.average_calc.to_i.times do %>
               <div class="fa fa-star" ></div>
@@ -41,7 +42,7 @@
   </div>
   <div class="weather-card">
       <div class="fa fa-sun-o"></div>
-      <p>25°</p>
+      <div class="fa fa-flag"></div>
     </div>
   <div class="arrow">
     <div class="arrows-direction">
@@ -204,7 +205,6 @@
       }
       document.querySelectorAll(".cards-dimension").forEach((spot) => {
       spot.addEventListener("mouseover", (event) => {
-        console.log('hello---------------------')
         const id = event.currentTarget.dataset.id
         markers.forEach((marker) => {
            if (marker.serviceObject.title == id) {
