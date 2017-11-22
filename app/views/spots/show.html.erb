@@ -10,12 +10,39 @@
 
 <div class="container">
 
-  <!-- Spot Infos -->
+  <div class="info-container">
+    <div class="left-side">
 
-  <h1 class="spot-name"><%= @spot.name %></h1>
-  <p class="spot-description"><%= @spot.description %></p>
+      <div class="spot-infos">
+        <!-- Spot Infos -->
+        <h1 class="spot-name"><%= @spot.name %></h1>
+        <p class="spot-description"><%= @spot.description %></p>
+      </div>
 
-  <!-- Spot weather -->
+      <!-- Review form -->
+
+      <%= render "reviews" %>
+
+      <!-- Reviews display -->
+
+      <div>
+        <% @spot.reviews.each do |review| %>
+          <p><%= review.level_rating %></p>
+          <p><%= review.environment_rating %></p>
+          <p><%= review.ambience_rating %></p>
+          <p><%= review.access_rating %></p>
+          <p><%= review.comment %></p>
+        <% end %>
+      </div>
+
+      <!-- Add a review button -->
+
+      <button data-target="#myModal" data-toggle="modal" class="btn btn-danger">
+      Review
+      </button>
+    </div>
+
+    <!-- Spot weather -->
     <div class="fixed-box">
       <!-- Cheking in -->
       <% if user_signed_in? %>
@@ -25,7 +52,7 @@
               <%# f.input :date %>
               <%= f.input :date, label:false, collection: @possible_dates, selected: @possible_dates[0] %>
               <%= render "weather" %>
-              <%= f.button :submit, class: "btn-blue" %>
+              <%= f.button :submit, "Checkin", class: "btn-blue" %>
             <% end %>
           <% else %>
             <%= @checkin.date.strftime("%A, %b %d") %>
@@ -35,28 +62,7 @@
         </div>
       <% end %>
     </div>
-
-  <!-- Review form -->
-
-  <%= render "reviews" %>
-
-  <!-- Reviews display -->
-
-  <div>
-    <% @spot.reviews.each do |review| %>
-      <p><%= review.level_rating %></p>
-      <p><%= review.environment_rating %></p>
-      <p><%= review.ambience_rating %></p>
-      <p><%= review.access_rating %></p>
-      <p><%= review.comment %></p>
-    <% end %>
   </div>
-
-  <!-- Add a review button -->
-
-  <button data-target="#myModal" data-toggle="modal" class="btn btn-danger">
-  Create review
-  </button>
 
   <!-- Spot pictures -->
 
@@ -86,6 +92,7 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
+  <script>
      $(document).on('ready', function(){
       $('.feature-rating').rating({
           size:'xs',
@@ -191,4 +198,5 @@
 
     });
   <% end %>
+  </script>
 <% end %>
