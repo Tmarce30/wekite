@@ -1,39 +1,47 @@
-.boby {
-  background: white;
-}
-.container {
-  background-size: cover;
-}
-
 video#bgvid {
   left: 0;
   top: 0;
   width: 100%;
-  z-index: -100;
+  z-index: -1;
   background-size: cover;
   position: absolute;
-}
 
+/* Make video to at least 100% wide and tall */
+  min-width: 100%;
+  min-height: 100%;
 
-#home-map {
-  height: 85vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  margin-top: -70px;
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: auto;
+  height: auto;
+
+  /* Center the video */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
 }
 #banner-wrap {
   width: 100%;
   height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
   padding-top: 150px;
+ /* margin-top: -70px;
+  position: relative;
+  object-fit: cover;*/
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
 }
-.map-content.text-center {
+.map-content {
   text-align: left;
-  margin-left: 45px;
   margin-bottom: 30px;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   h1 {
     font-size: 80px;
     padding: 0px;
@@ -76,19 +84,28 @@ video#bgvid {
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-appearance: none;
     }
 }
+
+.home-description {
+  margin-left: 45px
+}
+
 .btn-wekite {
-  color: #999999;
-  border: 1px solid #999999;
-  padding: 10px 15px;
-  border-radius: 8px;
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 4px;
   font-weight: lighter;
+  margin-top: 10px;
 }
 .btn-wekite:hover {
+  background-color: white;
   opacity: 0.8;
   text-decoration: none;
-  color: #999999;
+  color: grey;
 }
 .search-field {
     width: 15%;
@@ -98,44 +115,31 @@ video#bgvid {
     border-bottom: 1px solid white;
     color: white;
 }
-.what-is-it {
-  background: rgba(0, 0, 0, 0.5);
-
-  padding-bottom: 50px;
-  color: white;
-  h2 {
-    margin-top: 30px;
-  }
-}
-.row {
-  display: block;
-  margin-top: 10px;
-}
 .footer-home {
-  margin-top: 30px;
-  margin-bottom: -45px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  /*margin-top: 30px;*/
+  /*padding-top: 3px;*/
+  /*padding-bottom: 3px;*/
   display: flex;
   justify-content: space-between;
-  margin-left: 70px;
-  margin-right: 70px;
+  /*margin-left: 70px;*/
+  /*margin-right: 70px;*/
   font-size: 10px;
+  color: white;
 }
 .footer-home-left {
-  display: flex;
-  justify-content: space-between;
-
+  /*margin-left: -70px;*/
+  margin-left: 40px;
 }
 .logo-footer-home {
   height: 40px;
 }
 .footer-home-right {
-  display: flex;
-  justify-content: space-between;
+  /*margin-right: -20px;*/
+  margin-right: 40px;
+  margin-bottom: 10px;
 }
 .fa-heart:before {
-  font-size: 20px;
+  font-size: 10px;
   vertical-align: text-top;
 }
 .fa-facebook:before {
