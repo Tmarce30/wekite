@@ -41,7 +41,6 @@
     <div class="checkins">
       <% if @checkin.id.nil? %>
         <%= simple_form_for [@spot, @checkin] do |f| %>
-          <%# f.input :date %>
           <%= f.input :date, collection: @possible_dates, selected: @possible_dates[0] %>
           <%= f.button :submit, class: "btn fa-heart" %>
         <% end %>
