@@ -1,10 +1,22 @@
 .arrow {
-  background-color: white;
   position: relative;
-
 }
 
 .arrows-direction {
   display: flex;
   justify-content: space-evenly;
+}
+
+.fa-angle-right:before {
+  color: white;
+  font-size: 40px;
+  font-weight: lighter;
+  text-decoration: none;
+}
+
+.fa-angle-left:before {
+  color: white;
+  font-size: 40px;
+  font-weight: lighter;
+  text-decoration: none;
 }

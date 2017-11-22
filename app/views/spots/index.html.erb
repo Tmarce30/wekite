@@ -1,14 +1,14 @@
 <div class="main-container">
   <div class="carousel">
+    <div class="logo">
+    </div>
     <div class="filters">
       <%= form_tag(spots_path, method: :get) do %>
-
         <label>Where</label><%= text_field_tag :address, nil, class: "filter-search", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
         <label>When</label>
           <%= select_tag(:date, options_for_select(@possible_dates), {:class => 'date'}) %><br>
         <%= submit_tag("Go", class: "btn btn-wekite" )%>
       <% end %>
-
       </div>
     <div class="cards-container">
     <% @spots.each do |spot| %>
