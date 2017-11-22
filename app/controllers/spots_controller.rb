@@ -12,6 +12,12 @@ class SpotsController < ApplicationController
       marker.infowindow render_to_string(partial: "/layouts/partials/infowindow", locals: {spot: spot})
       marker.title(spot.id.to_s)
     end
+
+    @possible_dates = []
+    for offset in 0..6
+      date = (Date.today + offset)
+      @possible_dates << [date.strftime("%A, %b %d"), date]
+    end
   end
 
   def show
