@@ -1,24 +1,160 @@
-body {
-  background-color: white;
-}
-
-.banner.index{
-  height: calc(100vh - 70px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: linear-gradient(rgba(25,25,25,0.2), rgba(25,25,25,0.1)), url(https://images.unsplash.com/photo-1500744732176-7946c1bc68ac?auto=format&fit=crop&w=1489&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);
-  background-position: center;
+video#bgvid {
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: -1;
   background-size: cover;
+  position: absolute;
+
+/* Make video to at least 100% wide and tall */
+  min-width: 100%;
+  min-height: 100%;
+
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: auto;
+  height: auto;
+
+  /* Center the video */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+}
+#banner-wrap {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  padding-top: 150px;
+ /* margin-top: -70px;
+  position: relative;
+  object-fit: cover;*/
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.map-content {
+  text-align: left;
+  margin-bottom: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   h1 {
-    font-size: 60px;
+    font-size: 80px;
     padding: 0px;
     color: white;
     margin-bottom: 15px;
-  }
+    text-shadow: 1px 1px 2px $blue;
+    }
   h2 {
     color: white;
     margin-top: 3px;
     margin-bottom: 3px;
+    text-shadow: 1px 1px 2px $blue;
+    height: 82px;
+    }
+  label {
+    clear:left;
+    text-align:right;
+    padding-right:10px;
+    color: white;
+    text-shadow: 1px 1px 2px $blue;
+    font-weight: lighter;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    }
+  .form-control {
+    width: 15%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid white;
+    color: white;
+    border-radius: 0px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-appearance: none;
+    }
+}
+
+.home-description {
+  margin-left: 45px
+}
+
+.btn-wekite {
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: lighter;
+  margin-top: 10px;
+}
+.btn-wekite:hover {
+  background-color: white;
+  opacity: 0.8;
+  text-decoration: none;
+  color: grey;
+}
+.search-field {
+    width: 15%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid white;
+    color: white;
+}
+.footer-home {
+  /*margin-top: 30px;*/
+  /*padding-top: 3px;*/
+  /*padding-bottom: 3px;*/
+  display: flex;
+  justify-content: space-between;
+  /*margin-left: 70px;*/
+  /*margin-right: 70px;*/
+  font-size: 10px;
+  color: white;
+}
+.footer-home-left {
+  /*margin-left: -70px;*/
+  margin-left: 40px;
+}
+.logo-footer-home {
+  height: 40px;
+}
+.footer-home-right {
+  /*margin-right: -20px;*/
+  margin-right: 40px;
+  margin-bottom: 10px;
+}
+.fa-heart:before {
+  font-size: 10px;
+  vertical-align: text-top;
+}
+.fa-facebook:before {
+    font-size: 20px;
+    color: white;
   }
-}// Specific CSS for your home-page
+.fa-instagram:before {
+    font-size: 20px;
+    color: white;
+  }
+.fa-youtube:before {
+    font-size: 20px;
+    color: white;
+  }
+
+
+
+// Specific CSS for your home-page

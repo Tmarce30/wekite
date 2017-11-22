@@ -1,11 +1,19 @@
-<%= simple_form_for(@spot) do |f| %>
-  <%= f.label :name, class: "label-name" %>
-  <%= f.input :name, label: false, placeholder: "Tarifa", input_html: {class: "input-name"}%>
-  <%= f.label :address, class: "label-address" %>
-  <%= f.input :address, label: false, placeholder: "Tarifa, Spain", input_html: {class: "input-address" }%>
-  <%= f.label :description, class: "label-description" %>
-  <%= f.input :description, label: false, placeholder: "This spot has ...", input_html: {class: "input-description"} %>
-  <%= f.label :photo, class: "label-photo" %>
-  <%= f.input :avatar, label: false, as: :attachinary %>
-  <%= f.button :submit, "Add your spot", class: "btn btn-danger btn-add" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= simple_form_for(@spot) do |f| %>
+        <%= f.label :name, class: "label-name" %>
+        <%= f.input :name, label: false, placeholder: "Tarifa", input_html: {class: "input-name"}%>
+        <%= f.label :address, class: "label-address" %>
+        <%= f.input :address, label: false, placeholder: "Tarifa, Spain", input_html: {class: "input-address" }%>
+        <%= f.label :description, class: "label-description" %>
+        <%= f.input :description, label: false, placeholder: "This spot has ...", input_html: {class: "input-description"} %>
+        <%= f.label :photo, class: "label-photo" %>
+        <%= f.input :avatar, label: false, as: :attachinary %>
+      <div class="text-center">
+        <%= f.button :submit, "Add your spot", class: "btn btn-default" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
