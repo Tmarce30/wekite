@@ -12,6 +12,12 @@ class SpotsController < ApplicationController
       marker.infowindow render_to_string(partial: "/layouts/partials/infowindow", locals: {spot: spot})
       marker.title(spot.id.to_s)
     end
+
+    @possible_dates = []
+    for offset in 0..6
+      date = (Date.today + offset)
+      @possible_dates << [date.strftime("%A, %b %d"), date]
+    end
   end
 
   def show
@@ -36,7 +42,7 @@ class SpotsController < ApplicationController
 
     # Weather
 
-    @weather = Weather.where(spot_id: @spot.id, date: "2017-11-21").last
+    @weather = Weather.where(spot_id: @spot.id, date: "2017-11-22").last
 
     @picture = Picture.new
     @review = Review.new
