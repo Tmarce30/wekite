@@ -11,6 +11,6 @@
     }
   }
   if (document.getElementById("description")) {
-  showText("#description", "Explore the best spots for the next 7 days.\nYour ride is awaiting.", 0, 50)
+  showText("#description", "Kitesurfing is your life?\nExplore the best spots for the next 7 days.", 0, 50)
   }
   })

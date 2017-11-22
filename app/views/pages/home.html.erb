@@ -1,65 +1,40 @@
-<video autoplay="" loop="" poster="" id="bgvid">
-    <source src="https://res.cloudinary.com/dhh83l8ql/video/upload/ac_none/v1455650593/paris_video_zs8eea.mp4" type="video/mp4">
-</video>
-
 <div id="banner-wrap">
-  <div class="map-content text-center">
-    <h2 id="description"></h2>
+  <video autoplay="" loop="" poster="" id="bgvid">
+    <source src="http://res.cloudinary.com/dkrjlrpn6/video/upload/v1511316848/Heaven_tnbn3s.mp4" type="video/mp4">
+  </video>
+  <div class="map-content">
+
+    <div class="home-description">
+      <h2 id="description"></h2>
       <%= form_tag(spots_path, method: :get) do %>
-        <label>Where</label><%= text_field_tag :address, nil, class: "search-field", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %><br>
+        <label>Where</label><%= text_field_tag :address, nil, class: "search-field", placeholder: "", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %><br>
         <label>When</label>
         <%= select_tag(:date, options_for_select(@possible_dates), {:class => 'form-control'}) %><br>
         <%= submit_tag("Spot it!", :class => "btn btn-wekite" )%>
       <% end %>
-  </div>
-</div>
-<div class="what-is-it">
-  <div class="container text-center">
-    <div class="row">
-      <div class="col-xs-4">
-        <i class="fa fa-search" aria-hidden="true"></i>
-      </div>
-      <div class="col-xs-4">
-        <i class="fa fa-info" aria-hidden="true"></i>
-      </div>
-      <div class="col-xs-4">
-        <i class="fa fa-camera-retro" aria-hidden="true"></i>
-      </div>
     </div>
-    <div class="row">
-      <div class="col-xs-4">
-        <h3>Find</h3>
-        <p>Choose the perfect spot for your next ride! </p>
-      </div>
-      <div class="col-xs-4">
-        <h3>Inform</h3>
-        <p>Since you choose your spot, you can inform the others about your plan.</p>
-      </div>
-      <div class="col-xs-4">
-        <h3>Share</h3>
-        <p>After your ride, you can add photos to the spot!</p>
-      </div>
+
+    <div class="footer-home">
+        <div class="footer-home-left list-inline">
+          <ul class="list-inline">
+            <li>© WeKite, Ride with <i class="fa fa-heart"></i></li>
+          </ul>
+        </div>
+
+        <div class="footer-home-right list-inline">
+          <ul class="list-inline">
+            <li><%= link_to "https://www.facebook.com/thibaud.marce", class: "link-footer-home fa" do %>
+              <i class="fa fa-facebook"></i>
+            <% end %></li>
+            <li><%= link_to "https://www.instagram.com/sev_clmnt/", class: "link-footer-home fa" do %>
+              <i class="fa fa-instagram"></i>
+            <% end %></li>
+            <li><%= link_to "https://www.youtube.com/channel/UCblfuW_4rakIf2h6aqANefA", class: "link-footer-home fa" do %>
+              <i class="fa fa-youtube"></i>
+            <% end %></li>
+          </ul>
+        </div>
     </div>
   </div>
-  <div class="footer-home">
-      <div class="footer-home-left list-inline">
-        <ul class="list-inline">
-          <li> <p>© WeKite, Ride with <i class="fa fa-heart"></i></p> </li>
-        </ul>
-      </div>
-      <div class="footer-home-right list-inline">
-        <ul class="list-inline">
-          <li><%= link_to "https://www.facebook.com/thibaud.marce", class: "link-footer-home fa" do %>
-            <i class="fa fa-facebook"></i>
-          <% end %></li>
-          <li><%= link_to "https://www.instagram.com/sev_clmnt/", class: "link-footer-home fa" do %>
-            <i class="fa fa-instagram"></i>
-          <% end %></li>
-          <li><%= link_to "https://www.youtube.com/channel/UCblfuW_4rakIf2h6aqANefA", class: "link-footer-home fa" do %>
-            <i class="fa fa-youtube"></i>
-          <% end %></li>
-        </ul>
-      </div>
-  </div>
-</div>
+ </div>
 
