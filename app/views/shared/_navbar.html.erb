@@ -56,6 +56,7 @@
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wekite-item hidden-md hidden-lg">
+  <% if user_signed_in? %>
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wekite-dropdown-menu">
@@ -82,5 +83,9 @@
       </ul>
     </div>
   </div>
+      <% else %>
+      <!-- Login link (when logged out) -->
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wekite-item navbar-wekite-link" %>
+    <% end %>
 </div>
 
