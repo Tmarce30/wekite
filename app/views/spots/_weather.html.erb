@@ -2,7 +2,7 @@
 
   <!-- Weather icons and description -->
 
-  <div class="weather-desc">
+  <div class="weather-desc text-center">
     <div class="icons">
       <% case @weather.weather_code %>
       <% when '113' %>
@@ -36,7 +36,7 @@
 
   <!-- Air temperature -->
 
-  <div class="air-temp">
+  <div class="air-temp text-center">
     <div class="temp-icon">
       <%= image_tag 'temperature.png', class: "weather-icon" %>
     </div>
@@ -45,7 +45,7 @@
 
   <!-- Water temperature -->
 
-  <div class="water-temp">
+  <div class="water-temp text-center">
     <div class="water-icon">
       <%= image_tag 'flood.png', class: "weather-icon" %>
     </div>
@@ -54,7 +54,7 @@
 
   <!-- Wind speed -->
 
-  <div class="wind-speed">
+  <div class="wind-speed text-center">
     <div class="wind-icon">
       <%= image_tag 'breeze.png', class: "weather-icon" %>
     </div>
@@ -63,7 +63,7 @@
 
   <!-- Wind direction -->
 
-  <div class="wind-dir">
+  <div class="wind-dir text-center">
     <div class="wind-icons">
       <%case @weather.wind_dir %>
       <% when 'N' %>

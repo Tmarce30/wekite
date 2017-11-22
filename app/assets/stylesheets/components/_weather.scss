@@ -1,25 +1,21 @@
 .weather {
   display: flex;
-  justify-content: space-evenly;
-  .fa-sun-o:before {
-    font-size: 20px;
-    color: black;
-  }
-  .fa-flag:before {
-    font-size: 20px;
-    color: black;
-  }
-  p {
-    font-size: 10px;
-    color: black;
-  }
-}
-
-
-.weather-card {
-
+  justify-content: space-around;
+  margin: 30px 0px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid black;
 }
 
 .weather-icon {
   height: 50px;
+  margin-bottom: 3px;
+}
+
+.weather-desc,
+.air-temp,
+.water-temp,
+.wind-speed,
+.wind-dir {
+  // border-right: 1px solid black;
+  margin: 0px;
 }

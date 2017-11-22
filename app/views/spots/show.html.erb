@@ -1,13 +1,12 @@
 <!-- Spot Banner -->
 
-<div class="picture-container">
-  <div class="col-xs-12 spot-pic">
-    <div class="spot-picture" style="background-image: linear-gradient(rgba(100,10,110,0.2), rgba(100,10,110,0.2)), url('<%= cl_image_path @spot.avatar.path %>')">
-      <!-- Adding spot to favorites -->
-        <div class="button-heart"><%= render "favorites" %></div>
-    </div>
+<div class="spot-pic">
+  <div class="spot-picture" style="background-image: linear-gradient(rgba(100,10,110,0.2), rgba(100,10,110,0.2)), url('<%= cl_image_path @spot.avatar.path %>')">
+    <!-- Adding spot to favorites -->
+      <div class="button-heart"><%= render "favorites" %></div>
   </div>
 </div>
+
 
 <div class="container">
 
@@ -17,30 +16,25 @@
   <p class="spot-description"><%= @spot.description %></p>
 
   <!-- Spot weather -->
-
-  <%= render "weather" %>
-
-
-
-  <!-- Cheking in -->
-
-  <% if user_signed_in? %>
-    <div class="checkins">
-      <% if @checkin.id.nil? %>
-        <%= simple_form_for [@spot, @checkin] do |f| %>
-          <%# f.input :date %>
-          <%= f.input :date, collection: @possible_dates, selected: @possible_dates[0] %>
-          <%= f.button :submit, class: "btn fa-heart" %>
-        <% end %>
-      <% else %>
-        <%= link_to "Checkout", checkin_path(@checkin), class: "btn btn-danger", method: :delete %>
+    <div class="fixed-box">
+      <!-- Cheking in -->
+      <% if user_signed_in? %>
+        <div class="checkins">
+          <% if @checkin.id.nil? %>
+            <%= simple_form_for [@spot, @checkin] do |f| %>
+              <%# f.input :date %>
+              <%= f.input :date, label:false, collection: @possible_dates, selected: @possible_dates[0] %>
+              <%= render "weather" %>
+              <%= f.button :submit, class: "btn-blue" %>
+            <% end %>
+          <% else %>
+            <%= @checkin.date.strftime("%A, %b %d") %>
+            <div class="weather-box"><%= render "weather" %></div>
+            <%= link_to "Checkout", checkin_path(@checkin), class: "btn btn-danger", method: :delete %>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% else %>
-    <%= simple_form_for [@spot, @checkin] do |f| %>
-      <%= f.button :submit, class: "btn fa-heart" %>
-    <% end %>
-  <% end %>
 
   <!-- Review form -->
 
