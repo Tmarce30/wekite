@@ -1,0 +1,23 @@
+.picture-container {
+  position: relative;
+  width: 100%;
+  margin: none;
+}
+
+.spot-picture {
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+}
+
+.spot-pic {
+  padding: 0;
+}
+
+.button-heart {
+  position: absolute;
+}
+
+.spot-name {
+  font-weight: bold;
+}
