@@ -20,9 +20,14 @@
   margin-top: 0px;
 }
 
+.reviews-title{
+  font-weight: bold;
+}
+
 .spot-infos {
   border-bottom: 1px solid black;
   padding-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .fixed-box {
@@ -40,6 +45,11 @@
   color: white;
   background-color: #002C6A;
   border: none;
+}
+
+.btn-blue:hover {
+  background-color: #043586;
+  color: white;
 }
 
 .btn-danger {
@@ -60,4 +70,67 @@
 .left-side {
   width: 600px;
   padding-right: 25px;
+}
+
+.btn-white {
+  width: 100%;
+  padding: 10px 0px;
+  border-radius: 3px;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  text-decoration: none;
+}
+
+.btn-white:hover {
+    border: 1px solid #474848;
+    color: #474848;
+  }
+
+.avatar-review {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.reviews-display {
+  margin-top: 30px;
+}
+
+.each-review {
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.user-name {
+  position: relative;
+  left: 57px;
+  top: -37px;
+}
+
+.review-comment {
+  padding: 0px 15px;
+  font-size: medium;
+  position: relative;
+  top: -10px;
+}
+
+.review.spot-stars {
+  position: absolute;
+  top: 9px;
+  left: 455px;
+}
+
+.user-name h5 {
+  margin: 0px;
+  font-weight: bold;
+  font-size: small;
+}
+
+
+.user-name h6 {
+  margin: 0px;
+  padding: 3px 0px;
+  font-size: small;
 }

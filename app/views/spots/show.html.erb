@@ -19,27 +19,49 @@
         <p class="spot-description"><%= @spot.description %></p>
       </div>
 
-      <!-- Review form -->
+      <div class="reviews">
 
-      <%= render "reviews" %>
+        <h3 class="reviews-title">Reviews</h3>
 
-      <!-- Reviews display -->
+        <!-- Add a review button -->
 
-      <div>
-        <% @spot.reviews.each do |review| %>
-          <p><%= review.level_rating %></p>
-          <p><%= review.environment_rating %></p>
-          <p><%= review.ambience_rating %></p>
-          <p><%= review.access_rating %></p>
-          <p><%= review.comment %></p>
-        <% end %>
+        <button data-target="#myModal" data-toggle="modal" class="btn-white">
+        Add a review
+        </button>
+
+        <!-- Review form -->
+
+        <%= render "reviews" %>
+
+        <!-- Reviews display -->
+
+        <div class="reviews-display">
+          <% @spot.reviews.each do |review| %>
+            <div class="each-review">
+              <img src="<%= cl_image_path review.user.avatar.path %>" class="avatar-review">
+              <div class="user-name">
+                <div>
+                  <h5><%= review.user.first_name %></h5>
+                </div>
+                <div>
+                  <h6><%= review.created_at.strftime("%B %Y") %></h6>
+                </div>
+              </div>
+              <div class="review spot-stars">
+                <% @spot.average_calc.to_i.times do %>
+                  <div class="fa fa-star" ></div>
+                <% end %>
+                <% if @spot.average_calc - @spot.average_calc.to_i > 0.25 %>
+                  <div class="fa fa-star-half-o" ></div>
+                <% end %>
+              </div>
+              <div class="review-comment">
+                <p><%= review.comment %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
-
-      <!-- Add a review button -->
-
-      <button data-target="#myModal" data-toggle="modal" class="btn btn-danger">
-      Review
-      </button>
     </div>
 
     <!-- Spot weather -->
@@ -60,6 +82,13 @@
             <%= link_to "Checkout", checkin_path(@checkin), class: "btn btn-danger", method: :delete %>
           <% end %>
         </div>
+      <% else %>
+        <div class="checkins">
+          <%= simple_form_for [@spot] do |f| %>
+            <%= f.input :date, label:false, collection: @possible_dates, selected: @possible_dates[0] %>
+            <%= render "weather" %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -74,7 +103,7 @@
     <% end %>
     <% @spot.pictures.each do |picture| %>
       <% picture.photos.each do |photo| %>
-          <p><%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %></p>
+          <%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %>
       <% end %>
     <% end %>
   </div>
@@ -92,7 +121,6 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-  <script>
      $(document).on('ready', function(){
       $('.feature-rating').rating({
           size:'xs',
@@ -198,5 +226,4 @@
 
     });
   <% end %>
-  </script>
 <% end %>

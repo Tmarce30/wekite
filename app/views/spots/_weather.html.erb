@@ -34,6 +34,10 @@
 <!--     <%= @weather.weather_desc %> -->
   </div>
 
+  <div>
+  <hr style="width:1px; height:80px; background-color: black; margin: 0px;" />
+  </div>
+
   <!-- Air temperature -->
 
   <div class="air-temp text-center">
@@ -41,6 +45,10 @@
       <%= image_tag 'temperature.png', class: "weather-icon" %>
     </div>
     <%= "#{@weather.air_temp}°C" %>
+  </div>
+
+  <div>
+  <hr style="width:1px; height:80px; background-color: black; margin: 0px;" />
   </div>
 
   <!-- Water temperature -->
@@ -52,6 +60,10 @@
     <%= "#{@weather.water_temp}°C" %>
   </div>
 
+  <div>
+  <hr style="width:1px; height:80px; background-color: black; margin: 0px;" />
+  </div>
+
   <!-- Wind speed -->
 
   <div class="wind-speed text-center">
@@ -59,6 +71,10 @@
       <%= image_tag 'breeze.png', class: "weather-icon" %>
     </div>
     <%= "#{@weather.wind_speed} km/h" %>
+  </div>
+
+  <div>
+  <hr style="width:1px; height:80px; background-color: black; margin: 0px;" />
   </div>
 
   <!-- Wind direction -->
