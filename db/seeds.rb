@@ -40,7 +40,7 @@ spot = Spot.new(
   name: 'Carro',
   address: "Office de Tourisme de Martigues Rond-point de l’Hôtel-de-Ville 13500 Martigues France",
   description: "The spot's location at the far end of a rocky point also means that there's some current to be aware of. A buoy marks the entrance to the harbour and makes a good marker when you're tracking off-shore. When the conditions line up, the best kitesurfers can have an epic session. Launching and landing a kite along the rocky shore is a precarious operation.",
-  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511449169/Screen_Shot_2017-11-23_at_8.39.49_AM_bkw3yq.png")
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511464626/Mauritius---Beaches---Tropical-beach-xlarge_ue299o.jpg")
 spot.save!
 
 spot = Spot.new(
@@ -54,14 +54,14 @@ spot = Spot.new(
   name: 'L’Espiguette',
   address: "Office de Tourisme du Grau-du-Roi 30 Rue Michel Redares 30240 Le Grau-du-Roi France",
   description: "L’Espiguette is an excellent spot with straightforward kiting conditions and plenty of space along the 10 km beach. Being an official kite zone, it can get busy in the summer. L’Espiguette is ideal for kitesurfing. The beach is immense with no obstructions making it suitable for kitesurfers of all abilities. The beach is 10 km long and 6-700 m wide; plenty of space to rig up and get to grips with flying your kite.",
-  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511449168/Screen_Shot_2017-11-23_at_8.39.18_AM_o2nt5c.png")
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511464626/iledeporquerolles_xv9sa9.jpg")
 spot.save!
 
 spot = Spot.new(
   name: 'Etang de Thau',
   address: "Office de tourisme de Sète 60, Grande Rue Mario Roustan 34200 Sète",
   description: "Pont Levis at the Sète end of the Etang de Thau is regarded as one of the top spots around Montpellier. The spot works in multiple wind directions and apart from the centre of the lagoon where there's some chop, the water's perfectly flat. You can kite safely if every wind direction except easterly when the Mont St Clair becomes a hazard. In a north-westerly, it's directly on-shore, so you need to be confident as there numerous hazards into the wind, which is generally pretty strong.",
-  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511449168/Screen_Shot_2017-11-23_at_8.39.05_AM_qdefqy.png")
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511464626/adr832-waterfront-property-rayol-canadel-var-south-of-france-private-access-to-the-beach-00000523-00005873-lg_bdsssl.jpg")
 spot.save!
 
 spot = Spot.new(
