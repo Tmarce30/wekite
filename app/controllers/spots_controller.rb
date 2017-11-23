@@ -23,7 +23,6 @@ class SpotsController < ApplicationController
 
   def show
     # Favorites
-
     if current_user
       @favorite = current_user.favorites.where(spot_id: params[:id]).first
       @favorite = Favorite.new if @favorite.nil?

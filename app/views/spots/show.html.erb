@@ -96,7 +96,7 @@
       <% else %>
         <div class="checkins">
           <%= simple_form_for [@spot] do |f| %>
-            <%= f.input :date, label:false, collection: @possible_dates, selected: @possible_dates[0] %>
+            <%= f.input :date, label:false, collection: @possible_dates, selected: params[:weather_date].to_date.strftime("%A, %b %d") %>
           <div id="weather-wrapper">
             <%= render 'weather', weather: @weather %>
           </div>
@@ -145,7 +145,7 @@
         type: "GET"
         })
       };
-      document.getElementById("checkin_date").addEventListener("change",getWeather);
+      document.getElementById("spot_date").addEventListener("change",getWeather);
       $('.feature-rating').rating({
           size:'xs',
           step: 1,
