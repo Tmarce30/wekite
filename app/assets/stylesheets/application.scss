@@ -16,6 +16,33 @@
 @import "components/index";
 @import "pages/index";
 
+.simple_form.new_user {
+  label {
+    font-size: 0.75em;
+  }
+  textarea {
+    resize: none;
+    width: 100% !important;
+  }
+
+  .two-col {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      flex-wrap: wrap;
+      justify-content: space-between;
+  }
+
+  .two-col .form-group {
+      width: 45%;
+  }
+
+  input[type=text], input[type=number], input[type=email], textarea {
+    color: black;
+    }
+}
+
+
 
 .carousel {
   background-color: rgba(0, 0, 0, 0.5) ;

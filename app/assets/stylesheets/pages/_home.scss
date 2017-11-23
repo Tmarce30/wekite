@@ -34,6 +34,7 @@ video#bgvid {
   top: 0;
   bottom: 0;
   overflow: hidden;
+  z-index: -1;
 }
 .map-content {
   text-align: left;
@@ -56,7 +57,7 @@ video#bgvid {
     text-shadow: 1px 1px 2px $blue;
     height: 82px;
     }
-  label {
+ .home-description label {
     clear:left;
     text-align:right;
     padding-right:10px;
