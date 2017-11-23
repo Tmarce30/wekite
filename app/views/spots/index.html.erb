@@ -12,8 +12,9 @@
       </div>
     <div class="cards-container">
     <% @spots.each do |spot| %>
-      <div class="cards-dimension main-card" data-id="<%= spot.id %>">
-        <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= cl_image_path spot.avatar.path %>')">
+      <div id="card-<%= spot.id %>" class="cards-dimension main-card" data-id="<%= spot.id %>">
+        <div class="card-body" style="background-image: linear-gradient(rgba(0, 0, 10, 0.2),
+        rgba(0, 0, 10, 0.2)), url('<%= cl_image_path spot.avatar.path %>')">
           <div class="review">
             <% spot.average_calc.to_i.times do %>
               <div class="fa fa-star" ></div>
@@ -66,6 +67,7 @@
       <% end %>
     };
 
+
   var markers;
     $( document ).ready( function() {
       function getWeather(){
@@ -85,7 +87,6 @@
       $(".main-card").hide();
       $(".main-card").first().show();
       let current_card = $(".main-card").first();
-
       $("#carousel-back").click( function() {
         console.log("hi");
         current_card.hide();
@@ -210,30 +211,40 @@
 
     var handler = Gmaps.build('Google');
     handler.buildMap({
-      provider: {
-        styles: styles
-       },
-      internal: { id: 'map' } }, function() {
-      markers = handler.addMarkers(<%= raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-      if (markers.length == 0) {
-        handler.getMap().setZoom(2);
-      } else if (markers.length == 1) {
-        handler.getMap().setZoom(14);
-      }
-      document.querySelectorAll(".cards-dimension").forEach((spot) => {
-      spot.addEventListener("mouseover", (event) => {
-        console.log('hello---------------------')
-        const id = event.currentTarget.dataset.id
+      provider: { styles: styles },
+      internal: { id: 'map' }
+      },
+      function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+
         markers.forEach((marker) => {
-           if (marker.serviceObject.title == id) {
-            google.maps.event.trigger(marker.getServiceObject(), "click");
-           };
+          google.maps.event.addListener(marker.serviceObject, 'click', function(object) {
+            document.querySelectorAll(".main-card").forEach(function(card) {
+              card.style.display = "none";
+            })
+
+            document.getElementById("card-" + this.title).style.display = "block";
+          });
+        });
+
+        document.querySelectorAll(".cards-dimension").forEach((spot) => {
+          spot.addEventListener("mouseover", (event) => {
+            const id = event.currentTarget.dataset.id
+            markers.forEach((marker) => {
+              if (marker.serviceObject.title == id) {
+                google.maps.event.trigger(marker.getServiceObject(), "click");
+              };
+            });
+          });
         });
       });
-    });
-    });
 
 
   </script>

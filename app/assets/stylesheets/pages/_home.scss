@@ -34,6 +34,7 @@ video#bgvid {
   top: 0;
   bottom: 0;
   overflow: hidden;
+  z-index: -1;
 }
 .map-content {
   text-align: left;
@@ -56,18 +57,18 @@ video#bgvid {
     text-shadow: 1px 1px 2px $blue;
     height: 82px;
     }
-  label {
+ .home-description label {
     clear:left;
-    text-align:right;
     padding-right:10px;
     color: white;
-    text-shadow: 1px 1px 2px $blue;
+    text-transform: uppercase;
     font-weight: lighter;
-    margin-top: 10px;
-    margin-bottom: 15px;
+     margin: 0;
+    font-size: 20px;
+    width: 100px;
+    text-align: left;
     }
   .form-control {
-    width: 15%;
     border: 0;
     outline: 0;
     background: transparent;
@@ -76,7 +77,6 @@ video#bgvid {
     border-radius: 0px;
     display: inline-block;
     vertical-align: middle;
-    height: 34px;
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
@@ -85,35 +85,45 @@ video#bgvid {
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     -webkit-appearance: none;
+    text-align-last:center;
+    font-size: 20px;
+
     }
 }
 
+#description{
+  margin-bottom: 40px;
+}
+
 .home-description {
-  margin-left: 45px
+  margin-left: 45px;
 }
 
 .btn-wekite {
   color: white;
-  background-color: transparent;
-  border: 1px solid white;
   padding: 5px 10px;
   border-radius: 4px;
   font-weight: lighter;
-  margin-top: 10px;
+  margin-top: 15px;
+  background: #002C6A;
+  width: 100%;
 }
+
 .btn-wekite:hover {
-  background-color: white;
-  opacity: 0.8;
   text-decoration: none;
-  color: grey;
+  color: white;
+  background: #002C6A;
+  opacity: 0.8;
 }
 .search-field {
-    width: 15%;
     border: 0;
     outline: 0;
     background: transparent;
     border-bottom: 1px solid white;
     color: white;
+    width: 100%;
+    text-align-last: center;
+    font-size: 20px;
 }
 .footer-home {
   /*margin-top: 30px;*/
@@ -155,6 +165,15 @@ video#bgvid {
     color: white;
   }
 
+.input-home{
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+  align-items: flex-end;
+}
+.form-wrapper{
+  width: 300px;
+}
 
 
 // Specific CSS for your home-page

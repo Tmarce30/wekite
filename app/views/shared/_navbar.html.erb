@@ -31,13 +31,18 @@
               <% end %>
             </li>
             <li>
+              <%= link_to user_favorites_path(current_user) do %>
+                <i class="fa fa-heart"></i><%= t(".favorites", default: " My favorites") %>
+              <% end %>
+            </li>
+            <li>
               <%= link_to new_spot_path do %>
                 <i class="fa fa-plus-circle"></i> <%= t(".add", default: "Add a spot") %>
               <% end %>
             </li>
             <li>
-              <%= link_to user_favorites_path(current_user) do %>
-                <i class="fa fa-heart"></i><%= t(".favorites", default: " My favorites") %>
+              <%= link_to edit_user_registration_path do %>
+                <i class="fa fa-user"></i><%= t(".edit_profile", default: "Edit my account") %>
               <% end %>
             </li>
             <li>
@@ -82,10 +87,9 @@
             </li>
       </ul>
     </div>
-  </div>
-      <% else %>
-      <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wekite-item navbar-wekite-link" %>
+  <% else %>
+    <!-- Login link (when logged out) -->
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wekite-item navbar-wekite-link" %>
     <% end %>
   </div>
 </div>

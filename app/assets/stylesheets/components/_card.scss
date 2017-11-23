@@ -1,20 +1,9 @@
 .card-body {
-  height: 241px;
+  height: 268px;
   width: 310px;
   background-size: cover !important;
   background-position: center;
   position: relative;
-}
-
-.card-body:hover {
-  text-decoration: none;
-  filter: saturate(50%);
-  .card-name {
-    opacity: 1;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-  }
 }
 
 .cards-container {
@@ -38,5 +27,23 @@
     top: -21px;
     left: -15px;
 }
+
+.weather-card {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  padding: 10px;
+  position: relative;
+  height: 44px;
+  align-items: center;
+}
+  .fa-sun-o:before {
+  color: black;
+  font-size: 34px;
+  }
+  .fa-flag:before {
+  color: black;
+  font-size: 34px;
+  }
 
 

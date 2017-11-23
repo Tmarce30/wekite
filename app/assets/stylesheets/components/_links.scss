@@ -11,3 +11,19 @@
 .change-btn {
   width: 100%;
 }
+.container-form {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(http://www.straplesskitesurfing.com/wp-content/uploads/2012/11/Arild-Kristiansen-looking-for-shade-in-Indonesia-illu-copie.jpg);
+  padding-top: 50px;
+  position: relative;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  color: white;
+}
+.forgot-password {
+  color: white;
+}

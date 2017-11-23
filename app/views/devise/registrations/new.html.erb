@@ -1,26 +1,36 @@
-<div class="container">
+<% content_for :meta_title, "Sign up" %>
+
+<div class="container-form">
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
       <h2>Sign up</h2>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
-
         <div class="form-inputs">
+          <div class="two-col">
           <%= f.input :first_name, required: true, autofocus: true %>
           <%= f.input :last_name, required: true %>
           <%= f.input :age, required: true %>
           <%= f.input :email, required: true %>
-          <%= f.input :description %>
-          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-          <%= f.input :password_confirmation, required: true %>
-          <%= f.input :avatar, as: :attachinary %>
-        </div>
-        <div class="form-actions-sign-up">
-          <%= f.button :submit, "Sign up", class: "btn btn-default change-btn" %>
-        </div>
-      <% end %>
+          </div>
 
-      <%= render "devise/shared/links" %>
-    </div>
+          <div class="two-col">
+          <%= f.input :password, required: true, placeholder: "#{@minimum_password_length} characters minimum" if @minimum_password_length %>
+          <%= f.input :password_confirmation, required: true %>
+          </div>
+          <div class="one-col">
+          <%= f.input :avatar, as: :attachinary %>
+          </div>
+          <div class="one-col form-group form-actions-sign-up text-center">
+          <%= f.button :submit, "Sign up", class: "btn btn-default change-btn" %>
+          <%- if devise_mapping.omniauthable? %>
+            <%- resource_class.omniauth_providers.each do |provider| %>
+              <%= link_to "Sign up with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "btn btn-default btn-#{provider}" %><br />
+            <% end -%>
+          <% end -%>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

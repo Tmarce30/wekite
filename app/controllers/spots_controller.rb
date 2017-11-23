@@ -41,7 +41,6 @@ class SpotsController < ApplicationController
     end
 
     # Weather
-
     @weather = @spot.weathers.where(date: params[:weather_date]).last
 
     @picture = Picture.new

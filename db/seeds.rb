@@ -1,66 +1,75 @@
 Spot.destroy_all
 
 spot = Spot.new(
-  name: 'Nabq Bay',
-  address: 'Nabq Bay, Sharm El Sheikh, South Sinai Egypt, 46627, Egypt',
-  description: "This beautiful beach town offers a riding area guarded by reefs, which create relatively shallow and flat waters, and the wind blows at least 20 knots on most days. The reef also means that the riding area is minimally affected by tides, giving you hours of uninterrupted play time.")
-spot.save!                "query": "Lat 23.72 and Lon -15.93"
-
-
-spot = Spot.new(
-  name: 'Nabq',
-  address: 'Peace Road, Nabq Bay, Sharm El Sheikh, Egypt',
-  description: "This beautiful beach town offers a riding area guarded by reefs, which create relatively shallow and flat waters, and the wind blows at least 20 knots on most days. The reef also means that the riding area is minimally affected by tides, giving you hours of uninterrupted play time.")
+  name: 'Saint-Laurent-du-Var',
+  address: '1819 Route du Bord de Mer 06700 Saint-Laurent-du-Var France',
+  description: "You'll find flatwater freeride conditions in Saint-Laurent-du-Var in an easterly or southeasterly when the airport shelters the estuary mouth from waves. Westerly/southwesterly mistral conditions are reserved for experienced riders as the airport and breakwaters become a hazard. A narrow beach lined with palm trees make launching and landing the kite challenging for beginners.
+  Access to the spot next to the Cap 3000 shopping centre and that's where you’ll find the best parking. You may need a thicker wetsuit here (or at least an extra mm) as the water from the Var estuary is colder than neighbouring spots.",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511448298/Screen_Shot_2017-11-23_at_8.43.35_AM_h3k1ck.png")
 spot.save!
 
 spot = Spot.new(
-  name: 'Grand Cayman',
-  address: '389 West Bay Road Seven Mile Beach, P.O. Box 30371  Grand Cayman  KY1 -1202  Cayman Islands',
-  description: "Grand Cayman has some of the best kiteboarding conditions in the world. The wind tends to be steady and warm, and the protected bays situated all over the island offer lots of room for experienced riders to cruise around and for beginners to build their skills.")
+  name: 'Lac de Serre-Ponçon',
+  address: "Office de Tourisme d'Embrun Place Gén Dosse 05200 Embrun France",
+  description: "With its ultra-reliable wind, warm water and spectacular setting, the huge Lac de Serre Ponçon is a viable alternative to the Mediterranean for kitesurfers in the South of France. The best time of year to kitesurf in Serre Poncon is between March and July. The mornings are calm and the lake is like a bottle – perfect for wakeboarding or supping.",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511449168/Screen_Shot_2017-11-23_at_8.42.56_AM_dehmsx.png")
 spot.save!
 
 spot = Spot.new(
-  name: 'Maui',
-  address: '3550 Wailea Alanui Dr, Wailea, Maui, HI 96753-9518',
-  description: "Maui is arguably the best known kiteboarding destination in the world, and Kite Beach is probably the best place to experience all that Maui has to offer. The beautiful tropical beach has clean, warm water, steady trade winds, long stretches of calm water, and gentle waves for more experienced riders.")
+  name: 'Presqu’île de Giens',
+  address: "Office de Tourisme d'Hyères Rotonde du Park Hôtel Avenue de Belgique, 83400 Hyères France",
+  description: "In a south westerly or if the Mistral is blowing, l’Alamanarre is onshore with waves the whole length of the beach. In an easterly, the water’s completely flat. These are the two best conditions for the spot. You just need to be confident up-wind if you're heading out in an easterly as this is offshore. Mistral conditions can produce some powerful gusts, but you know you can always get back to the beach.",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511449168/Screen_Shot_2017-11-23_at_8.42.37_AM_uhgotq.png")
 spot.save!
 
 spot = Spot.new(
-  name: 'Calamianes Island',
-  address: 'Sandiwa, Tiniguiba, Puerto Princesa City, Puerto Princesa City, 5300 Palawan, Philippines',
-  description: "The unspoiled tranquility of the Calamines Islands may be a plane and a boat ride away, but the perfect and uncrowded kitesurfing conditions make the extra effort worth it. The secluded area has conditions for every skill level: open water chop or silky smooth water all surrounded by unspoiled beauty.")
+  name: 'La Ciotat',
+  address: "Office de Tourisme de La Ciotat Boulevard Anatole France 13600 La Ciotat France",
+  description: "Superb spot in a strong southerly wind with some nice waves in front of the breakwaters. You need to be confident launching, landing and staying upwind as the road runs parallel to the beach and there’s not a lot of room to set up. Kitesurfing’s banned within 300 m of the beach during the summer holiday season, but local kitesurf schools can provide boat support.",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511449168/Screen_Shot_2017-11-23_at_8.42.21_AM_hfsghf.png")
 spot.save!
 
 spot = Spot.new(
-  name: 'Jupiter',
-  address: '18903 SE Federal Hwy, Jupiter, FL 33469-1715',
-  description: "This beach town sits on the southeast coast of Florida, and the water here offers everything from glossy flat water to big swells for the advanced riders. Head down to the part of Juno Beach appropriately named Kite Beach and get ready to launch.")
+  name: 'L’Etang de Berre',
+  address: "Office de Tourisme de Marignane Cours Mirabeau 13700 Marignane France",
+  description: "You’re almost guaranteed a good kitesurfing session at L’Etang de Berre because the wind will blow here from multiple directions. It’s a lagoon, so it’s popular with beginners and it’s the spot to head to if the Med gets too rough. Le Jaï beach is a spit of sand that stretches for 5 km from Marignane to Châteauneuf-les-Martigues dividing the Etang de Berre from the Etang de Bolmon nature reserve. Kiting is restricted to the Etang de Berre side.",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511449168/Screen_Shot_2017-11-23_at_8.42.00_AM_n1f6if.png")
 spot.save!
 
 spot = Spot.new(
-  name: 'Tarifa',
-  address: 'Calle Sancho IV El Bravo 16 | La Calzada, 11380 Tarifa, Spain',
-  description: "Tarifa has grown in to the most popular meccas for kitesurfing in Europe, and with nearly 300 days of wind and sun every year, it’s easy to see why. The area is full of great beaches for kitesurfing (try Los Lances or Valdevaqueros), and the Strait of Gibraltar forms the ideal wind tunnel to bring consistent winds year round. ")
+  name: 'Carro',
+  address: "Office de Tourisme de Martigues Rond-point de l’Hôtel-de-Ville 13500 Martigues France",
+  description: "The spot's location at the far end of a rocky point also means that there's some current to be aware of. A buoy marks the entrance to the harbour and makes a good marker when you're tracking off-shore. When the conditions line up, the best kitesurfers can have an epic session. Launching and landing a kite along the rocky shore is a precarious operation.",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511464626/Mauritius---Beaches---Tropical-beach-xlarge_ue299o.jpg")
 spot.save!
 
 spot = Spot.new(
-  name: 'Cumbuco',
-  address: 'Rua das Cavalas 6, Cumbuco, Caucaia, State of Ceara, Brazil',
-  description: "The fact that the beaches in Cumbuco are a popular training spot for kiteboarding pros is just the first sign that this Brazilian fishing village offers prime kiteboarding conditions. The beach here is 6 Kilometers long, giving everyone plenty of space to enjoy the strong and consistent winds, the shallow, flat lagoon, and the small breaking waves just off the shore.")
+  name: 'Beauduc',
+  address: "Office de Tourisme de Salin-de-Giraud Mairie annexe Boulevard de la Gare, 13129 Salin-de-Giraud France",
+  description: "Beauduc’s u-shaped bay, reliable south-westerly thermal and consistent northerly Mistral means you can kite in almost any wind direction. Only a straight easterly blows directly off-shore. Low lying land across the salt flats means the wind is uninterrupted and not too gusty. The Mistral blows cross-shore and will kick up some small waves if it’s blowing with enough force, which it often is.",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511449168/Screen_Shot_2017-11-23_at_8.39.32_AM_pe4pxb.png")
 spot.save!
 
 spot = Spot.new(
-  name: 'Cabarete',
-  address: 'Apartado Postal 337, Cabarete, Dominican Republic',
-  description: "If you have a kiteboarding bucket list, a trip to Cabarete should definitely be on it. The beaches in the area are protected by a reef, which means silky smooth water inside the reef and breaking waves just outside. Cabarete Beach is perfect for beginning or advanced riders and La Policia Beach serves up beautiful breaking waves for a more difficult ride.")
+  name: 'L’Espiguette',
+  address: "Office de Tourisme du Grau-du-Roi 30 Rue Michel Redares 30240 Le Grau-du-Roi France",
+  description: "L’Espiguette is an excellent spot with straightforward kiting conditions and plenty of space along the 10 km beach. Being an official kite zone, it can get busy in the summer. L’Espiguette is ideal for kitesurfing. The beach is immense with no obstructions making it suitable for kitesurfers of all abilities. The beach is 10 km long and 6-700 m wide; plenty of space to rig up and get to grips with flying your kite.",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511464626/iledeporquerolles_xv9sa9.jpg")
 spot.save!
 
 spot = Spot.new(
-  name: 'La Ventana',
-  address: 'Calle Salome Lucero S/N, 23232 La Ventana, B.C.S., Mexico',
-  description: "Baja California Sur's beautiful town of La Ventana is consistently rated as one of the best places for kiteboarding. Visitors can enjoy warm water and great wind from fall through spring, making it a great stop for winter breakers and spring breakers alike looking to learn how to kiteboard as well as experts looking to practice or show off.")
+  name: 'Etang de Thau',
+  address: "Office de tourisme de Sète 60, Grande Rue Mario Roustan 34200 Sète",
+  description: "Pont Levis at the Sète end of the Etang de Thau is regarded as one of the top spots around Montpellier. The spot works in multiple wind directions and apart from the centre of the lagoon where there's some chop, the water's perfectly flat. You can kite safely if every wind direction except easterly when the Mont St Clair becomes a hazard. In a north-westerly, it's directly on-shore, so you need to be confident as there numerous hazards into the wind, which is generally pretty strong.",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511464626/adr832-waterfront-property-rayol-canadel-var-south-of-france-private-access-to-the-beach-00000523-00005873-lg_bdsssl.jpg")
 spot.save!
 
+spot = Spot.new(
+  name: 'Leucate-La Franqui',
+  address: "Office de tourisme de Leucate Espace Henry de Monfreid Port Leucate, 11370 Leucate France",
+  description: "Les Coussoules is recognised as one of the best kitesurfing spots in Europe. The super-reliable Tramontana wind provides superb conditions for wind sports and it's here that the annual 'Mondial du Vent' takes place. There are spots for every level of rider and there's loads of variety - cruising, freeride, freestyle, whatever you're into.",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511449167/Screen_Shot_2017-11-23_at_8.38.51_AM_i5ooyt.png")
+spot.save!
 # Adding photos to spots
 spots = Spot.all
 
