@@ -11,9 +11,7 @@
           <%= f.input :age, required: true %>
           <%= f.input :email, required: true %>
           </div>
-          <div class="one-col">
-          <%= f.input :description %>
-          </div>
+
           <div class="two-col">
           <%= f.input :password, required: true, placeholder: "#{@minimum_password_length} characters minimum" if @minimum_password_length %>
           <%= f.input :password_confirmation, required: true %>
