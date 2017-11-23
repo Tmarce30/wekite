@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+  <div>
+    <% if @favorite.id.nil? %>
+      <%= simple_form_for [@spot, @favorite] do |f| %>
+        <%= f.button :submit, class: "btn fa-heart" %>
+      <% end %>
+    <% else %>
+      <%= link_to "Delete", favorite_path(@favorite, :redirect_url => spot_path(@spot)), class: "btn btn-danger", method: :delete %>
+    <% end %>
+  </div>
+<% else %>
+    <%= simple_form_for [@spot, @favorite] do |f| %>
+      <%= f.button :submit, class: "btn fa-heart" %>
+    <% end %>
+<% end %>
