@@ -1,6 +1,6 @@
 <!-- Spot Banner -->
 
-<div class="spot-pic">
+<div class="spot-pic col-xs-12">
   <div class="spot-picture" style="background-image: linear-gradient(rgba(100,10,110,0.2), rgba(100,10,110,0.2)), url('<%= cl_image_path @spot.avatar.path %>')">
     <!-- Adding spot to favorites -->
       <div class="button-heart"><%= render "favorites" %></div>
@@ -8,10 +8,11 @@
 </div>
 
 
-<div class="container">
+<div class="container justify-content-between">
 
-  <div class="info-container">
-    <div class="left-side">
+  <div class="row">
+
+    <div class="left-side col-xs-12 col-sm-7 col-lg-7">
 
       <div class="spot-infos">
         <!-- Spot Infos -->
@@ -68,8 +69,8 @@
       </div>
     </div>
 
-    <!-- Spot weather -->
-    <div class="fixed-box">
+    <!-- Right block -->
+    <div class="fixed-box col-xs-12 col-sm-5 col-lg-5">
       <!-- Cheking in -->
       <% if user_signed_in? %>
         <div class="checkins">
@@ -126,6 +127,9 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
      $(document).on('ready', function(){
+      $("#checkin-date").select(function(){
+        console.log($(this).val());
+    });
       $('.feature-rating').rating({
           size:'xs',
           step: 1,
