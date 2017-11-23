@@ -77,13 +77,17 @@
           <% if @checkin.id.nil? %>
             <%= simple_form_for [@spot, @checkin] do |f| %>
               <%# f.input :date %>
-              <%= f.input :date, label:false, collection: @possible_dates, selected: @possible_dates[0] %>
-              <%= render "weather" %>
+              <%= f.input :date, label:false, collection: @possible_dates, selected: params[:weather_date].to_date.strftime("%A, %b %d") %>
+              <div id="weather-wrapper">
+                <%= render 'weather', weather: @weather %>
+              </div>
               <%= f.button :submit, "Checkin", class: "btn-blue" %>
             <% end %>
           <% else %>
             <%= @checkin.date.strftime("%A, %b %d") %>
-            <div class="weather-box"><%= render "weather" %></div>
+            <div id="weather-wrapper">
+              <%= render 'weather', weather: @weather  %>
+            </div>
             <%= link_to "Checkout", checkin_path(@checkin), class: "btn btn-danger", method: :delete %>
           <% end %>
         </div>
@@ -91,7 +95,9 @@
         <div class="checkins">
           <%= simple_form_for [@spot] do |f| %>
             <%= f.input :date, label:false, collection: @possible_dates, selected: @possible_dates[0] %>
-            <%= render "weather" %>
+          <div id="weather-wrapper">
+            <%= render 'weather', weather: @weather %>
+          </div>
           <% end %>
         </div>
       <% end %>
@@ -127,9 +133,17 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
      $(document).on('ready', function(){
-      $("#checkin-date").select(function(){
-        console.log($(this).val());
-    });
+      function getWeather(){
+       console.log($(this).val());
+       let data = { weather_date: $(this).val()}
+       let url = "/spots/"+ <%= @spot.id %> + "/get_spot_weather"
+       $.ajax({
+        url: url,
+        data,
+        type: "GET"
+        })
+      };
+      document.getElementById("checkin_date").addEventListener("change",getWeather);
       $('.feature-rating').rating({
           size:'xs',
           step: 1,

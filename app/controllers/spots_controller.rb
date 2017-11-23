@@ -5,6 +5,7 @@ class SpotsController < ApplicationController
 
   def index
     @spots = Spot.near(params["address"], 2000)
+    @date = params[:date]
 
     @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
       marker.lat spot.latitude
@@ -21,7 +22,6 @@ class SpotsController < ApplicationController
   end
 
   def show
-
     # Favorites
 
     if current_user
@@ -42,7 +42,7 @@ class SpotsController < ApplicationController
 
     # Weather
 
-    @weather = Weather.where(spot_id: @spot.id, date: "2017-11-23").last
+    @weather = @spot.weathers.where(date: params[:weather_date]).last
 
     @picture = Picture.new
     @review = Review.new
@@ -77,6 +77,15 @@ class SpotsController < ApplicationController
   end
 
   def edit
+  end
+
+  def get_spot_weather
+    weather_date = params[:weather_date].to_date.strftime("%Y-%m-%e")
+    @spot = Spot.find(params[:spot_id])
+    @weather = Weather.where(spot_id: @spot.id, date: weather_date).last
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

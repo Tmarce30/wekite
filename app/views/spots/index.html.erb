@@ -4,9 +4,9 @@
     </div>
     <div class="filters">
       <%= form_tag(spots_path, method: :get) do %>
-        <label>Where</label><%= text_field_tag :address, nil, class: "filter-search", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
+        <label>Where</label><%= text_field_tag :address, params[:address], class: "filter-search", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
         <label>When</label>
-          <%= select_tag(:date, options_for_select(@possible_dates), {:class => 'date'}) %><br>
+          <%= select_tag(:date, options_for_select(@possible_dates, params[:date]), {:class => 'date'}) %><br>
         <%= submit_tag("Go", class: "btn btn-wekite" )%>
       <% end %>
       </div>
@@ -22,27 +22,26 @@
               <div class="fa fa-star-half-o" ></div>
             <% end %>
             </div>
-          <%= link_to spot_path(spot) do %>
-          <% if  spot.avatar? %>
-            <div class="card-body" >
-              <span class="card-name text-center"><%= spot.name %></span>
-            </div>
-          <% else %>
-            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= image_path 'http://lorempixel.com/400/200/' %>')">
-              <span class="card-name">
-                <%= spot.name %>
-              </span>
-            </div>
+          <%= link_to spot_path(spot, weather_date: params[:date]), id: spot.id do %>
+            <% if spot.avatar? %>
+              <div class="card-body" >
+                <span class="card-name text-center"><%= spot.name %></span>
+              </div>
+            <% else %>
+              <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= image_path 'http://lorempixel.com/400/200/' %>')">
+                <span class="card-name">
+                  <%= spot.name %>
+                </span>
+              </div>
+            <% end %>
           <% end %>
-          <% end %>
+          <div id="weather-wrapper">
+            <%= render partial: "weather", object: spot.weathers.where(date: @date).last %>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
-  <div class="weather-card">
-      <div class="fa fa-sun-o"></div>
-      <p>25°</p>
-    </div>
   <div class="arrow">
     <div class="arrows-direction">
       <a href="#" id="carousel-back" class="carousel-nav fa fa-angle-left"></a>
@@ -59,9 +58,30 @@
 
 <% content_for(:after_js) do %>
   <script>
+    document.getElementById("date").addEventListener("change",changeDate);
+    function changeDate(){
+     console.log($(this).val());
+      <% @spots.each do |spot| %>
+        $("#<%= spot.id %>").attr("href", "/spots/" + <%= spot.id %> + "?weather_date=" + $(this).val())
+      <% end %>
+    };
 
   var markers;
     $( document ).ready( function() {
+      function getWeather(){
+
+       console.log($(this).val());
+
+       let data = { weather_date: $(this).val()}
+
+       $.ajax({
+        url: "/spots/" + <%= @spots.first.id %>,
+        data,
+        type: "GET"
+        });
+     }
+      document.getElementById("date").addEventListener("change",getWeather);
+
       $(".main-card").hide();
       $(".main-card").first().show();
       let current_card = $(".main-card").first();

@@ -1,5 +1,5 @@
 <div class="average-reviews">
-  <div class="lef-review">
+  <div class="row col-xs-12 col-sm-6 col-lg-6">
     <div class="review-spot level-stars">
       <h5>Level</h5>
       <% @spot.level_average_rating.to_i.times do %>
@@ -19,7 +19,7 @@
       <% end %>
     </div>
   </div>
-  <div class="row col-xs-12 col-sm-7 col-lg-7">
+  <div class="row col-xs-12 col-sm-6 col-lg-6">
     <div class="review-spot ambience-stars">
       <h5>Ambience</h5>
       <% @spot.ambience_average_rating.to_i.times do %>
