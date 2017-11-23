@@ -23,6 +23,10 @@
 
         <h3 class="reviews-title">Reviews</h3>
 
+        <!-- Rewiews average -->
+
+        <%= render "reviews_average" %>
+
         <!-- Add a review button -->
 
         <button data-target="#myModal" data-toggle="modal" class="btn-white">
@@ -47,11 +51,11 @@
                   <h6><%= review.created_at.strftime("%B %Y") %></h6>
                 </div>
               </div>
-              <div class="review spot-stars">
-                <% @spot.average_calc.to_i.times do %>
+              <div class="review-spot spot-stars">
+                <% review.total_rating.to_i.times do %>
                   <div class="fa fa-star" ></div>
                 <% end %>
-                <% if @spot.average_calc - @spot.average_calc.to_i > 0.25 %>
+                <% if review.total_rating - review.total_rating.to_i > 0.25 %>
                   <div class="fa fa-star-half-o" ></div>
                 <% end %>
               </div>
