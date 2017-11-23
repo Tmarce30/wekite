@@ -60,7 +60,13 @@
 
 <% content_for(:after_js) do %>
   <script>
-
+   document.getElementById("date").addEventListener("change",changeDate);
+   function changeDate(){
+     console.log($(this).val());
+      <% @spots.each do |spot| %>
+        $("#<%= spot.id %>").attr("href", "/spots/" + <%= spot.id %> + "?weather_date=" + $(this).val())
+      <% end %>
+    };
 
   var markers;
     $( document ).ready( function() {
