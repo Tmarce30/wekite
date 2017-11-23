@@ -37,14 +37,17 @@
 }
 
 
-.btn-wekite {
-  color: #999999;
-  border: 1px solid #999999;
+.btn-wekite-index {
   padding: 10px 15px;
-  border-radius: 8px;
-  font-weight: lighter;
   position: relative;
   left: 115px;
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: lighter;
+  margin-top: 10px;
 }
 .btn-wekite:hover {
   opacity: 0.8;
