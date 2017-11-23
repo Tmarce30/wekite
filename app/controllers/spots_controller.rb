@@ -42,7 +42,7 @@ class SpotsController < ApplicationController
 
     # Weather
 
-    @weather = Weather.where(spot_id: @spot.id, date: "2017-11-22").last
+    @weather = Weather.where(spot_id: @spot.id, date: "2017-11-23").last
 
     @picture = Picture.new
     @review = Review.new
