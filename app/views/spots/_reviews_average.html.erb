@@ -1,0 +1,42 @@
+<div class="average-reviews">
+  <div class="row col-xs-12 col-sm-6 col-lg-6">
+    <div class="review-spot level-stars">
+      <h5>Level</h5>
+      <% @spot.level_average_rating.to_i.times do %>
+        <div class="fa fa-star" ></div>
+      <% end %>
+      <% if @spot.level_average_rating - @spot.level_average_rating.to_i > 0.25 %>
+        <div class="fa fa-star-half-o" ></div>
+      <% end %>
+    </div>
+    <div class="review-spot environment-stars">
+      <h5>Environment</h5>
+      <% @spot.environment_average_rating.to_i.times do %>
+        <div class="fa fa-star" ></div>
+      <% end %>
+      <% if @spot.environment_average_rating - @spot.environment_average_rating.to_i > 0.25 %>
+        <div class="fa fa-star-half-o" ></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row col-xs-12 col-sm-6 col-lg-6">
+    <div class="review-spot ambience-stars">
+      <h5>Ambience</h5>
+      <% @spot.ambience_average_rating.to_i.times do %>
+        <div class="fa fa-star" ></div>
+      <% end %>
+      <% if @spot.ambience_average_rating - @spot.ambience_average_rating.to_i > 0.25 %>
+        <div class="fa fa-star-half-o" ></div>
+      <% end %>
+    </div>
+    <div class="review-spot access-stars">
+      <h5>Access</h5>
+      <% @spot.access_average_rating.to_i.times do %>
+        <div class="fa fa-star" ></div>
+      <% end %>
+      <% if @spot.access_average_rating - @spot.access_average_rating.to_i > 0.25 %>
+        <div class="fa fa-star-half-o" ></div>
+      <% end %>
+    </div>
+  </div>
+</div>

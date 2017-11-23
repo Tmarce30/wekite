@@ -23,6 +23,7 @@ devise_for :users,
     resources :favorites, only: [:create]
     resources :pictures, only: [:create]
     resources :weathers, only: [:create]
+    get 'get_spot_weather', to: 'spots#get_spot_weather', as: :get_spot_weather
   end
 
   mount Attachinary::Engine => "/attachinary"

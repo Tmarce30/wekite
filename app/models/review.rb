@@ -8,5 +8,9 @@ class Review < ApplicationRecord
   validates :environment_rating, presence: true
   validates :ambience_rating, presence: true
   validates :access_rating, presence: true
+
+  def total_rating
+    total_rating = (level_rating + environment_rating + ambience_rating + access_rating).to_f / 4
+  end
 end
 

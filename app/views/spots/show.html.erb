@@ -2,7 +2,7 @@
 <% content_for :meta_description, @spot.description %>
 <% content_for :meta_image, cloudinary_url(@spot.avatar.path) %>
 
-<div class="spot-pic">
+<div class="spot-pic col-xs-12">
   <div class="spot-picture" style="background-image: linear-gradient(rgba(100,10,110,0.2), rgba(100,10,110,0.2)), url('<%= cl_image_path @spot.avatar.path %>')">
     <!-- Adding spot to favorites -->
       <div class="button-heart"><%= render "favorites" %></div>
@@ -10,10 +10,11 @@
 </div>
 
 
-<div class="container">
+<div class="container justify-content-between">
 
-  <div class="info-container">
-    <div class="left-side">
+  <div class="row">
+
+    <div class="left-side col-xs-12 col-sm-7 col-lg-7">
 
       <div class="spot-infos">
         <!-- Spot Infos -->
@@ -21,45 +22,84 @@
         <p class="spot-description"><%= @spot.description %></p>
       </div>
 
-      <!-- Review form -->
+      <div class="reviews">
 
-      <%= render "reviews" %>
+        <h3 class="reviews-title">Reviews</h3>
 
-      <!-- Reviews display -->
+        <!-- Rewiews average -->
 
-      <div>
-        <% @spot.reviews.each do |review| %>
-          <p><%= review.level_rating %></p>
-          <p><%= review.environment_rating %></p>
-          <p><%= review.ambience_rating %></p>
-          <p><%= review.access_rating %></p>
-          <p><%= review.comment %></p>
-        <% end %>
+        <%= render "reviews_average" %>
+
+        <!-- Add a review button -->
+
+        <button data-target="#myModal" data-toggle="modal" class="btn-white">
+        Add a review
+        </button>
+
+        <!-- Review form -->
+
+        <%= render "reviews" %>
+
+        <!-- Reviews display -->
+
+        <div class="reviews-display">
+          <% @spot.reviews.each do |review| %>
+            <div class="each-review">
+              <img src="<%= cl_image_path review.user.avatar.path %>" class="avatar-review">
+              <div class="user-name">
+                <div>
+                  <h5><%= review.user.first_name %></h5>
+                </div>
+                <div>
+                  <h6><%= review.created_at.strftime("%B %Y") %></h6>
+                </div>
+              </div>
+              <div class="review-spot spot-stars">
+                <% review.total_rating.to_i.times do %>
+                  <div class="fa fa-star" ></div>
+                <% end %>
+                <% if review.total_rating - review.total_rating.to_i > 0.25 %>
+                  <div class="fa fa-star-half-o" ></div>
+                <% end %>
+              </div>
+              <div class="review-comment">
+                <p><%= review.comment %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
-
-      <!-- Add a review button -->
-
-      <button data-target="#myModal" data-toggle="modal" class="btn btn-danger">
-      Review
-      </button>
     </div>
 
-    <!-- Spot weather -->
-    <div class="fixed-box">
+    <!-- Right block -->
+    <div class="fixed-box col-xs-12 col-sm-5 col-lg-5">
       <!-- Cheking in -->
       <% if user_signed_in? %>
         <div class="checkins">
           <% if @checkin.id.nil? %>
             <%= simple_form_for [@spot, @checkin] do |f| %>
               <%# f.input :date %>
-              <%= f.input :date, label:false, collection: @possible_dates, selected: @possible_dates[0] %>
-              <%= render "weather" %>
+              <%= f.input :date, label:false, collection: @possible_dates, selected: params[:weather_date].to_date.strftime("%A, %b %d") %>
+              <div id="weather-wrapper">
+                <%= render 'weather', weather: @weather %>
+              </div>
               <%= f.button :submit, "Checkin", class: "btn-blue" %>
             <% end %>
           <% else %>
             <%= @checkin.date.strftime("%A, %b %d") %>
-            <div class="weather-box"><%= render "weather" %></div>
+            <div id="weather-wrapper">
+              <%= render 'weather', weather: @weather  %>
+            </div>
             <%= link_to "Checkout", checkin_path(@checkin), class: "btn btn-danger", method: :delete %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="checkins">
+          <%= simple_form_for [@spot] do |f| %>
+            <%= f.input :date, label:false, collection: @possible_dates, selected: @possible_dates[0] %>
+          <div id="weather-wrapper">
+            <%= render 'weather', weather: @weather %>
+          </div>
           <% end %>
         </div>
       <% end %>
@@ -76,7 +116,7 @@
     <% end %>
     <% @spot.pictures.each do |picture| %>
       <% picture.photos.each do |photo| %>
-          <p><%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %></p>
+          <%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %>
       <% end %>
     <% end %>
   </div>
@@ -94,8 +134,18 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-  <script>
      $(document).on('ready', function(){
+      function getWeather(){
+       console.log($(this).val());
+       let data = { weather_date: $(this).val()}
+       let url = "/spots/"+ <%= @spot.id %> + "/get_spot_weather"
+       $.ajax({
+        url: url,
+        data,
+        type: "GET"
+        })
+      };
+      document.getElementById("checkin_date").addEventListener("change",getWeather);
       $('.feature-rating').rating({
           size:'xs',
           step: 1,
@@ -200,5 +250,4 @@
 
     });
   <% end %>
-  </script>
 <% end %>
