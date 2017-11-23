@@ -1,4 +1,8 @@
 <!-- Spot Banner -->
+<% @title = "#{@spot.name}" %>
+<% content_for :meta_title, "#{@spot.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @spot.description %>
+<% content_for :meta_image, cloudinary_url(@spot.photo.path) %>
 
 <div class="spot-pic">
   <div class="spot-picture" style="background-image: linear-gradient(rgba(100,10,110,0.2), rgba(100,10,110,0.2)), url('<%= cl_image_path @spot.avatar.path %>')">
