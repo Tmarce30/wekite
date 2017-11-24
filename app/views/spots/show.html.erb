@@ -24,7 +24,7 @@
 
       <div class="reviews">
 
-        <h3 class="reviews-title">Reviews</h3>
+        <h3 class="reviews-title">Reviews : &emsp; <%= @spot.reviews.count %></h3>
 
         <!-- Rewiews average -->
 
@@ -136,15 +136,19 @@
       <% end %>
     </div>
     <%= simple_form_for @picture do |f| %>
-    <%= f.input :photos, label: false, as: :attachinary %>
-    <%= f.input :spot_id, as: :hidden, input_html: {value: @spot.id} %>
-    <%= f.button :submit, 'Add your photo' %>
+    <div style="margin-top: 20px;">
+      <%= f.input :photos, label: false, as: :attachinary %>
+      <%= f.input :spot_id, as: :hidden, input_html: {value: @spot.id} %>
+    </div>
+    <div style="margin-bottom: 20px;">
+      <%= f.button :submit, 'Add your photo' %>
+    </div>
     <% end %>
   </div>
 
   <!-- Google map -->
 
-  <div id="map" style="width: 100%; height: 600px;"></div>
+  <div id="map" style="width: 100%; height: 600px; margin-bottom: 40px;"></div>
 </div>
 
 
@@ -177,6 +181,15 @@
         "stylers": [
             {
                 "color": "#444444"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.country",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "on"
             }
         ]
     },
@@ -242,7 +255,7 @@
         "elementType": "all",
         "stylers": [
             {
-                "color": "#002C6A"
+                "color": "#8AACFF"
             },
             {
                 "visibility": "on"
