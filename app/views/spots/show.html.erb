@@ -81,14 +81,14 @@
               <%# f.input :date %>
               <%= f.input :date, label:false, collection: @possible_dates, selected: @date.to_date.strftime("%A, %b %d"), input_html: { id: "selected-date" }  %>
               <div id="spot-<%= @spot.id %>">
-                <%= render 'weather', weather: @weather %>
+                <%= render 'shared/weather', weather: @weather %>
               </div>
               <%= f.button :submit, "Going", class: "btn-blue" %>
             <% end %>
           <% else %>
             <%= @checkin.date.strftime("%A, %b %d") %>
             <div id="spot-<%= @spot.id %>">
-              <%= render 'weather', weather: @weather  %>
+              <%= render 'shared/weather', weather: @weather  %>
             </div>
             <%= link_to "Checkout", checkin_path(@checkin), class: "btn btn-danger", method: :delete %>
           <% end %>
@@ -98,7 +98,7 @@
           <%= simple_form_for [@spot] do |f| %>
             <%= f.input :date, label:false, collection: @possible_dates, selected: @date.to_date.strftime("%A, %b %d"), input_html: { id: "selected-date" } %>
             <div id="spot-<%= @spot.id %>">
-              <%= render 'weather', weather: @weather %>
+              <%= render 'shared/weather', weather: @weather %>
             </div>
             <%= f.button :submit, "Going", class: "btn-blue" %>
           <% end %>

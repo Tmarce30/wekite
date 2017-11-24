@@ -32,11 +32,12 @@
  </div>
 
 <div class="row">
-  <div class="col-xs-12">
     <% current_user.checkins.each do |checkin| %>
-
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <% @date =  checkin.date.to_date.strftime("%Y-%m-%e") %>
+        <%= render 'spots/spot_card', spot: checkin.spot %>
+      </div>
     <% end %>
-  </div>
 </div>
 
  <div class="row">
@@ -105,7 +106,6 @@ $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to th
 function initMap() {
 var map = new google.maps.Map(document.getElementById('map'), {
 zoom: 2,
-style: styles,
 center: {lat: <%= 0 %>, lng: <%= 0 %>},
 mapTypeId: google.maps.MapTypeId.TERRAIN
 });
