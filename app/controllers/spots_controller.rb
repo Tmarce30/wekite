@@ -68,6 +68,7 @@ class SpotsController < ApplicationController
     @spot = Spot.new(spot_params)
     @spot.user = current_user
     if @spot.save
+      GetWeatherInfo.get_weather(@spot.id)
       redirect_to spot_path(@spot)
     else
       render :new
