@@ -79,15 +79,15 @@
           <% if @checkin.id.nil? %>
             <%= simple_form_for [@spot, @checkin] do |f| %>
               <%# f.input :date %>
-              <%= f.input :date, label:false, collection: @possible_dates, selected: params[:weather_date].to_date.strftime("%A, %b %d") %>
-              <div id="weather-wrapper">
+              <%= f.input :date, label:false, collection: @possible_dates, selected: @date.to_date.strftime("%A, %b %d") %>
+              <div id="spot-<%= @spot.id %>">
                 <%= render 'weather', weather: @weather %>
               </div>
               <%= f.button :submit, "Checkin", class: "btn-blue" %>
             <% end %>
           <% else %>
             <%= @checkin.date.strftime("%A, %b %d") %>
-            <div id="weather-wrapper">
+            <div id="spot-<%= @spot.id %>">
               <%= render 'weather', weather: @weather  %>
             </div>
             <%= link_to "Checkout", checkin_path(@checkin), class: "btn btn-danger", method: :delete %>
@@ -96,8 +96,8 @@
       <% else %>
         <div class="checkins">
           <%= simple_form_for [@spot] do |f| %>
-            <%= f.input :date, label:false, collection: @possible_dates, selected: params[:weather_date].to_date.strftime("%A, %b %d") %>
-          <div id="weather-wrapper">
+            <%= f.input :date, label:false, collection: @possible_dates, selected: @date.to_date.strftime("%A, %b %d") %>
+          <div id="spot-<%= @spot.id %>">
             <%= render 'weather', weather: @weather %>
           </div>
           <% end %>
@@ -145,7 +145,8 @@
         type: "GET"
         })
       };
-      document.getElementById("spot_date").addEventListener("change",getWeather);
+      document.getElementById("checkin_date").addEventListener("change",getWeather);
+
       $('.feature-rating').rating({
           size:'xs',
           step: 1,

@@ -1,4 +1,2 @@
-console.log("hello");
-
-document.getElementById("weather-wrapper").innerHTML = "<%= j render 'weather', weather: @weather %>"
+document.getElementById("spot-<%= @spot.id %>").innerHTML = "<%= j render 'weather', weather: @weather %>"
 

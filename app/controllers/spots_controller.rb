@@ -5,7 +5,13 @@ class SpotsController < ApplicationController
 
   def index
     @spots = Spot.near(params["address"], 2000)
-    @date = params[:date]
+
+    if @spots.empty?
+      @spots = Spot.all
+    end
+
+
+    @address = params["address"]
 
     @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
       marker.lat spot.latitude
@@ -19,6 +25,7 @@ class SpotsController < ApplicationController
       date = (Date.today + offset)
       @possible_dates << [date.strftime("%A, %b %d"), date]
     end
+    @date = params[:date] || @possible_dates[0][1]
   end
 
   def show
@@ -39,9 +46,6 @@ class SpotsController < ApplicationController
       @checkin = Checkin.new
     end
 
-    # Weather
-    @weather = @spot.weathers.where(date: params[:weather_date]).last
-
     @picture = Picture.new
     @review = Review.new
     @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
@@ -49,6 +53,11 @@ class SpotsController < ApplicationController
       marker.lng spot.longitude
     end
     @possible_dates = build_possible_dates
+
+    @date = params[:weather_date] || @possible_dates[0]
+
+    # Weather
+    @weather = @spot.weathers.where(date: @date.to_date).last
   end
 
   def new

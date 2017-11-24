@@ -3,18 +3,15 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = find_spot_picture(params[:picture][:spot_id])
     @spot = Spot.find(params[:picture][:spot_id])
-    if @picture == []
-      @picture = Picture.new(picture_params)
-      @picture.user = current_user
-      if @picture.save
-        redirect_to spot_path(@spot)
-      else
-        render spot_path(@spot)
-      end
+
+    @picture = Picture.new(picture_params)
+    @picture.user = current_user
+
+    if @picture.save
+      redirect_to spot_path(@spot)
     else
-      @picture.update(picture_params)
+      render spot_path(@spot)
     end
   end
 

@@ -15,7 +15,7 @@
             <label>When</label>
             <%= select_tag(:date, options_for_select(@possible_dates), {:class => 'form-control'}) %>
           </div>
-          <%= submit_tag("SPOT IT", :class => "btn btn-wekite" )%>
+          <input type="submit" class="btn btn-wekite" data-disable-with="Go" value="SPOT IT">
         <% end %>
       </div>
     </div>
