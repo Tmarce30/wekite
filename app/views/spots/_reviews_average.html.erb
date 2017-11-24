@@ -1,54 +1,56 @@
-<div class="average-reviews">
-  <div class="row col-xs-12 col-sm-6 col-lg-6">
-    <div class="review-side left">
-      <div class="reviews-title">
-        <h5 class="top-title">Level</h5>
-        <h5 class="bottom-title">Environment</h5>
-      </div>
-      <div class="review-stars">
-        <div class="review-spot level-stars">
-          <% @spot.level_average_rating.to_i.times do %>
-            <div class="fa fa-star" ></div>
-          <% end %>
-          <% if @spot.level_average_rating - @spot.level_average_rating.to_i > 0.25 %>
-            <div class="fa fa-star-half-o" ></div>
-          <% end %>
+<% unless @spot.reviews.count == 0 %>
+  <div class="average-reviews">
+    <div class="row col-xs-12 col-sm-6 col-lg-6">
+      <div class="review-side left">
+        <div class="reviews-title">
+          <h5 class="top-title">Level</h5>
+          <h5 class="bottom-title">Environment</h5>
         </div>
-        <div class="review-spot environment-stars">
-          <% @spot.environment_average_rating.to_i.times do %>
-            <div class="fa fa-star" ></div>
-          <% end %>
-          <% if @spot.environment_average_rating - @spot.environment_average_rating.to_i > 0.25 %>
-            <div class="fa fa-star-half-o" ></div>
-          <% end %>
+        <div class="review-stars">
+          <div class="review-spot level-stars">
+            <% @spot.level_average_rating.to_i.times do %>
+              <div class="fa fa-star" ></div>
+            <% end %>
+            <% if @spot.level_average_rating - @spot.level_average_rating.to_i > 0.25 %>
+              <div class="fa fa-star-half-o" ></div>
+            <% end %>
+          </div>
+          <div class="review-spot environment-stars">
+            <% @spot.environment_average_rating.to_i.times do %>
+              <div class="fa fa-star" ></div>
+            <% end %>
+            <% if @spot.environment_average_rating - @spot.environment_average_rating.to_i > 0.25 %>
+              <div class="fa fa-star-half-o" ></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row col-xs-12 col-sm-6 col-lg-6 right-side">
+      <div class="review-side right">
+        <div class="reviews-title">
+          <h5 class="top-title">Ambience</h5>
+          <h5 class="bottom-title">Access</h5>
+        </div>
+        <div class="review-stars">
+          <div class="review-spot ambience-stars">
+            <% @spot.ambience_average_rating.to_i.times do %>
+              <div class="fa fa-star" ></div>
+            <% end %>
+            <% if @spot.ambience_average_rating - @spot.ambience_average_rating.to_i > 0.25 %>
+              <div class="fa fa-star-half-o" ></div>
+            <% end %>
+          </div>
+          <div class="review-spot access-stars">
+            <% @spot.access_average_rating.to_i.times do %>
+              <div class="fa fa-star" ></div>
+            <% end %>
+            <% if @spot.access_average_rating - @spot.access_average_rating.to_i > 0.25 %>
+              <div class="fa fa-star-half-o" ></div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row col-xs-12 col-sm-6 col-lg-6 right-side">
-    <div class="review-side">
-      <div class="reviews-title">
-        <h5 class="top-title">Ambience</h5>
-        <h5 class="bottom-title">Access</h5>
-      </div>
-      <div class="review-stars">
-        <div class="review-spot ambience-stars">
-          <% @spot.ambience_average_rating.to_i.times do %>
-            <div class="fa fa-star" ></div>
-          <% end %>
-          <% if @spot.ambience_average_rating - @spot.ambience_average_rating.to_i > 0.25 %>
-            <div class="fa fa-star-half-o" ></div>
-          <% end %>
-        </div>
-        <div class="review-spot access-stars">
-          <% @spot.access_average_rating.to_i.times do %>
-            <div class="fa fa-star" ></div>
-          <% end %>
-          <% if @spot.access_average_rating - @spot.access_average_rating.to_i > 0.25 %>
-            <div class="fa fa-star-half-o" ></div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<% end %>
