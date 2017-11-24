@@ -1,0 +1,10 @@
+<div class='checkin-avatar'>
+  <% @spot.checkins.each do |checkin| %>
+    <div class='col-xs-4'>
+      <div class='text-center'>
+        <%= cl_image_tag checkin.user.avatar.path, class: "avatar-checkin" %>
+        <p class= "text center" style="    font-weight: bold; font-size: small;"><%= checkin.user.first_name %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

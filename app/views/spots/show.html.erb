@@ -3,7 +3,7 @@
 <% content_for :meta_image, cloudinary_url(@spot.avatar.path) %>
 
 <div class="spot-pic col-xs-12">
-  <div class="spot-picture" style="background-image: url('<%= cl_image_path @spot.avatar.path %>')">
+  <div class="spot-picture" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('<%= cl_image_path @spot.avatar.path %>');">
     <!-- Adding spot to favorites -->
       <div class="button-heart"><%= render "favorites" %></div>
   </div>
@@ -82,6 +82,8 @@
               <%= f.input :date, label:false, collection: @possible_dates, selected: @date.to_date.strftime("%A, %b %d"), input_html: { id: "selected-date" }  %>
               <div id="spot-<%= @spot.id %>">
                 <%= render 'weather', weather: @weather %>
+                <h5 class="text-center" style="font-weight: bold; margin-bottom: 20px;">People going</h5>
+                <%= render 'users_checkin'  %>
               </div>
               <%= f.button :submit, "Going", class: "btn-blue" %>
             <% end %>
@@ -89,6 +91,10 @@
             <%= @checkin.date.strftime("%A, %b %d") %>
             <div id="spot-<%= @spot.id %>">
               <%= render 'weather', weather: @weather  %>
+              <div>
+                <h5 class="text-center" style="font-weight: bold; margin-bottom: 20px;">People going</h5>
+                <%= render 'users_checkin'  %>
+              </div>
             </div>
             <%= link_to "Not going", checkin_path(@checkin), class: "btn btn-danger", method: :delete %>
           <% end %>
@@ -99,6 +105,10 @@
             <%= f.input :date, label:false, collection: @possible_dates, selected: @date.to_date.strftime("%A, %b %d"), input_html: { id: "selected-date" } %>
             <div id="spot-<%= @spot.id %>">
               <%= render 'weather', weather: @weather %>
+              <div>
+                <h5 class="text-center" style="font-weight: bold; margin-bottom: 20px;">People going</h5>
+                <%= render 'users_checkin'  %>
+              </div>
             </div>
             <%= f.button :submit, "Going", class: "btn-blue" %>
           <% end %>
@@ -121,9 +131,9 @@
       <% end %>
     </div>
     <%= simple_form_for @picture do |f| %>
-    <%= f.input :photos, label:false, as: :attachinary %>
+    <%= f.input :photos, label: false, as: :attachinary %>
     <%= f.input :spot_id, as: :hidden, input_html: {value: @spot.id} %>
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Add your photo' %>
     <% end %>
   </div>
 
