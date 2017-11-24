@@ -8,7 +8,7 @@
         <%= text_field_tag :address, @address, class: "filter-search", placeholder: "Type Address", :onclick => 'if($(this).val()=="Enter search term..."){$(this).val("");};' %>
         <label id="label">When</label>
         <%= select_tag(:date, options_for_select(@possible_dates, @date), class: 'date') %><br>
-        <input type="submit" class="btn btn-wekite-index" data-disable-with="Go" value="Go">
+        <input type="submit" class="btn btn-wekite-index" data-disable-with="Go" value="Spot it">
         <%# submit_tag("Go", class: "btn btn-wekite-index" )%>
       <% end %>
       </div>
@@ -28,7 +28,7 @@
           <%= link_to spot_path(spot, weather_date: @date ), id: spot.id do %>
           <% if  spot.avatar? %>
             <div class="card-body" >
-              <span class="card-name text-center"><%= spot.name %></span>
+              <span class="card-name"><%= spot.name %></span>
             </div>
           <% else %>
             <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= image_path 'http://lorempixel.com/400/200/' %>')">
@@ -39,8 +39,10 @@
           <% end %>
           <% end %>
         </div>
-        <div id="spot-<%= spot.id %>">
-          <%= render 'weather', weather: spot.weathers.where(date: @date).last  %>
+        <div class="weather-card">
+          <div id="spot-<%= spot.id %>">
+          <%= render 'weather_index', weather: spot.weathers.where(date: @date).last  %>
+          </div>
         </div>
       </div>
     <% end %>

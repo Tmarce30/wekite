@@ -16,7 +16,7 @@ class SpotsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
-      marker.infowindow render_to_string(partial: "/layouts/partials/infowindow", locals: {spot: spot})
+      marker.infowindow render_to_string(partial: "/layouts/partials/infowindow", locals: {spot: spot, weather: spot.weathers.first})
       marker.title(spot.id.to_s)
     end
 
@@ -68,6 +68,7 @@ class SpotsController < ApplicationController
     @spot = Spot.new(spot_params)
     @spot.user = current_user
     if @spot.save
+      GetWeatherInfo.get_weather(@spot.id)
       redirect_to spot_path(@spot)
     else
       render :new

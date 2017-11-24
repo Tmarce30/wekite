@@ -1,3 +1,4 @@
+// Spot Show
 .weather {
   display: flex;
   justify-content: space-evenly;
@@ -18,4 +19,44 @@
 .wind-dir {
   // border-right: 1px solid black;
   margin: 0px;
+}
+ // Infowindow on the map
+
+.weather-iw {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  padding: 5px;
+}
+.weather-icon-index-iw {
+  height: 30px;
+  margin: 3px;
+  padding: 4px;
+}
+
+// Spot Index
+
+.weather-index {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 30px 0px;
+  padding-bottom: 20px;
+  height: 90px;
+}
+
+
+.weather-icon-index {
+  height: 30px;
+  margin-bottom: 3px;
+  color: white;
+}
+
+.weather-desc-index,
+.air-temp-index,
+.water-temp-index,
+.wind-speed-index,
+.wind-dir-index {
+  // border-right: 1px solid black;
+  margin: 12px;
+  padding-left: 16px;
 }

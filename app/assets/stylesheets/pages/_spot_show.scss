@@ -25,7 +25,7 @@
 }
 
 .spot-infos {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #787979;
   padding-bottom: 15px;
   margin-bottom: 30px;
 }
@@ -59,8 +59,8 @@
 }
 
 .fixed-box {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  border: 1px solid black;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1),0 1px 0 0 rgba(0,0,0,0.06);
+  border: 1px solid #787979;
   padding: 25px;
   height: 310px;
 }
@@ -91,7 +91,7 @@
 }
 
 .each-review {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #787979;
   margin-bottom: 20px;
   position: relative;
 }
@@ -132,19 +132,43 @@
   font-size: small;
 }
 
-
 .user-name h6 {
   margin: 0px;
   padding: 3px 0px;
   font-size: small;
 }
 
-.average-reviews {
-  margin-bottom: 20px;
-}
-
-.level-stars {
+.review-side {
   display: flex;
+  justify-content: space-between;
+  .bottom-title {
+    margin: 15px 0px 0px 0px;
+  }
+  .top-title {
+    margin: 15px 0px 0px 0px;
+  }
 }
 
+.review-side.left {
+  margin-right: 20px;
+}
 
+.review-stars {
+  margin: 12px 0px 0px 0px;
+}
+
+.access-stars {
+  margin: 8px 0px 0px 0px;
+}
+
+.environment-stars {
+  margin: 8px 0px 0px 0px;
+}
+
+.review-button {
+  margin-top: 30px;
+}
+
+.right-side {
+  padding: 0px 0px 0px 45px;
+}
