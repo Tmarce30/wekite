@@ -40,6 +40,11 @@
   align-items: center;
 }
 
+.displayed-spot .weather-card {
+  height: 60px !important;
+
+}
+
 .cards-dimension > div.weather-card{
   font-size: 12px;
   background-color: white;
