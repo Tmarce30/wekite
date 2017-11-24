@@ -25,7 +25,9 @@
     </div>
     <div class="weather-card">
       <div id="spot-<%= spot.id %>">
-      <%= render 'shared/weather', weather: spot.weathers.where(date: @date).last  %>
+        <% unless spot.weathers.where(date: @date).last.nil? %>
+          <%= render 'shared/weather', weather: spot.weathers.where(date: @date).last  %>
+          <% end %>
       </div>
     </div>
   </div>

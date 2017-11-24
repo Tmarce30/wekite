@@ -81,8 +81,9 @@
               <%# f.input :date %>
               <%= f.input :date, label:false, collection: @possible_dates, selected: @date.to_date.strftime("%A, %b %d"), input_html: { id: "selected-date" }  %>
               <div id="spot-<%= @spot.id %>">
-
-                <%= render 'shared/weather', weather: @weather %>
+                <% unless @weather.nil? %>
+                  <%= render 'shared/weather', weather: @weather %>
+                  <% end %>
                 <h5 class="text-center" style="font-weight: bold; margin-bottom: 20px;">People going</h5>
                 <%= render 'users_checkin'  %>
 
@@ -92,8 +93,9 @@
           <% else %>
             <%= @checkin.date.strftime("%A, %b %d") %>
             <div id="spot-<%= @spot.id %>">
-
-              <%= render 'shared/weather', weather: @weather  %>
+              <% unless @weather.nil? %>
+                <%= render 'shared/weather', weather: @weather  %>
+              <% end %>
               <div>
                 <h5 class="text-center" style="font-weight: bold; margin-bottom: 20px;">People going</h5>
                 <%= render 'users_checkin'  %>
@@ -108,8 +110,9 @@
           <%= simple_form_for [@spot] do |f| %>
             <%= f.input :date, label:false, collection: @possible_dates, selected: @date.to_date.strftime("%A, %b %d"), input_html: { id: "selected-date" } %>
             <div id="spot-<%= @spot.id %>">
-
+              <% unless @weather.nil? %>
               <%= render 'shared/weather', weather: @weather %>
+              <% end %>
               <div>
                 <h5 class="text-center" style="font-weight: bold; margin-bottom: 20px;">People going</h5>
                 <%= render 'users_checkin'  %>
