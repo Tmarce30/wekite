@@ -13,12 +13,7 @@ class SpotsController < ApplicationController
 
     @address = params["address"]
 
-    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
-      marker.lat spot.latitude
-      marker.lng spot.longitude
-      marker.infowindow render_to_string(partial: "/layouts/partials/infowindow", locals: {spot: spot, weather: spot.weathers.first})
-      marker.title(spot.id.to_s)
-    end
+
 
     @possible_dates = []
     for offset in 0..6
@@ -26,6 +21,13 @@ class SpotsController < ApplicationController
       @possible_dates << [date.strftime("%A, %b %d"), date]
     end
     @date = params[:date] || @possible_dates[0][1]
+
+    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
+      marker.lat spot.latitude
+      marker.lng spot.longitude
+      marker.infowindow render_to_string(partial: "/layouts/partials/infowindow", locals: {spot: spot, weather: spot.weathers.first, date: @date})
+      marker.title(spot.id.to_s)
+    end
   end
 
   def show

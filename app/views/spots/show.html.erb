@@ -3,14 +3,14 @@
 <% content_for :meta_image, cloudinary_url(@spot.avatar.path) %>
 
 <div class="spot-pic col-xs-12">
-  <div class="spot-picture" style="background-image: linear-gradient(rgba(100,10,110,0.2), rgba(100,10,110,0.2)), url('<%= cl_image_path @spot.avatar.path %>')">
+  <div class="spot-picture" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('<%= cl_image_path @spot.avatar.path %>');">
     <!-- Adding spot to favorites -->
       <div class="button-heart"><%= render "favorites" %></div>
   </div>
 </div>
 
 
-<div class="container justify-content-between">
+<div class="container">
 
   <div class="row">
 
@@ -81,16 +81,26 @@
               <%# f.input :date %>
               <%= f.input :date, label:false, collection: @possible_dates, selected: @date.to_date.strftime("%A, %b %d"), input_html: { id: "selected-date" }  %>
               <div id="spot-<%= @spot.id %>">
+
                 <%= render 'shared/weather', weather: @weather %>
+                <h5 class="text-center" style="font-weight: bold; margin-bottom: 20px;">People going</h5>
+                <%= render 'users_checkin'  %>
+
               </div>
               <%= f.button :submit, "Going", class: "btn-blue" %>
             <% end %>
           <% else %>
             <%= @checkin.date.strftime("%A, %b %d") %>
             <div id="spot-<%= @spot.id %>">
+
               <%= render 'shared/weather', weather: @weather  %>
+              <div>
+                <h5 class="text-center" style="font-weight: bold; margin-bottom: 20px;">People going</h5>
+                <%= render 'users_checkin'  %>
+              </div>
+
             </div>
-            <%= link_to "Checkout", checkin_path(@checkin), class: "btn btn-danger", method: :delete %>
+            <%= link_to "Not going", checkin_path(@checkin), class: "btn btn-danger", method: :delete %>
           <% end %>
         </div>
       <% else %>
@@ -98,7 +108,12 @@
           <%= simple_form_for [@spot] do |f| %>
             <%= f.input :date, label:false, collection: @possible_dates, selected: @date.to_date.strftime("%A, %b %d"), input_html: { id: "selected-date" } %>
             <div id="spot-<%= @spot.id %>">
+
               <%= render 'shared/weather', weather: @weather %>
+              <div>
+                <h5 class="text-center" style="font-weight: bold; margin-bottom: 20px;">People going</h5>
+                <%= render 'users_checkin'  %>
+              </div>
             </div>
             <%= f.button :submit, "Going", class: "btn-blue" %>
           <% end %>
@@ -109,16 +124,21 @@
 
   <!-- Spot pictures -->
 
-  <div class="spot-pictures">
-    <%= simple_form_for @picture do |f| %>
-    <%= f.input :photos, label:false, as: :attachinary %>
-    <%= f.input :spot_id, as: :hidden, input_html: {value: @spot.id} %>
-    <%= f.button :submit %>
-    <% end %>
-    <% @spot.pictures.each do |picture| %>
-      <% picture.photos.each do |photo| %>
-          <%= cl_image_tag photo.path, width: 200, height: 300, crop: :fill %>
+  <div class="spot-picures">
+    <h3 class="reviews-title">Photos</h3>
+    <div class="row text-center text-lg-left">
+      <% @spot.pictures.each do |picture| %>
+        <% picture.photos.each do |photo| %>
+          <div class="col-lg-3 col-md-6 col-xs-12">
+            <%= cl_image_tag photo.path, width: 400, height: 300, crop: :fill,  class: "img-fluid img-thumbnail"%>
+          </div>
+        <% end %>
       <% end %>
+    </div>
+    <%= simple_form_for @picture do |f| %>
+    <%= f.input :photos, label: false, as: :attachinary %>
+    <%= f.input :spot_id, as: :hidden, input_html: {value: @spot.id} %>
+    <%= f.button :submit, 'Add your photo' %>
     <% end %>
   </div>
 

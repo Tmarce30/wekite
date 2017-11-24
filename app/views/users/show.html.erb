@@ -33,9 +33,9 @@
 
 <div class="row">
     <% current_user.checkins.each do |checkin| %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="col-xs-12 col-sm-5 col-md-4 user-spot-card">
         <% @date =  checkin.date.to_date.strftime("%Y-%m-%e") %>
-        <%= render 'spots/spot_card', spot: checkin.spot %>
+        <%= render 'spot_card', spot: checkin.spot %>
       </div>
     <% end %>
 </div>

@@ -140,3 +140,42 @@ h2{
         width: 100%;
     }
 }
+
+.card-body-user{
+  height: 221px;
+  background-size: cover !important;
+  background-position: center;
+  position: relative;
+}
+
+.card-name-user {
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+    text-decoration: none !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 10px 0 10px;
+    background: white;
+}
+.user-spot-card {
+  border: 1px solid #e6e4e4;
+  margin-top: 10px;
+}
+
+.user-spot-card > .main-card {
+  .card-body-user > .card-name {
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+    text-decoration: none !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 10px 0 10px;
+    top: none !important;
+    background: white;
+  }
+
+}

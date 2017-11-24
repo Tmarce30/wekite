@@ -62,7 +62,6 @@
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1),0 1px 0 0 rgba(0,0,0,0.06);
   border: 1px solid #787979;
   padding: 25px;
-  height: 310px;
 }
 
 .btn-white {
@@ -149,8 +148,8 @@
   }
 }
 
-.review-side.left {
-  margin-right: 20px;
+.review-side.right {
+  margin-left: 40px;
 }
 
 .review-stars {
@@ -170,5 +169,16 @@
 }
 
 .right-side {
-  padding: 0px 0px 0px 45px;
+  padding-right: 0px;
+}
+
+.avatar-checkin {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.empty-heart {
+  background-color: transparent;
+  border: transparent;
 }

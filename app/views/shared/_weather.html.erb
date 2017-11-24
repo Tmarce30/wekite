@@ -31,19 +31,6 @@
         <%= image_tag 'storm.png', class: "weather-icon" %>
       <% end %>
     </div>
-    <%= weather.weather_desc %>
-  </div>
-
-  <div>
-  <hr style="width:1px; height:75px; background-color: black; margin: 0px;" />
-  </div>
-
-  <!-- Air temperature -->
-
-  <div class="air-temp text-center">
-    <div class="temp-icon">
-      <%= image_tag 'temperature.png', class: "weather-icon" %>
-    </div>
     <%= "#{weather.air_temp}°C" %>
   </div>
 
