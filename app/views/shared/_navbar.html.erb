@@ -32,11 +32,6 @@
               <% end %>
             </li>
             <li>
-              <%= link_to user_favorites_path(current_user) do %>
-                <i class="fa fa-heart"></i><%= t(".favorites", default: " My favorites") %>
-              <% end %>
-            </li>
-            <li>
               <%= link_to new_spot_path do %>
                 <i class="fa fa-plus-circle"></i> <%= t(".add", default: "Add a spot") %>
               <% end %>
