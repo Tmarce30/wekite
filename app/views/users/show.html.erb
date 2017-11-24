@@ -1,63 +1,132 @@
-<% content_for :meta_title, "#{@user.first_name} profile" %>
-<div class="user-profile">
-  <div class="user-info">
-    <div class="user-photo text-center">
-      <% if current_user.facebook_picture_url? %>
-        <%= image_tag current_user.facebook_picture_url %>
-        <% elsif current_user.avatar %>
-        <%= cl_image_tag current_user.avatar.path %>
-        <% else %>
-        <%= image_tag "http://placehold.it/30x30" %>
-      <% end %>
-    </div>
-      <div class="user-identity text-center">
-        <strong><%= current_user.first_name %></strong>
-      </div>
+  <% content_for :meta_title, "#{@user.first_name} profile" %>
 
-  </div>
-<div id="map" style="width: 100%; height: 400px;"></div>
-<h2><%= @user.first_name %>' photos</h2>
-  <div class="user-photos">
-    <div class="row">
-      <% @user.pictures.each do |picture| %>
-        <div class="col-xs-12 col-sm-4 user-spot-photos">
+
+  <div class="container" style="padding-top: 95px; ">
+    <div class="row user-wrapper">
+      <div class="col-xs-12 col-md-2">
+       <div class="user-info">
+        <div class="user-photo text-center">
+          <% if current_user.avatar %>
+          <%= cl_image_tag current_user.avatar.path, :width=>150, :height=>150, :gravity=>"auto", :crop=>"fill" %>
+          <% else %>
+          <%= image_tag "http://placehold.it/30x30" %>
+          <% end %>
+        </div>
+        <div class="user-identity text-center">
+          <strong><%= current_user.first_name %> <%= current_user.last_name %></strong>
+        </div>
+        <div class='user-description'>
+          <em><%= current_user.description unless current_user.description.nil? %></em>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-10">
+     <% if @user == current_user %>
+     <h2>My next spots</h2>
+     <% else %>
+     <h2><%= @user.first_name %>' next spots</h2>
+     <% end %>
+     <div id="map" style="width: 100%; height: 400px;"></div>
+   </div>
+ </div>
+
+<div class="row">
+    <% current_user.checkins.each do |checkin| %>
+      <div class="col-xs-12 col-sm-5 col-md-4 user-spot-card">
+        <% @date =  checkin.date.to_date.strftime("%Y-%m-%e") %>
+        <%= render 'spot_card', spot: checkin.spot %>
+      </div>
+    <% end %>
+</div>
+
+ <div class="row">
+  <div class="col-xs-12">
+    <div class="user-photos">
+      <% if @user == current_user %>
+      <h2>My photos</h2>
+      <% else %>
+      <h2><%= @user.first_name %>' photos</h2>
+      <% end %>
+
+
+      <div class="row">
+        <% @user.pictures.each do |picture| %>
+
+        <div class="col-xs-12 col-sm-3 user-spot-photos text-center">
           <p><%= Spot.find(picture.spot_id).name %></p>
           <%# link_to photo_path(photo) do %>
           <% picture.photos.each do |photo|%>
-            <%= cl_image_tag photo.path %>
+          <%= cl_image_tag photo.path, :id => "#{photo.id}" %>
+
           <% end %>
+          <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+                </div>
+                <div class="modal-body">
+                  <img src="" id="imagepreview" style="width: 400px; height: 264px;" >
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+</div>
 
-  <% content_for(:after_js) do %>
-    <%= javascript_tag do %>
 
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 2,
-          center: {lat: <%= 0 %>, lng: <%= 0 %>},
-          mapTypeId: google.maps.MapTypeId.TERRAIN
-        });
 
-        <% current_user.checkins.each do |checkin| %>
-          <% if checkin.spot %>
-            var marker = new google.maps.Marker({
-            position: <%= raw( { lat: checkin.spot.latitude, lng: checkin.spot.longitude }.to_json) %>,
-            map: map,
-            title: 'Hello World!',
-            });
-          <% end %>
-        <% end %>
-      }
+</div>
+</div>
 
-      $(document).ready(function() {
-        initMap()
-      });
 
-    <% end %>
+
+
+<% content_for(:after_js) do %>
+<%= javascript_tag do %>
+<% @user.pictures.each do |picture| %>
+<% picture.photos.each do |photo|%>
+$("#photo.id").on("click", function() {
+$('#imagepreview').attr('src', $(this).prop('src')); // here asign the image to the modal when the user click the enlarge link
+$('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+});
+<% end %>
+<% end %>
+
+function initMap() {
+var map = new google.maps.Map(document.getElementById('map'), {
+zoom: 2,
+center: {lat: <%= 0 %>, lng: <%= 0 %>},
+mapTypeId: google.maps.MapTypeId.TERRAIN
+});
+
+<% current_user.checkins.each do |checkin| %>
+<% if checkin.spot %>
+var marker = new google.maps.Marker({
+position: <%= raw( { lat: checkin.spot.latitude, lng: checkin.spot.longitude }.to_json) %>,
+map: map,
+title: 'Hello World!',
+});
+<% end %>
+<% end %>
+}
+
+$(document).ready(function() {
+
+initMap()
+});
+
+<% end %>
 <% end %>
 
 

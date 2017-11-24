@@ -1,9 +1,8 @@
 <% content_for :meta_title, "My favorites" %>
 
-<div class="container">
-  <div class="tabs">
-      <%= link_to "Profile", user_path(current_user), class: "btn-medium" %>
-      <h2>Your favorites spots</h2>
+<div class="container-favorites">
+  <div class="fav-spots">
+    <h2>Your favorites spots</h2>
   </div>
   <div class="favorites text-center">
     <% @favorites.each do |favorite| %>

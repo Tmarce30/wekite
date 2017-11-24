@@ -1,0 +1,31 @@
+<div id="card-<%= spot.id %>" class="cards-dimension main-card" data-id="<%= spot.id %>">
+    <div class="card-body" style="background-image: linear-gradient(rgba(0, 0, 10, 0.2),
+    rgba(0, 0, 10, 0.2)), url('<%= cl_image_path spot.avatar.path %>')">
+      <div class="review">
+        <% spot.average_calc.to_i.times do %>
+          <div class="fa fa-star" ></div>
+        <% end %>
+        <% if spot.average_calc - spot.average_calc.to_i > 0.25 %>
+          <div class="fa fa-star-half-o" ></div>
+        <% end %>
+        </div>
+      <%= link_to spot_path(spot, weather_date: @date ), id: spot.id do %>
+      <% if  spot.avatar? %>
+        <div class="card-body" >
+          <span class="card-name"><%= spot.name %></span>
+        </div>
+      <% else %>
+        <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.05)), url('<%= image_path 'http://lorempixel.com/400/200/' %>')">
+          <span class="card-name">
+            <%= spot.name %>
+          </span>
+        </div>
+      <% end %>
+      <% end %>
+    </div>
+    <div class="weather-card">
+      <div id="spot-<%= spot.id %>">
+      <%= render 'shared/weather', weather: spot.weathers.where(date: @date).last  %>
+      </div>
+    </div>
+  </div>
