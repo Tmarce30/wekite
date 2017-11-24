@@ -39,6 +39,16 @@
       </div>
     <% end %>
 </div>
+<div class="user-photos">
+  <h2>My favorites spots</h2>
+  <div class="row">
+      <% current_user.favorites.each do |favorite| %>
+        <div class="col-xs-12 col-sm-5 col-md-4 user-spot-card">
+          <%= render 'spot_card', spot: favorite.spot %>
+        </div>
+      <% end %>
+  </div>
+</div>
 
  <div class="row">
   <div class="col-xs-12">
