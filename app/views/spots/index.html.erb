@@ -41,7 +41,7 @@
         </div>
         <div class="weather-card">
           <div id="spot-<%= spot.id %>">
-          <%= render 'weather_index', weather: spot.weathers.where(date: @date).last  %>
+          <%= render 'weather', weather: spot.weathers.where(date: @date).last  %>
           </div>
         </div>
       </div>
