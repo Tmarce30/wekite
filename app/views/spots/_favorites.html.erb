@@ -2,14 +2,18 @@
   <div>
     <% if @favorite.id.nil? %>
       <%= simple_form_for [@spot, @favorite] do |f| %>
-        <%= f.button :submit, class: "btn fa-heart" %>
+        <% f.button :button, type: :submit, class: 'empty-heart' do %>
+          <i class="fa fa-heart-o" aria-hidden="true"></i>
+        <% end %>
       <% end %>
     <% else %>
-      <%= link_to "Delete", favorite_path(@favorite, :redirect_url => spot_path(@spot)), class: "btn btn-danger", method: :delete %>
+      <%= link_to :delete, favorite_path(@favorite, :redirect_url => spot_path(@spot)), class: "fa fa-heart-o", method: :delete %>
     <% end %>
   </div>
 <% else %>
     <%= simple_form_for [@spot, @favorite] do |f| %>
-      <%= f.button :submit, class: "btn fa-heart" %>
+        <% f.button :button, type: :submit, class: 'empty-heart' do %>
+          <i class="fa fa-heart-o" aria-hidden="true"></i>
+        <% end %>
     <% end %>
 <% end %>
