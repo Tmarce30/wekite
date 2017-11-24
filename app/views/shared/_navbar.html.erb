@@ -1,7 +1,11 @@
 <div class="navbar-wekite">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wekite-brand" do %>
-    <%= image_tag "logo.png" %>
+    <% if controller_name == 'users' && action_name == 'show' %>
+      <%= image_tag "logo2.png" %>
+    <% else %>
+      <%= image_tag "logo.png" %>
+    <% end %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -15,11 +19,8 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wekite-item">
         <div class="dropdown">
-          <% if current_user.facebook_picture_url? %>
-          <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wekite-menu", "data-toggle" => "dropdown" %>
 
-          <% elsif current_user.avatar %>
-
+          <% if current_user.avatar %>
           <%= cl_image_tag current_user.avatar.path, class: "avatar dropdown-toggle", id: "navbar-wekite-menu", "data-toggle" => "dropdown" %>
           <% else %>
           <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wekite-menu", "data-toggle" => "dropdown" %>
@@ -28,11 +29,6 @@
             <li>
               <%= link_to user_path(current_user) do %>
                 <i class="fa fa-user"></i><%= t(".profile", default: " Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to user_favorites_path(current_user) do %>
-                <i class="fa fa-heart"></i><%= t(".favorites", default: " My favorites") %>
               <% end %>
             </li>
             <li>

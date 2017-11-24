@@ -181,5 +181,28 @@
 .empty-heart {
   background-color: transparent;
   border: transparent;
-  &:hover
+  &:hover {
+    background-color: transparent;
+  }
 }
+
+.fa-heart-o.white {
+  font-size: 40px;
+  color: white;
+  &:hover {
+    color: black;
+  }
+}
+
+.fa-heart-o.red {
+  font-size: 40px;
+  color: red;
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
+}
+
+
+
+

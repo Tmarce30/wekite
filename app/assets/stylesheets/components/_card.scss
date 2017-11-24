@@ -7,35 +7,28 @@
 }
 
 .cards-container {
-  display: flex;
-  flex-direction: row;
-  width: 309px;
-  height: 241px;
+  position: absolute;
+    bottom: 60px;
+    text-align: center;
 }
 
 .cards-dimension {
-  display: block;
-  background-color: white;
-  position: relative;
-  bottom: -45px;
-  height: 38px;
+
 }
 
 .card-name {
   color: black;
-  font-weight: bold;
-  font-size: 30px;
-  padding: 15px;
-  margin: 10px;
-  text-decoration: none !important;
-  position: absolute;
-  top: -67px;
-  left: -15px;
-  width: 315px;
-  height: 57px;
-  padding: 7px;
-  background-color: hsla(0, 0%, 87%, 1);
-  border-top: 1px dashed white;
+    font-weight: bold;
+    font-size: 24px;
+    text-decoration: none !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 10px 0 10px;
+    top: -50px;
+    background: white;
+    border-top: 1px solid #e6e4e4;
+
 }
 
 .weather-card {
@@ -47,5 +40,12 @@
   align-items: center;
 }
 
+.displayed-spot .weather-card {
+  height: 60px !important;
 
+}
 
+.cards-dimension > div.weather-card{
+  font-size: 12px;
+  background-color: white;
+}
