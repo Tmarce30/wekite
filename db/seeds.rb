@@ -70,6 +70,28 @@ spot = Spot.new(
   description: "Les Coussoules is recognised as one of the best kitesurfing spots in Europe. The super-reliable Tramontana wind provides superb conditions for wind sports and it's here that the annual 'Mondial du Vent' takes place. There are spots for every level of rider and there's loads of variety - cruising, freeride, freestyle, whatever you're into.",
   avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511449167/Screen_Shot_2017-11-23_at_8.38.51_AM_i5ooyt.png")
 spot.save!
+
+spot = Spot.new(
+  name: 'Jericoacoara',
+  address: "R. da Dunas, 99 - Jericoacoara, Jijoca de Jericoacoara - CE, 62598-973, Brésil",
+  description: "Wind in Jeri itself,  in strong and gusty, and blows mainly side-offshore. Locals kite surf in Jericoacoara village, but its only suitable experienced kitesurfer. ",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511551775/jeri-1_m5fgv7.jpg")
+spot.save!
+
+spot = Spot.new(
+  name: 'Dakhla',
+  address: "Dakhla 73000",
+  description: "Dakhla is a famous kitesurfing destination now. Located at the very South of the Moroccan shore, it has gotten well developed in the past few years. Surrounded by miles and miles of Sahara Desert dunes, Dakhla provides a super flat lagoon in an incredible scenery, which is as good for freestylers and speed amateurs as it is for beginners.",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511551775/ile-Herne-dakhla-office-tourisme-maroc-office-tourisme-dakhla-tourisme-dakhla-tourisme-maroc-sejour-maroc-visiter-maroc-voyager-maroc-tourisme-maroc_gdx1wj.jpg")
+spot.save!
+
+spot = Spot.new(
+  name: 'Tofino',
+  address: "542 Campbell St, Tofino, BC V0R 2Z0",
+  description: "The Tofino kitesurfing coastline extending south to Ucluelet offers a really great variety kitesurfing conditions. It’s mostly beach-break setups, but you’ll find a bit of everything when it comes to wave kiting: Onshore, offshore, side-shore, lefts, rights, rainy, sunny, smooth and steady, gusty and stormy, small and snappy waves, very big and slopey waves, and soft & mushy waves.",
+  avatar_url: "http://res.cloudinary.com/dkrjlrpn6/image/upload/v1511551775/5_8_k21w1g.jpg")
+spot.save!
+
 # Adding photos to spots
 spots = Spot.all
 
