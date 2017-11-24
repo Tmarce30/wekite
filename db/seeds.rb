@@ -1,3 +1,7 @@
+
+Checkin.destroy_all
+Review.destroy_all
+Weather.destroy_all
 Spot.destroy_all
 
 spot = Spot.new(
