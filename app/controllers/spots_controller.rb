@@ -16,7 +16,7 @@ class SpotsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
-      marker.infowindow render_to_string(partial: "/layouts/partials/infowindow", locals: {spot: spot})
+      marker.infowindow render_to_string(partial: "/layouts/partials/infowindow", locals: {spot: spot, weather: spot.weathers.first})
       marker.title(spot.id.to_s)
     end
 
